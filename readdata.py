@@ -14,7 +14,6 @@ def main():
     day = '%0.2d' % int(sys.argv[4])
     hour = '%0.2d' % int(sys.argv[5])
     t = '%0.2d' % int(sys.argv[6])
-    layer = sys.argv[7] 
 
     date = year + '-' + day + '-' + month + '_' + hour + ':00:00.t' + t
     filename = 'UV_interp_' + date + '.nc'
@@ -23,49 +22,31 @@ def main():
     print("Reading data for variable " + var + " from file " + filename)
     f = Dataset(path+filename,'r', format='NETCDF4_CLASSIC')
 
-    Udata = f.variables['U']
-    Vdata = f.variables['V']
+    vardata = f.variables[var]
+    X = np.array(vardata)
 
-    U = np.array(Udata)
-    V = np.array(Vdata)
-    x = np.array(f.variables['XLONG'])
-    y = np.array(f.variables['XLAT'])
+    print(X.shape) # the shape of x should be time*height*lat*lon* or time*lat*lon
 
-    #We re-order the dimensions to (y,x,t,z)
-    U = np.transpose(U,(2,3,0,1))
-    V = np.transpose(V,(2,3,0,1))
-    x = np.transpose(x,(1,2,0))
-    y = np.transpose(y,(1,2,0))
-    
-    if layer=='average2':
-        U = np.mean(U,axis=3)
-        V = np.mean(V,axis=3)
-
-    if var=='U':
-        X=U
-        description=Udata.description
-    elif var=='V':
-        X=V
-        description=Vdata.description
-    elif var=='ke':
-        X=0.5*(U*U+V*V)
-        description = 'kinetic energy'
-    elif var=='speed':
-        X=np.sqrt(U*U + V*V)  
-        description = 'magnitude of horizontal velocity'
+    X = X[0,]
+    if len(X.shape) ==3:
+        X = np.transpose(X,(1,2,0))
+    elif len(X.shape)==2:
+        print("")
     else:
-        raise RuntimeError("Variable not available.")
+        raise RuntimeError("Shape of X not understood")
 
-    print("Data has dimensions ", X.shape)
-
+    #the size of the time dimension of x and y is 1
+    x = np.array(f.variables['XLONG'])[0,:,:]
+    y = np.array(f.variables['XLAT'])[0,:,:]
+    
     x,y = deg2km(x,y)
 
     dy = delta(y)
    
-    x = np.transpose(x,(1,0,2))
+    x = np.transpose(x)
     dx = delta(x)
-    dx = np.transpose(dx,(1,0,2))
-    x = np.transpose(x,(1,0,2))
+    dx = np.transpose(dx)
+    x = np.transpose(x)
 
     print("Removing linear trend from data...")
 
@@ -83,20 +64,18 @@ def main():
 
     S,K = errico(Y,dx,dy)
 
-    if layer=='average2':
+    if len(S.shape)==2:
         S = np.transpose(S)
+    elif len(S.shape)==1:
+        print("")
     else:
-        S = np.transpose(S, (1,2,0))
+        raise RuntimeError("Something went wrong!")
     
     print("Done.")
 
     print("Saving spectrum to netCDF file...")
   
-
-    if layer=='average2':
-        newfile_name = "Spectrum_vertav_"+ var + "_" +  date + ".nc"
-    else:
-        newfile_name = "Spectrum_"+ var + "_" +  date + ".nc"
+    newfile_name = "Spectrum_"+ var + "_" +  date + ".nc"
    
     deletefile(path+newfile_name)
 
@@ -105,19 +84,17 @@ def main():
 
     print(S.shape)
 
-    newfile.createDimension('time')
-    newfile.createDimension('wavenumber', K.shape[0])
-    if layer=='average2': 
-        newfile.createDimension('bottom_top', S.shape[1])
-        spectrum = newfile.createVariable('spectrum', np.float64, ('time', 'wavenumber'))
+    if len(S.shape)==2:
+        newfile.createDimension('wavenumber', K.shape[0])
+        newfile.createDimension('bottom_top', S.shape[0])
+        spectrum = newfile.createVariable('spectrum', np.float64, ('bottom_top', 'wavenumber'))
         spectrum[:,:] = S
-    else:
-        newfile.createDimension('bottom_top', S.shape[1])
-        spectrum = newfile.createVariable('spectrum', np.float64, ('time', 'bottom_top', 'wavenumber'))
-        spectrum[:,:,:] = S
+    elif len(S.shape)==1:
+        newfile.createDimension('wavenumber', K.shape[0])
+        spectrum = newfile.createVariable('spectrum', np.float64, ('wavenumber'))
+        spectrum[:] = S
 
     wavenumber = newfile.createVariable('k', np.float64, 'wavenumber')
-
     wavenumber[:] = K
 
     print("Done.")
@@ -146,16 +123,13 @@ def errico(Y,dx,dy):
 
     nxm1 = Y.shape[1]
     nym1 = Y.shape[0]
-    nt = Y.shape[2]
-    try:
-        nz = Y.shape[3]
-    except:
+    if len(Y.shape)==3:
+        nz = Y.shape[2]
+    else:
         print("")
 
     DX = np.mean(dx, axis=(0,1))
     DY = np.mean(dy, axis=(0,1))
-
-    print(DX.shape,DY.shape)
 
     ap = DX*nxm1
     aq = DY*nym1
@@ -167,9 +141,9 @@ def errico(Y,dx,dy):
     else:
         kmax = (nxm1+1)//2
     try:
-        S = np.zeros((kmax,nt,nz),dtype=complex)
+        S = np.zeros((kmax,nz))
     except:
-        S = np.zeros((kmax,nt),dtype=complex)
+        S = np.zeros((kmax))
 
     Yrescaled = Y/(nxm1*nym1) #This scaling just keeps the numbers from getting too large
     
@@ -191,7 +165,6 @@ def errico(Y,dx,dy):
                 if abs( A*np.sqrt( (p/ap)**2 + (q/aq)**2 ) - k ) < 0.5:
                     S[k,] = S[k,] + np.absolute(Yrescaled[p,q,])
     
-    S = np.real(S)
     K = np.array(range(0,kmax))
 
     K = 2*np.pi*K/A
@@ -231,8 +204,6 @@ def deletefile(filename_full):
             print('File removed.')
         except:
             print("Could not remove file " + filename_full)
-
-
 
 main()
 

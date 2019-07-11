@@ -28,8 +28,8 @@ begin
 	
 	U_unstagger = wrf_user_unstagger(U,U@stagger)
 	V_unstagger = wrf_user_unstagger(V,V@stagger)
-	U10_unstagger = wrf_user_unstagger(U10,U10@stagger)
-	V10_unstagger = wrf_user_unstagger(V10,V10@stagger)
+;	U10_unstagger = wrf_user_unstagger(U10,U10@stagger)
+;	V10_unstagger = wrf_user_unstagger(V10,V10@stagger)
 
 	Udims = dimsizes(U_unstagger)
 	nz = Udims(1)
@@ -54,30 +54,39 @@ begin
 
 	newfile = addfile(newfile_name_full, "c")
 
+	speed = sqrt(U_intrp^2 + V_intrp^2)
+	ke = 0.5*(U_intrp^2 + V_intrp^2)
+	speed10 = sqrt(U10^2 + V10^2)
+	ke10 = 0.5*(U10^2 + V10^2)
+	
 	newfile->U = U_intrp
 	newfile->V = V_intrp 
 	newfile->XLONG = xvals
 	newfile->XLAT = yvals
-	newfile->U10 = U10_unstagger
-	newfile->V10 = V10_unstagger
-
-	speed = sqrt(U^2 + V^2)
-	ke = 0.5*(U^2 + V^2)
+	newfile->U10 = U10 ;_unstagger
+	newfile->V10 = V10 ;_unstagger
+	newfile->speed = speed
+	newfile->ke = ke
+	newfile->speed10 = speed10
+	newfile->ke10 = ke10
 
 	U_spectrum = wave_number_spc(U_intrp,"F")
 	V_spectrum = wave_number_spc(V_intrp,"F")
 	speed_spectrum = wave_number_spc(speed,"F")
 	ke_spectrum = wave_number_spc(ke,"F")
-	U10_spectrum = wave_number_spc(U10_unstagger,"F")
-	V10_spectrum = wave_number_spc(V10_unstagger,"F")
-
+	U10_spectrum = wave_number_spc(U10, "F") ;_unstagger,"F")
+	V10_spectrum = wave_number_spc(V10, "F") ;_unstagger,"F")
+	speed10_spectrum = wave_number_spc(speed10,"F")
+	ke10_spectrum = wave_number_spc(ke10,"F")
+		
 	newfile->U_spectrum = U_spectrum
 	newfile->V_spectrum = V_spectrum
 	newfile->U10_spectrum = U10_spectrum
 	newfile->V10_spectrum = V10_spectrum
 	newfile->speed_spectrum = speed_spectrum
 	newfile->ke_spectrum = ke_spectrum
-
+	newfile->speed10_spectrum = speed10_spectrum
+	newfile->ke10_spectrum = ke10_spectrum
 	
 end
 
