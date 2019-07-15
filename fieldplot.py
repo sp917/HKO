@@ -26,7 +26,7 @@ def main():
 
     files = [ f for f in os.listdir(datapath) \
             if (f.startswith(prefix + date + ".t") and f.endswith(".nc")) ]
-    
+   
     print(prefix + date + ".t")
     
     nf = len(files)
@@ -42,7 +42,8 @@ def main():
         v_max = max(lims)
         v_min = min(lims)
     
-    fig, axs = plt.subplots(1,nf, figsize=(nf*(5+2),5), sharey='row')
+    fig, axs = plt.subplots(1, nf, figsize=(nf*(5+2),5), sharey='row', sharex='col')
+
     for i in range(nf):
         f = files[i]
         data = Dataset(datapath+f,'r',format="NETCDF4_CLASSIC")
