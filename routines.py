@@ -47,56 +47,39 @@ def filt1(X, yvals, xvals, ny, nx):
 def filt2(X, yvals, xvals, ny, nx):
     """Different type of spatial filter which returns the average over the neighbours within a window of size nx*ny"""
 
-    print("Hi. X.shape=",X.shape)
-
     Y = dofilter2(X,nx,ny)
    
-    Xnew = project(X,nx,ny)
-    xvalsnew = project(xvals,ny,nx)
-    yvalsnew = project(yvals,ny,nx)
+#    Xnew = project(X,nx,ny)
+#    xvalsnew = project(xvals,ny,nx)
+#    yvalsnew = project(yvals,ny,nx)
 
-
-    print("Xnew.shape=",Xnew.shape)
-
-    return Xnew, Y, yvalsnew, xvalsnew
+    return X, Y, yvals, xvals
 
 def dofilter2(X,ny,nx):
     
     Y = np.zeros((X.shape))
-    
-    ymax = X.shape[0]
-    xmax = X.shape[1]
+    Y = Y[(ny%2):,(nx%2):,] #If ny or nx is odd then we need to shift the grid on which Y is defined
 
-    #Xdouble is defined by interpolating X onto a mesh with double the resolution
-    #This allows us to more easily define averages when ny and nx are odd
-
-    Xdoubleshape = X.shape
-    Xdoubleshape[0] = 2*Xdoubleshape[0]-1
-    Xdoubleshape[1] = 2*Xdoubleshape[1]-1
-    Xdouble = np.zeros((Xdoubleshape))
-
-    Xdouble[::2,::2,] = X
-
-    for i in range(0,Xdouble.shape[1],2):
-        for j in range(1,Xdouble.shape[0],2):
-            Xdouble[j,i,] = 0.5*(X[(j+1)//2,i,] + X[(j-1)//2,i,])
-    
-    for i in range(1,Xdouble.shape[1],2):
-        for j in range(0,Xdouble.shape[0],2): 
-            Xdouble[j,i,] = 0.5*(X[j,(i+1)//2,] + X[j,(i-1)//2,])
-
-    for i in range(1,Xdouble.shape[1],2):
-        for j in range(1,Xdouble.shape[0],2)
-            Xdouble[j,i,] = 0.25*(X[(j-1)//2,(i-1)//2,] + X[(j+1)//2,(i-1)//2,] \
-                    + X[(j-1)//2,(i+1)//2,] + X[(j+1)//2,(i+1)//2])
-
-    #Y = Y[ny:,nx:,] #We remove the boundary
     print("X.shape=",X.shape)
     print("Y.shape=",Y.shape)
-
+    
     for i in range(Y.shape[1]):
+        if nx%2==0:
+            xmin = max(0, i-nx//2)
+            xmax = min(Y.shape[1], i+1+nx//2)
+        else:
+            xmin = max(0, i-(nx-1)//2)
+            xmax = min(Y.shape[1], i+1+(nx+1)//2)
         for j in range(Y.shape[0]):
-            Y[j,i,] = np.mean( X[j:j+ny+1,i:i+nx+1,] , axis = (0,1) )
+            if ny%2==0:
+                ymin = max(0, j-ny//2)
+                ymax = min(Y.shape[0], j+1+ny//2)
+            else:
+                ymin = j-(ny-1)//2
+                ymax = j+1 + (ny+1)//2 
+                ymin = max(0, ymin)
+                ymax = min(Y.shape[0], ymax ) 
+            Y[j,i,] = np.mean( X[ymin:ymax,xmin:xmax,] , axis = (0,1) )
     
     return Y
 
