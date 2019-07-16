@@ -89,6 +89,7 @@ def main():
         oldvar = newfile.createVariable(var,np.float64,('time','south_north','west_east'))
         newvar = newfile.createVariable(var+'_filtered',np.float64,('time','south_north','west_east'))    
         oldvar[:,:,:] = X
+        print(Y.shape, xvals.shape,yvals.shape)
         newvar[:,:,:] = Y
 
     lons = newfile.createVariable('XLONG',np.float64,('time','south_north','west_east'))

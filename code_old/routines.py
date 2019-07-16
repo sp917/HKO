@@ -49,11 +49,11 @@ def filt2(X, yvals, xvals, ny, nx):
 
     Y = dofilter2(X,nx,ny)
    
-#    Xnew = project(X,nx,ny)
-#    xvalsnew = project(xvals,ny,nx)
-#    yvalsnew = project(yvals,ny,nx)
+    Xnew = dofilter2(X,nx%2,ny%2)
+    xvalsnew = dofilter2(xvals,ny%2,nx%2)
+    yvalsnew = dofilter2(yvals,ny%2,nx%2)
 
-    return X, Y, yvals, xvals
+    return Xnew, Y, yvalsnew, xvalsnew
 
 def dofilter2(X,ny,nx):
     
@@ -64,6 +64,7 @@ def dofilter2(X,ny,nx):
     print("Y.shape=",Y.shape)
     
     for i in range(Y.shape[1]):
+        if (i%(Y.shape[1]//10)==0): print(str(100*i/Y.shape[1]) + '%')
         if nx%2==0:
             xmin = max(0, i-nx//2)
             xmax = min(Y.shape[1], i+1+nx//2)
@@ -145,6 +146,7 @@ def errico(Y,dx,dy):
         kmax = (nym1+1)//2
     else:
         kmax = (nxm1+1)//2
+
     try:
         S = np.zeros((kmax,nz))
     except:
