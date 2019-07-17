@@ -67,7 +67,7 @@ def plotsmooth(X, Xsmooth, yvals, xvals, plottitle, plotname):
             v_min = np.min(Y)
             v_max = np.max(Y)
             
-            im = axs[j,i].pcolormesh(xvals[i,],yvals[i,], Y, cmap='seismic',vmin=v_min,vmax=v_max)
+            im = axs[j,i].pcolormesh(np.tanspose(xvals[i,]),np.transpose(yvals[i,]), Y, cmap='seismic',vmin=v_min,vmax=v_max)
 
             axs[j,i].set_title('t'+ '%0.2d' % t[i])
             axs[j,i].set_xlim([np.min(xvals),np.max(xvals)])
@@ -93,6 +93,7 @@ def makesmooth(str_id, passes):
 
     return Xsmooth
 
+
 def detrend(X):
 
     nym1 = X.shape[0]-1
@@ -117,23 +118,12 @@ def detrend(X):
 
 def errico(Y,dy,dx):
 
-    #See Errico 1985, page 1555. Y should be a de-trended two-dimensional field
+    #See Errico 1985, page 1555. Y should be the Fourier transform of a de-trended two-dimensional field. dy and dx should have dimensions (ny-1)*nx and ny*(nx-1) respectively.
 
     nxm1 = Y.shape[1]
     nym1 = Y.shape[0]
-    
-    DX = np.mean(dx, axis=(0,1))
-    DY = np.mean(dy, axis=(0,1))
 
-    ap = DX*nxm1
-    aq = DY*nym1
-
-    A = max(ap,aq)
-
-    if abs(A-ap)<0.00000000001:
-        kmax = (nym1+1)//2
-    else:
-        kmax = (nxm1+1)//2
+    A, kmax = getAkmaxK(dy,dx)[0:2]
 
     S = np.zeros(kmax)
     
@@ -157,11 +147,7 @@ def errico(Y,dy,dx):
                 if abs( A*np.sqrt( (p/ap)**2 + (q/aq)**2 ) - k ) < 0.5:
                     S[k,] = S[k,] + np.absolute(Yrescaled[p,q,])
     
-    K = np.array(range(0,kmax))
-
-    K = 2*np.pi*K/A
-
-    return S[1:], K[1:]
+    return S[1:]
 
 
 def delta(y):
@@ -215,8 +201,6 @@ def nanwarning(X):
     if numnans > 0:
         raise Warning("Variable contains " + str(numnans) + " nans.")
 
-
-
 def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
 
     npl = len(Splot) #number of plots at each time
@@ -225,10 +209,10 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
 
     nt = len(t)
 
-    fig, axs = plt.subplots(1, npl, figsize=(5*npl, 5+2))
+    fig, axs = plt.subplots(1, npl, figsize=(5*npl, 5+2), sharey='row', sharex='col')
 
+    lims = []
     for j in range(npl):
-        lims = []
         print(j,len(Splot[j]))
         for i in range(nt):
             Y = Splot[j][i]
@@ -239,9 +223,7 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
             
             im = axs[j].plot(Kplot,Y,label=r'$t$'+str(t[i]))
             
-            lims = lims + [np.min(Y),np.max(Y)]
-        
-        lims = np.array(lims)
+            lims = lims + [np.min(Y)]+[np.max(Y)]
 
         Kline = np.arange(0.1*np.min(Kplot),10*np.max(Kplot))
         line = A[j]*np.power(Kline, -5/3)
@@ -251,7 +233,7 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
         axs[j].set_xscale('log')
         axs[j].set_yscale('log')
 
-        axs[j].set_ylim(np.min(lims),np.max(lims))
+        axs[j].set_ylim(min(lims),max(lims))
         axs[j].set_xlim(axs[j].get_xlim())
 
         axs[j].legend(loc='best')
@@ -268,4 +250,115 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
     fig.savefig(plotpath+plotname,bbox_inches="tight")
 
 
+def quickplots(Xplots, yvals, xvals, plotname, titles=[]):
+
+    """ Xplots should be a list of two-dimensional arrays, each of which has the same dimensions as yvals and xvals."""
+
+    npl = len(Xplots)
+
+    fig, axs = plt.subplots(1, npl, figsize=((5+2)*npl, 5))
+
+
+    for j in range(npl):
+        Y = Xplots[j]
+    
+        v_min = np.min(Y)
+        v_max = np.max(Y)
+        
+        im = axs[j].pcolormesh(np.transpose(xvals),np.transpose(yvals), Y, cmap='seismic',vmin=v_min,vmax=v_max)
+
+        axs[j].set_xlim([np.min(xvals),np.max(xvals)])
+        axs[j].set_ylim([np.min(yvals),np.max(yvals)])
+        axs[j].set_xticks([k for k in np.linspace(np.min(xvals),np.max(xvals),5)])
+        axs[j].set_yticks([k for k in np.linspace(np.min(yvals),np.max(yvals),10)])
+        axs[j].xaxis.set_major_formatter(mtick.FormatStrFormatter('%.1f'))
+        axs[j].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2f'))
+    
+        cbar = fig.colorbar(im,ax=axs[j])
+        cbar.set_ticks([i for i in np.linspace(v_min,v_max,9)])
+
+        if not len(titles)==0:
+            axs[j].set_title(titles[j])
+    
+
+    print("Saving plot as " + plotpath+plotname + ".png")
+    fig.savefig(plotpath+plotname,bbox_inches="tight")
+
+
+def spectrum(X, dy, dx):
+
+    """
+    Inputs:
+
+    X (numpy array), dimensions nt*ny*nx
+    dy (numpy array), dimensions nt*(ny-1)*nx
+    dx (numpy array), dimensions nt*ny*(nx-1)
+
+    Outputs:
+
+    S (list), contains nt numpy arrays of possibly different dimensions
+    
+    """
+
+    S = []
+
+    X = np.moveaxis(X, [-2,-1], [0,1])    
+    X = routines.detrend(X)
+
+    nt = X.shape[2]
+
+    Y = np.fft.fftn(X,axes=(0,1))
+
+    for t in range(nt):
+        dyt = dy[t:,:]
+        dxt = dx[t:,:]
+        S1 = errico(Y[:,:,t],dyt,dxt)
+        S = S + [S1]
+
+    return S
+
+def deltayx(yvals,xvals):
+
+    """
+        yvals and xvals should be numpy arrays of shape nt*nx*ny
+    
+    """
+    yvals = np.moveaxis(yvals, [-2,-1], [0,1])
+    xvals = np.moveaxis(xvals, [-2,-1], [1,0])
+
+    yvals, xvals = routines.deg2km(yvals,xvals)
+
+    dy = delta(yvals)
+    dx = delta(xvals)
+
+    dx = np.moveaxis(dx, 1,0)
+
+    return dy,dx
+
+
+
+
+def getAkmaxK(dy,dx)
+    
+    nym1 = dy.shape[0]
+    nxm1 = dx.shape[1]
+
+    DX = np.mean(dx, axis=(0,1))
+    DY = np.mean(dy, axis=(0,1))
+
+    ap = DX*nxm1
+    aq = DY*nym1
+
+    A = max(ap,aq)
+
+    if abs(A-ap)<0.00000000001:
+        kmax = (nym1+1)//2
+    else:
+        kmax = (nxm1+1)//2
+
+    K = np.array(range(1,kmax))
+    K = 2*np.pi*K/A
+
+    return A, kmax, K
+    
 
