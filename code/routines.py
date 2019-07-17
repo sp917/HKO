@@ -60,14 +60,20 @@ def plotsmooth(X, Xsmooth, yvals, xvals, plottitle, plotname):
 
     fig, axs = plt.subplots(npl, nt, figsize=(nt*(5+2),5*npl), sharey='row', sharex='col')
 
+    print(xvals.shape)
+    xvals = np.transpose(xvals, (0,2,1))
+    yvals = np.transpose(yvals, (0,2,1))
+
     for i in range(nt):
+        xplot = xvals[i,]
+        yplot = yvals[i,]
         for j in range(npl):
             Y = Xplot[j][i,]
         
             v_min = np.min(Y)
             v_max = np.max(Y)
             
-            im = axs[j,i].pcolormesh(np.tanspose(xvals[i,]),np.transpose(yvals[i,]), Y, cmap='seismic',vmin=v_min,vmax=v_max)
+            im = axs[j,i].pcolormesh(xplot, yplot, np.transpose(Y), cmap='seismic',vmin=v_min,vmax=v_max)
 
             axs[j,i].set_title('t'+ '%0.2d' % t[i])
             axs[j,i].set_xlim([np.min(xvals),np.max(xvals)])
@@ -123,14 +129,14 @@ def errico(Y,dy,dx):
     nxm1 = Y.shape[1]
     nym1 = Y.shape[0]
 
-    A, kmax = getAkmaxK(dy,dx)[0:2]
+    A, ap, aq, kmax = getAkmaxK(dy,dx)[0:4]
 
     S = np.zeros(kmax)
     
     Yrescaled = Y/(nxm1*nym1) #This scaling just keeps the numbers from getting too large
     
     for k in range(0,kmax):
-        if k%(kmax//10)==0: print(str(100*k/kmax) + '%')
+        #if k%(kmax//10)==0: print(str(100*k/kmax) + '%')
         qmax = math.ceil(min(nxm1,aq*(k+0.5)/A))
         p0 = ap*(k-0.5)/A
         q0 = aq*(k-0.5)/A
@@ -244,7 +250,6 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
         ax2.set_xlim(ax2.get_xlim()[::-1])
 
 
-
     fig.suptitle(plottitle)
     print("Saving plot as " + plotpath+plotname + ".png")
     fig.savefig(plotpath+plotname,bbox_inches="tight")
@@ -291,8 +296,8 @@ def spectrum(X, dy, dx):
     Inputs:
 
     X (numpy array), dimensions nt*ny*nx
-    dy (numpy array), dimensions nt*(ny-1)*nx
-    dx (numpy array), dimensions nt*ny*(nx-1)
+    dy (numpy array), dimensions (ny-1)*nx*nt
+    dx (numpy array), dimensions ny*(nx-1)*nt
 
     Outputs:
 
@@ -303,16 +308,21 @@ def spectrum(X, dy, dx):
     S = []
 
     X = np.moveaxis(X, [-2,-1], [0,1])    
-    X = routines.detrend(X)
+    X = detrend(X)
+    
+    print(X.shape)
 
     nt = X.shape[2]
 
     Y = np.fft.fftn(X,axes=(0,1))
 
+    print(Y.shape)
+
     for t in range(nt):
-        dyt = dy[t:,:]
-        dxt = dx[t:,:]
+        dyt = dy[:,:,t]
+        dxt = dx[:,:,t]
         S1 = errico(Y[:,:,t],dyt,dxt)
+        print(S1.shape)
         S = S + [S1]
 
     return S
@@ -326,7 +336,7 @@ def deltayx(yvals,xvals):
     yvals = np.moveaxis(yvals, [-2,-1], [0,1])
     xvals = np.moveaxis(xvals, [-2,-1], [1,0])
 
-    yvals, xvals = routines.deg2km(yvals,xvals)
+    yvals, xvals = deg2km(yvals,xvals)
 
     dy = delta(yvals)
     dx = delta(xvals)
@@ -336,9 +346,7 @@ def deltayx(yvals,xvals):
     return dy,dx
 
 
-
-
-def getAkmaxK(dy,dx)
+def getAkmaxK(dy,dx):
     
     nym1 = dy.shape[0]
     nxm1 = dx.shape[1]
@@ -359,6 +367,19 @@ def getAkmaxK(dy,dx)
     K = np.array(range(1,kmax))
     K = 2*np.pi*K/A
 
-    return A, kmax, K
+    return A, ap, aq, kmax, K
+
+def getK(dy,dx):
+
+    """
+        dy and dx should have dimensions (ny-1)*nx*nt and ny*(nx-1)*nt respectively
+
+    """
+    K = []
+    for t in range(dy.shape[2]):
+        K1 = getAkmaxK(dy[:,:,t],dx[:,:,t])[4]
+        K = K + [K1]
+
+    return K
     
 
