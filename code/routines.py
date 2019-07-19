@@ -7,14 +7,16 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import math
 
-plotpath = "/home/sp917/plots/"
+plotpath = '/mnt/c/Users/hko/Desktop/plots/'
 datapath = '/home/sp917/data/'
+
 
 def getdata(str_id, interp=False, height=1):
 
     """ Reads in data and interoplates onto fixed horizontal levels """
 
-    files = [Dataset(datapath+f) for f in os.listdir(datapath) if f.startswith('wrfout_xhka')]    
+    files = [Dataset(datapath+f) for f in os.listdir(datapath) \
+            if f.startswith('wrfout_xhka')]    
 
     X = wrf.getvar(files, str_id, timeidx=wrf.ALL_TIMES, method='join', meta=True)
    
@@ -25,15 +27,17 @@ def getdata(str_id, interp=False, height=1):
         z = wrf.getvar(files, 'z', timeidx=wrf.ALL_TIMES, method='join', meta=False)
         z = z/1000 #convert to km
         nz = z.shape[1]
-        zmin = np.min(z)
-        zmax = np.max(z)
+        zmin = np.min(np.max(z,axis=(2,3)))
+        zmax = np.max(np.min(z, axis=(2,3)))
         if height < zmin or height > zmax:
-            raise Warning("Height not in appropriate range.")
+            print(" Warning: Height not in appropriate range. \n Must be between " + str(zmin) + " and " + str(zmax))
+        
         print('Interpolating vertically.')
-        X = wrf.vinterp(files, field=X, vert_coord='ght_msl', interp_levels = [height], field_type='z', timeidx=wrf.ALL_TIMES)
-        X = X[:,0,] #The height coordinate should only have dimension 1, so we remove it.
+        X = wrf.vinterp(files, field=X, vert_coord='ght_msl', interp_levels = [height], timeidx=wrf.ALL_TIMES)
 
+        X = X[:,0,] #The height coordinate should have dimension 1, so we remove it
     nanwarning(X)
+    print(X.shape)
 
     return X
 
@@ -60,7 +64,7 @@ def plotsmooth(X, Xsmooth, yvals, xvals, plottitle, plotname):
 
     fig, axs = plt.subplots(npl, nt, figsize=(nt*(5+2),5*npl), sharey='row', sharex='col')
 
-    print(xvals.shape)
+    print("xvals.shape =", xvals.shape)
     xvals = np.transpose(xvals, (0,2,1))
     yvals = np.transpose(yvals, (0,2,1))
 
@@ -88,9 +92,9 @@ def plotsmooth(X, Xsmooth, yvals, xvals, plottitle, plotname):
         
 
     fig.suptitle(plottitle)
-    print("Saving plot as " + plotpath+plotname + ".png")
-    fig.savefig(plotpath+plotname,bbox_inches="tight")
-
+    print("Saving plot as " + plotpath+plotname+'.png')
+    fig.savefig(plotpath+plotname+'.png',bbox_inches="tight", format='png')
+    plt.close()
 
 def makesmooth(str_id, passes):
 
@@ -120,6 +124,7 @@ def detrend(X):
     Xdetrend[:,:,] = X[:-1,:-1,] - JX/nym1 - XI/nxm1 + JIX/(nym1*nxm1)
     
     return(Xdetrend)
+
 
 
 def errico(Y,dy,dx):
@@ -153,6 +158,10 @@ def errico(Y,dy,dx):
                 if abs( A*np.sqrt( (p/ap)**2 + (q/aq)**2 ) - k ) < 0.5:
                     S[k,] = S[k,] + np.absolute(Yrescaled[p,q,])
     
+    
+#    K = np.array(range(1,kmax))
+#    K = 2*np.pi*K/A
+
     return S[1:]
 
 
@@ -205,9 +214,14 @@ def deletefile(filename_full):
 def nanwarning(X):
     numnans = int(np.sum(np.isnan(X)))
     if numnans > 0:
-        raise Warning("Variable contains " + str(numnans) + " nans.")
+        print( "Warning: Variable contains " + str(numnans) + " nans.")
 
 def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
+
+    """
+    Splot is a list; each element of the list is also a list containing numpy arrays of various sizes.
+    K is a list of numpy arrays of the same dimensions of those contained in the lists in Splot.
+    """
 
     npl = len(Splot) #number of plots at each time
 
@@ -215,11 +229,10 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
 
     nt = len(t)
 
-    fig, axs = plt.subplots(1, npl, figsize=(5*npl, 5+2), sharey='row', sharex='col')
+    fig, axs = plt.subplots(1, npl, figsize=((5+2)*npl, 5+2), sharey='row', sharex='col')
 
     lims = []
     for j in range(npl):
-        print(j,len(Splot[j]))
         for i in range(nt):
             Y = Splot[j][i]
             Kplot = K[i]
@@ -251,11 +264,11 @@ def plotspectra(Splot, K, plottitle, plotname, A=np.ones(3)):
 
 
     fig.suptitle(plottitle)
-    print("Saving plot as " + plotpath+plotname + ".png")
-    fig.savefig(plotpath+plotname,bbox_inches="tight")
+    print("Saving plot as " + plotpath+plotname+'.png')
+    fig.savefig(plotpath+plotname+'.png',bbox_inches="tight", format='png')
+    plt.close()
 
-
-def quickplots(Xplots, yvals, xvals, plotname, titles=[]):
+def quickplots(Xplots, yvals, xvals, plottitle, plotname, titles=[]):
 
     """ Xplots should be a list of two-dimensional arrays, each of which has the same dimensions as yvals and xvals."""
 
@@ -286,9 +299,80 @@ def quickplots(Xplots, yvals, xvals, plotname, titles=[]):
             axs[j].set_title(titles[j])
     
 
-    print("Saving plot as " + plotpath+plotname + ".png")
-    fig.savefig(plotpath+plotname,bbox_inches="tight")
+    fig.suptitle(plottitle + '\n \n')
+    print("Saving plot as " + plotpath+plotname+'.png')
+    fig.savefig(plotpath+plotname+'.png',bbox_inches="tight", format='png')
+    plt.close() 
 
+
+def quickplotspectra(Splot, K, plottitle, plotname, A=np.ones(5), labels=[]):
+
+    """
+    Splot is a list; each element of the list is a numpy array.
+    K is a numpy array of the same dimensions .
+    """
+
+    npl = len(Splot) #number of plots at each time
+
+    fig, axs = plt.subplots(1, npl, figsize=((5+2)*npl, 5+2), sharey='row', sharex='col')
+
+    lims = []
+    for j in range(npl):
+        Y = Splot[j]
+   
+        v_min = np.min(Y)
+        v_max = np.max(Y)
+        
+        im = axs[j].plot(K,Y)
+        
+        lims = lims + [np.min(Y)]+[np.max(Y)]
+
+        Kline = np.arange(0.1*np.min(K),10*np.max(K))
+        line = A[j]*np.power(Kline, -5/3)
+
+        axs[j].plot(Kline, line, 'k--', label=r'$k^{-5/3}$')
+
+        axs[j].set_xscale('log')
+        axs[j].set_yscale('log')
+
+        axs[j].set_ylim(min(lims),max(lims))
+        axs[j].set_xlim(axs[j].get_xlim())
+
+        axs[j].legend(loc='best')
+
+        if len(labels)==npl:
+            axs[j].set_title(labels[j])
+
+        ax2 = axs[j].twiny()
+        ax2.plot(2*np.pi/K,K,alpha=0.0)
+        ax2.set_xscale('log')
+        ax2.set_xlim(ax2.get_xlim()[::-1])
+
+
+    fig.suptitle(plottitle + '\n \n')
+    print("Saving plot as " + plotpath+plotname+'.png')
+    fig.savefig(plotpath+plotname+'.png',bbox_inches="tight", format = 'png')
+    plt.close()
+
+def spect1d(X,dy,dx):
+    """ 
+    Inputs:
+
+    X (numpy array), dimensions ny*nx
+    dy (numpy array), dimensions (ny-1)*nx
+    dx (numpy array), dimensions ny*(nx-1)
+
+    Outputs:
+
+    S (numpy array)
+
+    """
+
+    X = detrend(X)
+    Y = np.fft.fftn(X,axes=(0,1))
+    S = errico(Y,dy,dx)
+
+    return S
 
 def spectrum(X, dy, dx):
 
@@ -310,19 +394,14 @@ def spectrum(X, dy, dx):
     X = np.moveaxis(X, [-2,-1], [0,1])    
     X = detrend(X)
     
-    print(X.shape)
-
     nt = X.shape[2]
 
     Y = np.fft.fftn(X,axes=(0,1))
-
-    print(Y.shape)
 
     for t in range(nt):
         dyt = dy[:,:,t]
         dxt = dx[:,:,t]
         S1 = errico(Y[:,:,t],dyt,dxt)
-        print(S1.shape)
         S = S + [S1]
 
     return S
@@ -333,15 +412,18 @@ def deltayx(yvals,xvals):
         yvals and xvals should be numpy arrays of shape nt*nx*ny
     
     """
+
     yvals = np.moveaxis(yvals, [-2,-1], [0,1])
-    xvals = np.moveaxis(xvals, [-2,-1], [1,0])
+    xvals = np.moveaxis(xvals, [-2,-1], [0,1])
 
     yvals, xvals = deg2km(yvals,xvals)
 
     dy = delta(yvals)
-    dx = delta(xvals)
 
-    dx = np.moveaxis(dx, 1,0)
+    xvals = np.moveaxis(xvals, 1,0)
+    dx = delta(xvals)
+    xvals = np.moveaxis(xvals, 1,0)
+    dx = np.moveaxis(dx,1,0)
 
     return dy,dx
 
@@ -383,3 +465,143 @@ def getK(dy,dx):
     return K
     
 
+def smooth_and_plot(var, passes, interp=False, height=False, doplot=True):
+
+    X = getdata(var, interp=interp, height=height)
+
+    yvals = getdata('lat')
+    xvals = getdata('lon')
+
+    print("Smoothing...")
+    Xsmooth = wrf.smooth2d(X,passes)
+    print("done")
+    X = wrf.to_np(X)
+    Xsmooth = wrf.to_np(Xsmooth)
+    dX = X - Xsmooth
+
+    yvals = wrf.to_np(yvals)
+    xvals = wrf.to_np(xvals)
+
+    nanwarning(X)
+    nanwarning(Xsmooth)
+
+    plottitle = str(passes) + "times smoothed " + var 
+    plotname = "Smooth" + str(passes) + "_" + var
+    
+    if not (interp==False):
+        plottitle = plottitle + " at height " + str(height) + "km"
+        plotname = plotname + "_height_" + str(height)
+
+    if doplot:
+        plotsmooth(X,Xsmooth,yvals,xvals,plottitle,plotname)
+
+    return X, Xsmooth, dX, yvals, xvals
+
+def spectrum_and_plot(X, Xsmooth, dX, dy, dx, var, passes, height, interp, doplot=True):
+
+    S = spectrum(X,dy,dx)
+    Ssmooth = spectrum(Xsmooth,dy,dx)
+    dS = spectrum(dX,dy,dx)
+    K = getK(dy,dx)
+ 
+    plottitle = "Spectrum for " + str(passes) + "-times smoothed " + var 
+    plotname = "Spectrum_smooth" + str(passes) + "_" + var
+    
+    if not (interp==False):
+        plottitle = plottitle + " at height " + str(height) + "km"
+        plotname = plotname + "_height_" + str(height)
+
+    Splot = [S,Ssmooth,dS]
+    if doplot:
+        print("doing plot")
+        plotspectra( Splot, K, plottitle, plotname)
+
+    return Splot, K
+
+
+def add_turb_plot(X, Xsmooth, dX, yvals, xvals, var, passes, mu, alt, height, interp, doplot=True, a=8, b=0.01,c=0.07,d=0.4,e=0.003):
+
+    isalt=str(alt)
+
+    strmu = '%g' % mu
+
+    if not height==False:
+        scaling = 1-np.tanh(a*(height-b)/(c-d*(height-e)))
+    else:       
+        scaling = 1
+
+    if alt==0:
+        Xhy = X[0,] + mu*scaling*dX[2,]
+    elif alt==1:
+        Xhy = X[0,]*(1 + mu*dX[2,]/Xsmooth[2,])
+    elif alt==2:
+        Xhy = X[0,]*np.tanh(dX[2,]/Xsmooth[2,])
+    elif alt==3:
+        X0  = X[0,]
+        R = np.abs(np.random.normal(size=(X0.shape),scale=mu))
+        Xhy = (X0 + R*dX[2,])/(1 + R)
+    elif alt==4:
+        X0 = X[0,]
+        #R = np.abs(np.random.normal(size=(X0.shape),scale=mu, loc =1))
+        Xhy = X0*(1 + mu*scaling*(dX[2,]/np.max(np.abs(dX[2,]))))
+    elif alt==5:
+        X0 = X[0,]
+        dX2 = dX[2,]
+        Xsmooth2=Xsmooth[2,]
+        Xhy = X0*(1 + mu*dX2/(Xsmooth2 + np.abs(dX2)))
+    else:
+        raise RuntimeError("Not a valid choice of method.")
+    
+    Xplots = [ X[0,], Xhy, dX[2,],  X[2,], Xsmooth[2,]]
+
+
+    nanwarning(Xhy)
+
+    titles = ["Field at t=0", "Hybrid field" , "Turbulence at t=12", "Field at t=12", "Smoothed field at t=12"]
+
+    plotname = "Turbulence"+isalt+"_added_smooth" + str(passes) +  "_" + "mu" + strmu + "_" + var
+    plottitle = "Turbulence adding from " + str(passes) + " smoothings.  mu =" + strmu
+
+    
+    if not (interp==False):
+        plottitle = plottitle + " at height " + str(height) + "km"
+        plotname = plotname + "_height_" + str(height)
+
+
+    if doplot:
+        quickplots(Xplots,yvals[0,],xvals[0,], plottitle,plotname, titles)
+        
+    return Xhy
+
+def spect_turb_plot(Xhy, Splot, K, dy, dx, var, passes, mu, alt, height, interp, doplot=True, A=False):
+
+    isalt=str(alt) 
+
+    strmu = '%g' % mu
+    
+    Sturb = Splot[2][2]
+    Sinit = Splot[0][0]
+    Smooth= Splot[1][2]
+    Sfin = Splot[0][2]
+
+    Shy = spect1d(Xhy,dy[:,:,2],dx[:,:,2])
+
+    Kplot = K[0]
+
+    Splots = [Sinit, Shy, Sturb, Sfin, Smooth]
+
+    plottitle = "Spectra after " + str(passes) + " smoothings. mu =" + strmu
+    labels = ["Field at t=0", "Hybrid field" , "Turbulence at t=12", "Field at t=12", "Smoothed field at t=12"]
+    plotname = "Turbulence"+isalt+"_added_spectra_smooth" + str(passes) + "_" + "mu" + strmu + "_" + var
+    
+    if not (interp==False):
+        plottitle = plottitle + " at height " + str(height) + "km"
+        plotname = plotname + "_height_" + str(height) 
+
+    if A==False:
+        A = np.ones(len(Splots))
+
+    if doplot:
+        quickplotspectra(Splots, Kplot, plottitle, plotname, labels=labels, A=A)
+
+    return Splots
