@@ -16,9 +16,9 @@ def getdata(str_id, interp=False, height=1):
     """ Reads in data and interoplates onto fixed horizontal levels """
 
     files = [Dataset(datapath+f) for f in os.listdir(datapath) \
-            if f.startswith('wrfout_xhka')]    
+        if f.startswith('wrfout_xhka')]    
 
-    X = wrf.getvar(files, str_id, timeidx=wrf.ALL_TIMES, method='join', meta=True)
+    X = wrf.getvar(files, str_id, timeidx=wrf.ALL_TIMES, method='join', meta=False)
    
     if str_id.startswith('wspd_wdir'):
         X = X[0,]
@@ -37,8 +37,7 @@ def getdata(str_id, interp=False, height=1):
 
         X = X[:,0,] #The height coordinate should have dimension 1, so we remove it
     nanwarning(X)
-    print(X.shape)
-
+    
     return X
 
 def plotsmooth(X, Xsmooth, yvals, xvals, plottitle, plotname):
@@ -64,7 +63,6 @@ def plotsmooth(X, Xsmooth, yvals, xvals, plottitle, plotname):
 
     fig, axs = plt.subplots(npl, nt, figsize=(nt*(5+2),5*npl), sharey='row', sharex='col')
 
-    print("xvals.shape =", xvals.shape)
     xvals = np.transpose(xvals, (0,2,1))
     yvals = np.transpose(yvals, (0,2,1))
 
@@ -390,6 +388,9 @@ def spectrum(X, dy, dx):
     """
 
     S = []
+
+    print(type(X))
+    print(X.shape)
 
     X = np.moveaxis(X, [-2,-1], [0,1])    
     X = detrend(X)
