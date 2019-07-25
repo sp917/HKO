@@ -26,20 +26,14 @@ class DATA:
         
         self.str_id = str_id
 
-        if str_id in ['ke', 'speed']:
-            self.U = DATA('ua', h=h, passes=passes, pars=pars,\
-                    autoplot=False, initialise=False, \
-                    scaling_type=scaling_type, load_coords=False)
-            self.V = DATA('va', h=h, passes=passes, pars=pars,\
-                    autoplot=False, initialise=False, \
-                    scaling_type=scaling_type, load_coords=False)
-            U = np.array(wrf.to_np(self.U.X))
-            V = np.array(wrf.to_np(self.V.X)) 
-            self.derived=True
-            self.X = switch[str_id](U,V)
-        else:
-            self.X = getdata(str_id)
-            self.derived = False
+        
+        self.X = None
+        self.U = None
+        self.V = None
+        self.derived = None
+
+        self.calc_field()
+
 
         if load_coords:
             self.yvals = getdata('lat')
@@ -88,6 +82,38 @@ class DATA:
   
   ###############################################################################
     
+    def calc_field(self):
+
+        if str_id in ['ke', 'speed']:
+            self.U = DATA('ua', h=h, passes=passes, pars=pars,\
+                    autoplot=False, initialise=False, \
+                    scaling_type=scaling_type, load_coords=False)
+            self.V = DATA('va', h=h, passes=passes, pars=pars,\
+                    autoplot=False, initialise=False, \
+                    scaling_type=scaling_type, load_coords=False)
+            U = np.array(wrf.to_np(self.U.X))
+            V = np.array(wrf.to_np(self.V.X)) 
+            self.derived=True
+            self.X = switch[str_id](U,V)
+        elif str_id in ['ke10', 'speed10']:
+            self.U = DATA('U10', h=h, passes=passes, pars=pars,\
+                    autoplot=False, initialise=False, \
+                    scaling_type=scaling_type, load_coords=False)
+            self.V = DATA('V10', h=h, passes=passes, pars=pars,\
+                    autoplot=False, initialise=False, \
+                    scaling_type=scaling_type, load_coords=False)
+            U = np.array(wrf.to_np(self.U.X))
+            V = np.array(wrf.to_np(self.V.X)) 
+            self.derived=True
+            self.X = switch[str_id](U,V)
+        else:
+            self.X = getdata(str_id)
+            self.derived = False
+    
+        return
+
+  ###############################################################################
+
     def checkifvertical(self):
 
         if np.all(self.X==None):
