@@ -6,6 +6,7 @@ from netCDF4 import Dataset
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import pandas as pd
+import xarray as xa
 
 plotpath = '/mnt/c/Users/hko/Desktop/plots/'
 datapath = '/home/sp917/data/'
@@ -17,46 +18,60 @@ datapath = '/home/sp917/data/'
 class DATA:
    
     def __init__(self, str_id, h=None, passes=None, pars=None, initialise='Full', \
-            autoplot = True, scaling_type='tanh', load_coords=True):
+            autoplot = True, scaling_type='tanh', load_coords=True, ncl=False):
+    
+        """Class for handling wrf data. It has the following capabilities:
+           --Read in data from wrf output.
+           --Smooth the data with specified number of passes to the wrf.smooth_2d
+             function.
+           --If necessary interpolate the data and smoothed data onto a specified
+             height level.
+           --Extract turbulence as the difference between orignial field and
+             smoothed field.
+           --Use various methods for adding the turbulence to the field at initial
+             time.
+           --Calculate spectra for these quantities.
 
-        """
-        str_id (str) :: String specifying name of variable to read.
-
-        """
+         INPUTS:
+         str_id (str)       :: String specifying name of variable to read. 
+         h (float)          :: height to interpolate to.
+         passes (int)       :: number of times to smooth field.
+         pars (params)      :: params class defined later, contains parameters for
+                               adding turbulence
+         initialise (str)   :: specify 'Full' or 'Partial' to automatically
+                               initialise. Specifying anthin else will not
+                               initialise.
+         autoplot (bool)    :: whether or not to produce plots after calculating 
+                               quantities.
+         scaling_type (str) :: Which method for scaling to use.
+         load_coords (bool) :: Whether or not to load lat, lon, etc."""
         
         self.str_id = str_id
-
         
         self.X = None
-        self.U = None
+        self.U = None    
         self.V = None
         self.derived = None
-
-        self.calc_field()
-
 
         if load_coords:
             self.yvals = getdata('lat')
             self.xvals = getdata('lon')
             self.dx, self.dy = deltayx(self.yvals, self.xvals)
             self.K = getK(self.dy, self.dx)
-
+            self.times = getdata('xtimes')/60
 
             #Note: wspd_dir and sqrt(ua^2 +va^2) differ by order 10^-6 
-                    # but we take them to be effectively the same
-
-        self.z = getdata('z')
-        self.isvertical=self.checkifvertical()
-
+                # but we take them to be effectively the same
+        
         self.Xsmooth = None
         self.passes = passes
 
         self.Xinterp = None
-
+   
         self.h = h
         self.Xsmoothinterp = None
         self.dX = None
-        
+
         self.S = None
         self.Ssmooth = None
         self.dS = None
@@ -67,9 +82,23 @@ class DATA:
 
         self.Shy = None
 
+        self.ncl = ncl
+
         self.autoplot = autoplot
-        self.A = 1
- 
+        self.calc_field()
+
+        try:
+            isstaggered = (self.X.stagger=='Z')
+        except:
+            isstaggered = False
+
+        if isstaggered:
+            self.z = getdata('zstag')
+        else: 
+            self.z = getdata('z')
+
+        self.isvertical=self.checkifvertical()
+
         if (initialise == 'Partial') or (initialise=='Full'):
             self.set_smoothness(self.passes)
             self.set_height(self.h)
@@ -82,32 +111,40 @@ class DATA:
   
   ###############################################################################
     
+    def __str__(self):
+
+        DATA_string = self.str_id
+
+        return DATA_string
+
+  ###############################################################################
+  
     def calc_field(self):
 
-        if str_id in ['ke', 'speed']:
-            self.U = DATA('ua', h=h, passes=passes, pars=pars,\
+        if self.str_id in ['ke', 'speed']:
+            self.U = DATA('ua', h=self.h, passes=self.passes, pars=self.pars,\
                     autoplot=False, initialise=False, \
-                    scaling_type=scaling_type, load_coords=False)
-            self.V = DATA('va', h=h, passes=passes, pars=pars,\
+                    scaling_type=self.scaling_type, load_coords=False)
+            self.V = DATA('va', h=self.h, passes=self.passes, pars=self.pars,\
                     autoplot=False, initialise=False, \
-                    scaling_type=scaling_type, load_coords=False)
+                    scaling_type=self.scaling_type, load_coords=False)
             U = np.array(wrf.to_np(self.U.X))
             V = np.array(wrf.to_np(self.V.X)) 
             self.derived=True
-            self.X = switch[str_id](U,V)
-        elif str_id in ['ke10', 'speed10']:
-            self.U = DATA('U10', h=h, passes=passes, pars=pars,\
+            self.X = switch[self.str_id](U,V)
+        elif self.str_id in ['ke10', 'speed10']:
+            self.U = DATA('U10', h=self.h, passes=self.passes, pars=self.pars,\
                     autoplot=False, initialise=False, \
-                    scaling_type=scaling_type, load_coords=False)
-            self.V = DATA('V10', h=h, passes=passes, pars=pars,\
+                    scaling_type=self.scaling_type, load_coords=False)
+            self.V = DATA('V10', h=self.h, passes=self.passes, pars=self.pars,\
                     autoplot=False, initialise=False, \
-                    scaling_type=scaling_type, load_coords=False)
+                    scaling_type=self.scaling_type, load_coords=False)
             U = np.array(wrf.to_np(self.U.X))
             V = np.array(wrf.to_np(self.V.X)) 
             self.derived=True
-            self.X = switch[str_id](U,V)
+            self.X = switch[self.str_id](U,V)
         else:
-            self.X = getdata(str_id)
+            self.X = getdata(self.str_id)
             self.derived = False
     
         return
@@ -234,11 +271,11 @@ class DATA:
             return
         
         print("Calculating spectrum 1 of 3...")
-        self.S = spectrum(self.Xinterp, self.dy, self.dx)
+        self.S = spectrum(self.Xinterp, self.dy, self.dx, self.ncl)
         print("Calculating spectrum 2 of 3...")
-        self.Ssmooth = spectrum(self.Xsmoothinterp, self.dy, self.dx)
+        self.Ssmooth = spectrum(self.Xsmoothinterp, self.dy, self.dx, self.ncl)
         print("Calculating spectrum 3 of 3...")
-        self.dS = spectrum(self.dX, self.dy, self.dx)
+        self.dS = spectrum(self.dX, self.dy, self.dx, self.ncl)
         print("Done.")
 
         return
@@ -292,8 +329,8 @@ class DATA:
         self.pars = params(a,b,c,d,e,mu,alt)
 
         if self.derived:
-            self.U.set_parameters(a,b,c,d,e,mu,alt, update=False)
-            self.V.set_parameters(a,b,c,d,e,mu,alt, update=False)
+            self.U.change_parameters(a,b,c,d,e,mu,alt, update=False)
+            self.V.change_parameters(a,b,c,d,e,mu,alt, update=False)
         
         if update:
             self.update(3)
@@ -320,6 +357,8 @@ class DATA:
         elif self.scaling_type in ["linear","Linear", "lin", "l", "Lin", "L"]:
             scaling = mu*(1 - a*z)
             self.scaling_type = "linear"
+        elif self.scaling_type in ["tanh_alt"]:
+            scaling = c + mu*(1 - np.tanh(a*(z-b)))
         else:
             scaling = 2*mu
             self.scaling_type = "constant"
@@ -349,7 +388,7 @@ class DATA:
 
             alt=self.pars.alt
 
-            print("Adding turbulence field to intial field...")
+            print("Adding turbulence field to intial field of " + self.str_id + "...")
 
             X0 = self.Xinterp[0,]
             dXfin = self.dX[-1,]
@@ -357,6 +396,8 @@ class DATA:
 
             if self.str_id.endswith('10'): 
                 scaling = self.calc_scaling(10)
+            elif self.str_id.endswith('2'):
+                scaling = self.calc_scaling(2)
             else:
                 scaling = self.calc_scaling(self.h)
 
@@ -402,11 +443,10 @@ class DATA:
 
         print("Calculating spectrum for turbulence-added field...")
 
-        self.Shy = spect1d(self.Xhy, self.dy[-1,], self.dx[-1])
+        self.Shy = spect1d(self.Xhy, self.dy[-1,], self.dx[-1], self.ncl)
 
         print("Done.")
 
-        print("h = ", self.h)
         print(np.max(self.Shy-self.S[-1]))
 
         if self.autoplot:
@@ -424,10 +464,11 @@ class DATA:
         """
 
         if where==0:
-            if not (self.passes==None or self.Xsmooth==None):
+            if not (self.passes==None or np.all(self.Xsmooth==None)):
                 self.set_smoothness(self.passes)
         if where==1:
-            if not (self.h==None or np.any(self.Xsmooth==None) or self.Xinterp==None):
+            if not (self.h==None or np.all(self.Xsmooth==None) or\
+                    np.any(self.Xinterp==None)):
                 self.set_height(self.h)
         if where==2:
             if not (np.all(self.Xsmoothinterp==None) or self.S==None):
@@ -509,7 +550,7 @@ class DATA:
         else:
             print("Shy.shape = ", self.Shy.shape)
 
-
+        return
     ###############################################################################
 
 
@@ -566,17 +607,10 @@ def plot_field_turb(data):
         plotname = data.str_id + "_smooth" + str(data.passes)  \
                 + "_turb_added_field_method" + str(data.pars.alt)
     
-    if data.scaling_type=='tanh':
-        plotname=plotname + "_params" + str(data.pars.a) + "_" \
+    plotname=plotname + data.scaling_type + str(data.pars.a) + "_" \
                 + str(data.pars.b) + "_" + str(data.pars.c) + "_" \
                 + str(data.pars.d) + "_" + str(data.pars.e) \
                 + "_" + str(data.pars.mu) 
-    elif data.scaling_type=='constant':
-       plotname = plotname + "_mu" + str(data.pars.mu)  
-    elif data.scaling_type=='linear': 
-       plotname = plotname + "_mu" + str(data.pars.mu)+ "_a" + str(data.pars.a)
-    else:
-       plotname = plotname + "_unknown_scaling_type" 
 
     print("Saving plot as " + plotpath + plotname)
     
@@ -590,15 +624,25 @@ def plot_field_turb(data):
 
 def plot_spectra_turb(data):
     
-    Xplots = [ data.S[-1], data.S[0], data.dS[-1], data.Shy ] 
-    labels = ["Final field", "Initial field", "Turbulence", "Hybrid field"]
+    Xplots = [ data.S[-1], data.S[0], data.Ssmooth[-1], data.dS[-1], data.Shy ] 
+    labels = [r"%s  at $t = %g$." % (data.str_id, data.times[-1]) , \
+              r"%s at $t = %g$." % (data.str_id, data.times[0])  ,\
+              (r"$\overline{\mathrm{%s}}$ at $t = %g$") % (data.str_id, data.times[-1]), \
+              (r"%s' = %s - $\overline{\mathrm{%s}}$")  % (data.str_id,data.str_id,data.str_id), \
+              r" %s(%g) + %s' " % (data.str_id, data.times[0], data.str_id)]
     
 
     fig = plt.figure()
     ax1 = plt.subplot(111)
 
     lims = []
-    K = data.K[0]
+    
+    if not data.ncl:
+        K = data.K[0]
+    else:
+        A = getAkmaxK(data.dy[0,],data.dx[0,])[0]   
+        K = 2*np.pi*np.arange(1, 581)/A
+    
     for i in range(len(Xplots)):
 
         Y = Xplots[i]
@@ -612,14 +656,17 @@ def plot_spectra_turb(data):
         lims = lims + [v_min,v_max]
 
     Kline = np.arange(0.1*np.min(K), 10*np.max(K))
-    line = data.A*np.power(Kline, -5/3)
+    
+    A = np.power(np.max(K),5/3)*data.Shy[-1]
+    
+    line = A*np.power(Kline, -5/3)
 
     ax1.plot(Kline, line, 'k--', label=r'$k^{-5/3}$')
     ax1.set_xscale('log')
     ax1.set_yscale('log')
     ax1.set_ylim(min(lims),max(lims))
     ax1.set_xlim(ax1.get_xlim())
-    ax1.legend(loc='best')
+    ax1.legend(loc='center right', bbox_to_anchor=(1.5, 0.5) ,prop = {'size' : 8})
     ax1.set_xlabel("Wavenumber")
     ax1.set_ylabel("S(k)")
     
@@ -641,17 +688,13 @@ def plot_spectra_turb(data):
         plotname = data.str_id + "_spectra_smooth" + str(data.passes) \
                 + "_turb_added_field_method" + str(data.pars.alt) 
     
-    if data.scaling_type=='tanh':
-        plotname=plotname + "_params" + str(data.pars.a) + "_" \
+    plotname=plotname + "_" + data.scaling_type + str(data.pars.a) + "_" \
                 + str(data.pars.b) + "_" + str(data.pars.c) + "_" \
                 + str(data.pars.d) + "_" + str(data.pars.e) \
                 + "_" + str(data.pars.mu) 
-    elif data.scaling_type=='constant':
-       plotname = plotname + "_mu" + str(data.pars.mu)  
-    elif data.scaling_type=='linear': 
-       plotname = plotname + "_mu" + str(data.pars.mu)+ "_a" + str(data.pars.a)
-    else:
-       plotname = plotname + "_unknown_scaling_type" 
+    
+    if data.ncl:
+        plotname = plotname + "_ncl"
     
     plt.title(plottitle, y = 1.2)
 
@@ -675,7 +718,8 @@ class params:
         self.alt = alt
       
     def __str__(self):
-        return "(%g, %g, %g, %g, %g, %g, %d)" %  (self.a,self.b,self.c,self.d,self.e,self.mu,self.alt)
+        return "a = %g \nb = %g \nc = %g \nd = %g \ne = %g \n\
+mu = %g \nalt = %d" %  (self.a,self.b,self.c,self.d,self.e,self.mu,self.alt)
 
     def __eq__(self,other):
         if not (type(other)==type(self)):
@@ -782,7 +826,7 @@ def getAkmaxK(dyt,dxt):
 
 ######################################################################################
 
-def spectrum(X, dy, dx):
+def spectrum(X, dy, dx, ncl=False):
 
     """
     Inputs:
@@ -796,19 +840,50 @@ def spectrum(X, dy, dx):
     S (list), contains nt numpy arrays of possibly different dimensions
     
     """
-
     S = []
 
-    X = detrend(X)
+    
+    if not ncl:
 
-    Y = np.fft.fftn(X,axes=(1,2))
+        X = detrend(X)
+        Y = np.fft.fftn(X,axes=(1,2))
 
-    for t in range(Y.shape[0]):
-        S1 = errico(Y[t,],dy[t,],dx[t,])
-        S = S + [S1]
+        for t in range(Y.shape[0]):
+            S1 = errico(Y[t,],dy[t,],dx[t,])
+            S = S + [S1]
+    else:
+
+        P = ncl_spectrum(X)
+
+        for t in range(P.shape[0]):
+            S = S + [P[t]] 
 
     return S
 
+def ncl_spectrum(X): 
+    
+    try:
+        os.remove("../data/X.nc")
+    except:
+        print(" ")
+   
+    X = np.array(wrf.to_np(X))
+    X = remove_nans(X)
+    X = xa.DataArray(X)  
+    X = X.to_dataset(name="X")
+    X.to_netcdf(datapath + "X.nc")
+
+    try:
+        os.remove("../data/P.nc")
+    except:
+        print(" ")
+
+    os.system("ncl spectrum.ncl") 
+    
+    f = Dataset("../data/P.nc")
+
+    P = f.variables["P"]
+    return P
 ######################################################################################
 
 def fill_nans(X):
@@ -827,16 +902,7 @@ def fill_nans(X):
 
     return Xnew
 
-def detrend(X):
-
-    """ X should have shape (nt,ny,nx) or (ny,nx) """
-    
-    X = np.array(wrf.to_np(X))
-
-    X = np.moveaxis(X, [-2,-1], [0,1])
-
-    #wherenans = np.isnan(X)
-    #X[wherenans] = 0
+def remove_nans(X): 
     
     numnans = np.sum(np.isnan(X))
 
@@ -853,6 +919,22 @@ def detrend(X):
             print("Interpolation successful: " + str(numnans) + " NaNs in field.")
         else:
             print("Warning: field still contains " + str(numnans) + " NaNs.")
+
+    return X
+
+def detrend(X):
+
+    """ X should have shape (nt,ny,nx) or (ny,nx) """
+    
+    X = np.array(wrf.to_np(X))
+
+    X = np.moveaxis(X, [-2,-1], [0,1])
+
+    #wherenans = np.isnan(X)
+    #X[wherenans] = 0
+   
+    X = remove_nans(X)
+
 
     ny = X.shape[0]
     nx = X.shape[1]
@@ -910,7 +992,7 @@ def errico(Y,dyt,dxt):
 
 ######################################################################################
 
-def spect1d(X,dy,dx):
+def spect1d(X,dy,dx, ncl=False):
     """
     Inputs:
     X (numpy array), dimensions ny*nx
@@ -921,9 +1003,12 @@ def spect1d(X,dy,dx):
     S (numpy array)
     """
     
-    X = detrend(X)
-    Y = np.fft.fftn(X,axes=(0,1))
-    S = errico(Y,dy,dx)
+    if not ncl:
+        X = detrend(X)
+        Y = np.fft.fftn(X,axes=(0,1))
+        S = errico(Y,dy,dx)
+    else:
+        S = ncl_spectrum(X)    
     return S
 
 #####################################################################################
@@ -935,7 +1020,9 @@ def speed(U,V):
     return np.sqrt(U*U +V*V)
 
 switch = { 'ke' : KE,
-           'speed' : speed
+           'speed' : speed,
+           'ke10' : KE,
+           'speed10' : speed
         }
 
 #####################################################################################
