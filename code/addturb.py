@@ -378,12 +378,11 @@ class DATA:
                    + " must be defined. Run set_height(), set_parameters().")
             return
             
-        if self.str_id=='ke':
+        if self.str_id in ['ke', 'ke10', 'speed', 'speed10']:
             self.U.add_turbulence(update=False)
-            self.V.add_turbulence(update=False)
-            
-            Xhy = 0.5*(self.U.Xhy*self.U.Xhy + self.V.Xhy*self.V.Xhy)
-        
+            self.V.add_turbulence(update=False) 
+            Xhy = switch[self.str_id](self.U.Xhy, self.V.Xhy)
+
         else:
 
             alt=self.pars.alt
@@ -559,43 +558,59 @@ class DATA:
 
 def plot_field_turb(data):
 
-    fig, axs = plt.subplots(1,5, figsize = (35, 5))
+    fig, axs = plt.subplots(2,2, figsize = (14, 12))
 
-    Xplots = [ data.Xinterp[0,], data.Xinterp[-1,], data.Xsmoothinterp[-1,], \
-            data.dX[-1,], data.Xhy]
+    Xplots = [ [data.Xinterp[0,], data.Xinterp[-1,]], \
+               [data.Xhy, data.Xsmoothinterp[-1,]] ]
+    titles = [ [ r"%s  at $t = %g$." % (data.str_id, data.times[0]),   \
+                 r"%s at $t = %g$." % (data.str_id, data.times[-1]) ],  \
+               [ r" %s(%g) + %s' " % (data.str_id, data.times[0], data.str_id), \
+                 r"$\overline{\mathrm{%s}}$ at $t = %g$" % (data.str_id, data.times[-1]) ] ]
 
-    titles = ["initial", "final", "smooth", "turbulence", "hybrid"]
-
+    vmin1 = min(np.nanmin(data.Xinterp[-1,]),np.nanmin(data.Xsmoothinterp[-1,])) 
+    vmin2 = min(np.nanmin(data.Xinterp[0,]),np.nanmin(data.Xhy))
+    
+    minima = [ [vmin2, vmin1], [vmin2, vmin1]]
+    
+    vmax1 = max(np.nanmax(data.Xinterp[-1,]),np.nanmax(data.Xsmoothinterp[-1,])) 
+    vmax2 = max(np.nanmax(data.Xinterp[0,]),np.nanmax(data.Xhy))
+    
+    maxima = [ [vmax2, vmax1], [vmax2, vmax1] ]
+    
     xvals = data.xvals[0,]
     yvals = data.yvals[0,]
 
-    for i in range(5):
+    for i in range(2):
+        for j in range(2):
 
-        Y = Xplots[i]
+            Y = Xplots[i][j]
 
-        Y = np.array(wrf.to_np(Y))
+            Y = np.array(wrf.to_np(Y))
 
-        wherenans = np.isnan(Y)
-        notnans = (1-wherenans)==1
+            wherenans = np.isnan(Y)
 
-        v_min = np.min(Y[notnans])
-        v_max = np.max(Y[notnans])
+            v_min = minima[i][j]
+            v_max = maxima[i][j]
 
-        Y[wherenans] = -10e20
+            Ymin = np.nanmin(Y)
+            Ymax = np.nanmax(Y)
 
-        im = axs[i].pcolormesh(xvals,yvals, Y, cmap='seismic', vmin=v_min, vmax=v_max)
-        axs[i].set_xlim([np.min(xvals),np.max(xvals)])
-        axs[i].set_ylim([np.min(yvals),np.max(yvals)])
-        axs[i].set_xticks([k for k in np.linspace(np.min(xvals),np.max(xvals),5)])
-        axs[i].set_yticks([k for k in np.linspace(np.min(yvals),np.max(yvals),10)])
-        axs[i].xaxis.set_major_formatter(mtick.FormatStrFormatter('%.1f'))
-        axs[i].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2f'))
+            Y[wherenans] = -10e20
+
+            im = axs[i,j].pcolormesh(xvals,yvals, Y, cmap='seismic', vmin=v_min, vmax=v_max)
+            axs[i,j].set_xlim([np.min(xvals),np.max(xvals)])
+            axs[i,j].set_ylim([np.min(yvals),np.max(yvals)])
+            axs[i,j].set_xticks([k for k in np.linspace(np.min(xvals),np.max(xvals),5)])
+            axs[i,j].set_yticks([k for k in np.linspace(np.min(yvals),np.max(yvals),10)])
+            axs[i,j].xaxis.set_major_formatter(mtick.FormatStrFormatter('%.1f'))
+            axs[i,j].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2f'))
+            
+            cbar = fig.colorbar(im,ax=axs[i,j])
+            cbar.set_ticks([i for i in np.linspace(v_min,v_max,9)])
+
+            axs[i,j].set_title(titles[i][j] + ("\n min = %g" % Ymin) + \
+                                              ("\n max = %g" % Ymax) )
         
-        cbar = fig.colorbar(im,ax=axs[i])
-        cbar.set_ticks([i for i in np.linspace(v_min,v_max,9)])
-
-        axs[i].set_title(titles[i])
-    
 
     if data.isvertical:
         plottitle = data.str_id +  " at height " + str(data.h) + " with " \
@@ -666,7 +681,7 @@ def plot_spectra_turb(data):
     ax1.set_yscale('log')
     ax1.set_ylim(min(lims),max(lims))
     ax1.set_xlim(ax1.get_xlim())
-    ax1.legend(loc='center right', bbox_to_anchor=(1.5, 0.5) ,prop = {'size' : 8})
+    ax1.legend(loc='best', prop = {'size' : 8})
     ax1.set_xlabel("Wavenumber")
     ax1.set_ylabel("S(k)")
     
