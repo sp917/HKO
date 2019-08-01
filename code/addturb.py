@@ -17,8 +17,9 @@ datapath = '/home/sp917/data/'
 
 class DATA:
    
-    def __init__(self, str_id, h=None, passes=None, pars=None, initialise='Full', \
-            autoplot = True, scaling_type='tanh', load_coords=True, ncl=False):
+    def __init__(self, str_id, h=None, passes=None, pars=None, initialise='Partial', \
+            autoplot = True, scaling_type='tanh', load_coords=True, ncl=False, \
+            whichdata='original'):
     
         """Class for handling wrf data. It has the following capabilities:
            --Read in data from wrf output.
@@ -53,12 +54,15 @@ class DATA:
         self.V = None
         self.derived = None
 
+        self.path = datapath + whichdata + '/'
+        self.whichdata = whichdata
+
         if load_coords:
-            self.yvals = getdata('lat')
-            self.xvals = getdata('lon')
+            self.yvals = getdata('lat', self.path)
+            self.xvals = getdata('lon', self.path)
             self.dx, self.dy = deltayx(self.yvals, self.xvals)
             self.K = getK(self.dy, self.dx)
-            self.times = getdata('xtimes')/60
+            self.times = getdata('xtimes', self.path)/60
 
             #Note: wspd_dir and sqrt(ua^2 +va^2) differ by order 10^-6 
                 # but we take them to be effectively the same
@@ -93,21 +97,23 @@ class DATA:
             isstaggered = False
 
         if isstaggered:
-            self.z = getdata('zstag')
+            self.z = getdata('zstag', self.path)
         else: 
-            self.z = getdata('z')
+            self.z = getdata('z', self.path)
 
         self.isvertical=self.checkifvertical()
 
-        if (initialise == 'Partial') or (initialise=='Full'):
+        if initialise=="Basic":
+            self.set_height(self.h)
+        elif initialise in [ "Partial", "Full"]:
             self.set_smoothness(self.passes)
             self.set_height(self.h)
             if pars==None:
                 self.set_parameters()
             self.add_turbulence()
-        if initialise == 'Full':
-            self.calc_spectra()
-            self.spectrum_turb_added()
+            if initialise == 'Full':
+                self.calc_spectra()
+                self.spectrum_turb_added()
   
   ###############################################################################
     
@@ -144,7 +150,7 @@ class DATA:
             self.derived=True
             self.X = switch[self.str_id](U,V)
         else:
-            self.X = getdata(self.str_id)
+            self.X = getdata(self.str_id, self.path)
             self.derived = False
     
         return
@@ -178,7 +184,7 @@ class DATA:
         if passes==None:
             passes=100
 
-        filename = datapath + self.str_id + "_" + str(passes)
+        filename = datapath + 'smooth_files/' + self.str_id + "_" + str(passes)
         
         try:
             f = open(filename + '.npy')
@@ -213,17 +219,17 @@ class DATA:
             h (float) :: height in metres.
         """
 
+        if np.any(self.Xsmooth==None):
+            print("Field has not been smoothed. Turbulence cannot be calculated.") 
+
         if h==None:
             h=1000
-
-        if np.any(self.Xsmooth==None):
-            print("Field must first be smoothed. Run set_smoothness().") 
-            return
 
         if self.isvertical==False:
             print("Variable not defined on vertical layers. Not interpolating.")
             self.Xinterp=self.X
-            self.Xsmoothinterp=self.Xsmooth
+            if not np.any(self.Xsmooth==None):            
+                self.Xsmoothinterp=self.Xsmooth
         else:
             zmin = np.array(wrf.to_np(np.min(np.max(self.z,axis=(2,3)))))
             zmax = np.array(wrf.to_np(np.max(np.min(self.z,axis=(2,3)))))
@@ -234,8 +240,10 @@ class DATA:
 
             print("Interpolating " +self.str_id+ " onto height " + str(h) + "...")
 
-            self.Xinterp = wrf.interplevel(self.X, self.z, h)            
-            self.Xsmoothinterp = wrf.interplevel(self.Xsmooth, self.z, h)
+            self.Xinterp = wrf.interplevel(self.X, self.z, h)
+
+            if not np.any(self.Xsmooth==None):            
+                self.Xsmoothinterp = wrf.interplevel(self.Xsmooth, self.z, h)
             
             print("Done.")
 
@@ -249,7 +257,8 @@ class DATA:
             self.h = h
 
 
-        self.dX = self.Xinterp - self.Xsmoothinterp
+        if not np.any(self.Xsmooth==None):            
+            self.dX = self.Xinterp - self.Xsmoothinterp
         
         if self.derived:
             self.U.set_height(h, update=False)
@@ -267,15 +276,20 @@ class DATA:
     def calc_spectra(self):
  
         if np.any(self.Xsmoothinterp==None):
-            print("Field must first be interpolated. Run set_height().")
-            return
+            print("Smooth field has not been interpolated. Spectrum from smooth field and turbulence cannot be calculated.")
+            allspectra=False
+        else:
+            allspectra=True
         
         print("Calculating spectrum 1 of 3...")
         self.S = spectrum(self.Xinterp, self.dy, self.dx, self.ncl)
-        print("Calculating spectrum 2 of 3...")
-        self.Ssmooth = spectrum(self.Xsmoothinterp, self.dy, self.dx, self.ncl)
-        print("Calculating spectrum 3 of 3...")
-        self.dS = spectrum(self.dX, self.dy, self.dx, self.ncl)
+
+        if allspectra:
+            print("Calculating spectrum 2 of 3...")
+            self.Ssmooth = spectrum(self.Xsmoothinterp, self.dy, self.dx, self.ncl)
+            print("Calculating spectrum 3 of 3...")
+            self.dS = spectrum(self.dX, self.dy, self.dx, self.ncl)
+
         print("Done.")
 
         return
@@ -567,13 +581,13 @@ def plot_field_turb(data):
                [ r" %s(%g) + %s' " % (data.str_id, data.times[0], data.str_id), \
                  r"$\overline{\mathrm{%s}}$ at $t = %g$" % (data.str_id, data.times[-1]) ] ]
 
-    vmin1 = min(np.nanmin(data.Xinterp[-1,]),np.nanmin(data.Xsmoothinterp[-1,])) 
-    vmin2 = min(np.nanmin(data.Xinterp[0,]),np.nanmin(data.Xhy))
+    vmin1 = np.nanmin(data.Xinterp[-1,])
+    vmin2 = np.nanmin(data.Xinterp[0,])
     
     minima = [ [vmin2, vmin1], [vmin2, vmin1]]
     
-    vmax1 = max(np.nanmax(data.Xinterp[-1,]),np.nanmax(data.Xsmoothinterp[-1,])) 
-    vmax2 = max(np.nanmax(data.Xinterp[0,]),np.nanmax(data.Xhy))
+    vmax1 = np.nanmax(data.Xinterp[-1,]) 
+    vmax2 = np.nanmax(data.Xinterp[0,])
     
     maxima = [ [vmax2, vmax1], [vmax2, vmax1] ]
     
@@ -627,6 +641,59 @@ def plot_field_turb(data):
                 + str(data.pars.d) + "_" + str(data.pars.e) \
                 + "_" + str(data.pars.mu) 
 
+    print("Saving plot as " + plotpath + plotname)
+    
+    fig.suptitle( plottitle )
+    fig.savefig(plotpath+plotname+'.png', bbox_inches="tight",format='png')
+    plt.close()
+
+    return
+
+######################################################################################
+
+def plot_field(data):
+
+    nt = len(data.times) 
+
+    fig, axs = plt.subplots(1, nt, figsize = (7*nt, 5), sharey='row')
+ 
+    xvals = data.xvals[0,]
+    yvals = data.yvals[0,]
+
+    for i in range(nt):
+
+        Y = data.Xinterp[i,]
+
+        Y = np.array(wrf.to_np(Y))
+
+        wherenans = np.isnan(Y)
+
+        Ymin = np.nanmin(Y)
+        Ymax = np.nanmax(Y)
+
+        Y[wherenans] = -10e20
+
+        im = axs[i].pcolormesh(xvals,yvals, Y, cmap='seismic', vmin=Ymin, vmax=Ymax)
+        axs[i].set_xlim([np.min(xvals),np.max(xvals)])
+        axs[i].set_ylim([np.min(yvals),np.max(yvals)])
+        axs[i].set_xticks([k for k in np.linspace(np.min(xvals),np.max(xvals),5)])
+        axs[i].set_yticks([k for k in np.linspace(np.min(yvals),np.max(yvals),10)])
+        axs[i].xaxis.set_major_formatter(mtick.FormatStrFormatter('%.1f'))
+        axs[i].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2f'))
+        
+        cbar = fig.colorbar(im,ax=axs[i])
+        cbar.set_ticks([i for i in np.linspace(Ymin,Ymax,9)])
+
+        axs[i].set_title("t = %g" % data.times[i])
+        
+
+    if data.isvertical:
+        plottitle = data.str_id +  " at height " + str(data.h) 
+        plotname = data.str_id + "_height" + str(data.h) + "_" + data.whichdata
+    else:
+        plottitle = data.str_id
+        plotname = data.str_id + "_" + data.whichdata
+    
     print("Saving plot as " + plotpath + plotname)
     
     fig.suptitle( plottitle )
@@ -720,6 +787,74 @@ def plot_spectra_turb(data):
     return
 
 ######################################################################################
+
+def plot_spectra(data):
+        
+    nt = len(data.times) 
+    
+    fig = plt.figure()
+    ax1 = plt.subplot(111)
+
+    lims = []
+    
+    if not data.ncl:
+        K = data.K[0]
+    else:
+        A = getAkmaxK(data.dy[0,],data.dx[0,])[0]   
+        K = 2*np.pi*np.arange(1, 581)/A
+    
+    for i in range(nt):
+
+        Y = data.S[i]
+
+        v_min = np.min(Y)
+        v_max = np.max(Y)
+    
+        im = ax1.plot(K,Y, label= "t = %g" % data.times[i])
+
+        lims = lims + [v_min,v_max]
+
+    Kline = np.arange(0.1*np.min(K), 10*np.max(K))
+    
+    A = np.power(np.max(K),5/3)*data.S[-1][-1]
+    
+    line = A*np.power(Kline, -5/3)
+
+    ax1.plot(Kline, line, 'k--', label=r'$k^{-5/3}$')
+    ax1.set_xscale('log')
+    ax1.set_yscale('log')
+    ax1.set_ylim(min(lims),max(lims))
+    ax1.set_xlim(ax1.get_xlim())
+    ax1.legend(loc='best', prop = {'size' : 8})
+    ax1.set_xlabel("Wavenumber")
+    ax1.set_ylabel("S(k)")
+    
+    ax2 = ax1.twiny()
+    ax2.plot(2*np.pi/K,K,alpha=0.0)
+    ax2.set_xscale('log')
+    ax2.set_xlim(ax2.get_xlim()[::-1])
+    ax2.set_xlabel("Wavelength (km)")
+
+    
+    if data.isvertical:
+        plottitle = "Spectra of " + data.str_id +  " at height " + str(data.h) 
+        plotname = data.str_id + "_spectra_height" + str(data.h) + "_" + data.whichdata 
+    else:
+        plottitle = "Spectra of " + data.str_id 
+        plotname = data.str_id + "_spectra" + "_" + data.whichdata
+        
+    if data.ncl:
+        plotname = plotname + "_ncl"
+    
+    plt.title(plottitle, y = 1.2)
+
+    print("Saving plot as " + plotpath + plotname)
+    fig.savefig(plotpath+plotname+'.png', bbox_inches="tight",format='png')
+    plt.close()
+
+    return
+
+######################################################################################
 ######################################################################################
 
 class params:
@@ -749,10 +884,10 @@ mu = %g \nalt = %d" %  (self.a,self.b,self.c,self.d,self.e,self.mu,self.alt)
 ######################################################################################
 
 
-def getdata(str_id):
+def getdata(str_id, path):
 
-    files = [Dataset(datapath+f) for f in os.listdir(datapath) \
-        if f.startswith('wrfout_xhka')]    
+    files = [Dataset(path+f) for f in os.listdir(path) \
+        if f.startswith('wrfout')]    
 
     X = wrf.getvar(files, str_id, timeidx=wrf.ALL_TIMES, method='join', meta=True)
    
@@ -840,7 +975,6 @@ def getAkmaxK(dyt,dxt):
     return A, ap, aq, kmax, K
 
 ######################################################################################
-
 def spectrum(X, dy, dx, ncl=False):
 
     """
@@ -878,7 +1012,7 @@ def spectrum(X, dy, dx, ncl=False):
 def ncl_spectrum(X): 
     
     try:
-        os.remove("../data/X.nc")
+        os.remove(datapath + "X.nc")
     except:
         print(" ")
    
@@ -889,13 +1023,13 @@ def ncl_spectrum(X):
     X.to_netcdf(datapath + "X.nc")
 
     try:
-        os.remove("../data/P.nc")
+        os.remove(datapath + "P.nc")
     except:
         print(" ")
 
     os.system("ncl spectrum.ncl") 
     
-    f = Dataset("../data/P.nc")
+    f = Dataset(datapath + "P.nc")
 
     P = f.variables["P"]
     return P

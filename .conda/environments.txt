@@ -1,0 +1,3 @@
+/home/sp917/anaconda3
+/home/sp917/anaconda3/envs/ncl_stable
+/home/sp917/anaconda3/envs/pynio_env

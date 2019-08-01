@@ -1,0 +1,7 @@
+*.nc
+*.png
+anaconda3/
+*.np
+*.
+wrfout*
+data/
