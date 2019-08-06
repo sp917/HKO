@@ -1469,3 +1469,308 @@ ssh dev@10.53.139.90
 ls
 git add --all
 git add --all .
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/wrf/plots/* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd data/
+ls
+cd modified_run/
+ls
+ncdump -h wrfout_d01_2019-07-09_08\:00\:00 
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd ../../
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd ../../
+ls
+cd usr/
+ls
+cd ..
+cd
+ls
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ls
+git add --all .
+ls
+cd code
+ls
+cd ../data/
+ls
+cd modified_run/
+ls -atr
+ls -altrh
+cd ..
+ls
+cd control_run/
+ls
+cd ..
+ls
+cd ..
+ls
+vi .gitignore
+git add --all .
+vi .gitignore
+git add --all .
+git commit -m 'added plotting functions'
+git push
+ssh dev@10.53.139.90
+ls
+cd plots/
+ls
+cd .
+cd ..
+ls
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_modified_run ../../mnt/c/Users/hko/Desktop/plots/
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_modified_run.png ../../mnt/c/Users/hko/Desktop/plots/
+ssh dev@10.53.139.90
+python
+conda activate pynio_env
+python
+ls
+vi spectrum.ncl 
+ls
+cd data/
+ls
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/wrf/20190709/modified_run/ .
+cd 
+ls
+cd data/
+s
+ls
+cd modified_run/
+ls
+cd ..\
+cd ../../code
+ls
+conda activate pynio_env
+vi addturb.py 
+ssh dev@10.53.139.90
+conda activate pynio_env
+conda install paramiko
+ls
+vim connect.py
+python connect.py 
+vim connect.py
+python connect.py 
+vim connect.py
+python connect.py 
+vim connect.py
+sudo apt install -y sshfs
+sshfs dev@10.53.139.90
+sshfs -h
+sshfs dev@10.53.139.90 $HOME/mountpoint
+sshfs dev@10.53.139.90:/model/home/dev/ mountpoint
+ls
+mkdir mountpoint
+sshfs dev@10.53.139.90:/model/home/dev/ mountpoint
+pwd
+echo $HOME
+ls
+cd mountpointls
+cd mountpoint
+ls
+cd ..
+ls
+mkdir $HOME/mnt
+sshfs dev@10.53.139.90:$HOME $HOME/mnt
+modprobe fuse
+sshfs dev@10.53.139.90:$HOME $HOME/mnt
+apt-cache search fuse
+apt-get install module-assistant
+apt-get install fuse-source
+sshfs dev@10.53.139.90:$HOME $HOME/mnt
+modprobe fuse
+sudo groupadd fuse
+sudo usermod -a -G fuse sp917
+modprobe fuse
+cat /etc/group | grep 'fuse'
+ls
+rm mnt
+rm -r mnt
+rm -r mountpoint/
+ls
+mkdir sshfs-dir
+sshfs dev@10.53.139.90:$HOME sshfs-dir
+modprobe fuse
+logout
+cat /etc/group | grep 'fuse'
+sudo usermod -a -G fuse sp917
+sshfs dev@10.53.139.90:$HOME sshfs-dir
+modprobe fuse
+sudo apt-get install libfuse-dev
+sshfs dev@10.53.139.90:$HOME sshfs-dir
+modprobe fuse
+cat /etc/group | grep 'fuse'
+ks
+ls
+sshfs dev@10.53.139.90:$HOME sshfs-dir
+sudo apt-get install zfs-fuse
+cd /dev/sdb
+zpool create mypool /dev/abcd
+sshfs dev@10.53.139.90:$HOME sshfs-dir
+modprobe fuse
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/wrf/20190709/modified_run/ .
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/* ../../mnt/c/Users/hko/Desktop/plots/
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-08_0.:00:00.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09_08:00:00.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09_08:00:00*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/test.nc.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09_08*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ls
+cd data/
+ls
+mkdir output_data
+mv control_run/ modified_run/ output_data/
+ls
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/wrf/20190709/*_run/ .
+ls
+mv ./output_data/*_run/ .
+ls
+cd output_data/
+ls
+cd ..
+ls
+cd control_run/
+ls
+cd ..
+ls
+rm -f control_run/
+rm -r control_run/
+mv ./output_data/control_run/ .
+ls
+cd output_data/
+ls
+cd ..
+ls
+rm -r output_data/
+cd ..
+ls
+cd ..
+ls
+cd sp917/
+ls
+cd modified_run/
+ls
+cd ..
+ls
+rm -r modified_run/
+ls
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09_08*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ls
+conda activate pynio_env
+cd code
+ls
+vi modify.py 
+cd ..
+ls
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09_08*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_modified_run_2019-07-09*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_control_run_2019-07-09*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_difference*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+q
+conda activate pynio_env
+ls
+cd ./d
+cd ../data/
+ls
+cd original/
+ls
+cd ..
+ls
+cd code
+ls
+vim addturb.py 
+q
+cd code
+ls
+vim addturb.py 
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_original*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd ..
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_original*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_modified*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_control*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_difference*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+conda activate pynio_env
+ls
+cd code
+ls
+vim addturb.py 
+conda activate pynio_env
+python
+:q
+cd code
+ls
+vim addturb.py 
+q
+cd code
+ls
+vim addturb.py 
+ls
+cd ../data/
+ls
+cd smooth_files/
+ld
+ls
+cd ..
+mv smooth_files smooth_files_original
+mkdir smooth_files_control
+mkdir smooth_files_modified
+mkdir smooth_files_control_run
+mkdir smooth_files_modified_run
+ls
+rm smooth_files_control -r
+rm smooth_files_modified -r
+ls
+cd smooth_files_original/
+ls -altr
+cd ..
+ls
+cd ..
+ls
+cd code
+ls
+vim addturb.py 
+conda activate pynio_env
+python
+cd code
+vim addturb.py 
+ssh dev@10.53.139.90
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_original*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+conda activate pyni_env
+conda activate pynio_env
+ncl
+ls
+cd data/
+la
+ls
+cd original/
+ls
+ssh dev@10.53.139.90
+conda activate pynio_env
+lx
+ls
+python
+cd code
+ls
+vim addturb.py 
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*modified_UV*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+conda activate pynio_env
+ncl
+ssh dev@10.53.139.90
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_difference*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_difference*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_difference*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+vim vimrc
+ls
+ls -a
+cd ..
+ls -a
+vim .vimrc
+conda activate pynio_env
+python
+q

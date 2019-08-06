@@ -11,39 +11,49 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/smooth
+~MSle0~/\.U
 
 # Last Substitute Search Pattern:
-~MSle0&min
+~MSle0&clinent
 
 # Last Substitute String:
-$max
+$client
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1564623160,,"wq"
-:term
-|2,0,1564543411,,"term"
+|2,0,1565085519,,"wq"
 :w
-|2,0,1564543338,,"w"
+|2,0,1565085030,,"w"
 :q
-|2,0,1564543073,,"q"
-:Q
-|2,0,1564479016,,"Q"
+|2,0,1565084337,,"q"
+:split
+|2,0,1565084122,,"split"
 :vsplit
-|2,0,1564478444,,"vsplit"
+|2,0,1565084066,,"vsplit"
+:term
+|2,0,1565083578,,"term"
+:V
+|2,0,1565071483,,"V"
+:turb
+|2,0,1564986993,,"turb"
 :q!
-|2,0,1564478335,,"q!"
+|2,0,1564986990,,"q!"
+:set ma
+|2,0,1564986961,,"set ma"
 :vsplit addturb.py
-|2,0,1564478139,,"vsplit addturb.py"
+|2,0,1564986931,,"vsplit addturb.py"
+:Q
+|2,0,1564979585,,"Q"
+:s/clinent/client/
+|2,0,1564727713,,"s/clinent/client/"
+:s/clinent/client
+|2,0,1564727696,,"s/clinent/client"
 :split ../code_old/spectrum_alt.ncl
 |2,0,1564468885,,"split ../code_old/spectrum_alt.ncl"
 :split ../code_old/*.ncl
 |2,0,1564468841,,"split ../code_old/*.ncl"
 :split spectrum.ncl
 |2,0,1564468811,,"split spectrum.ncl"
-:split
-|2,0,1564468797,,"split"
 :W
 |2,0,1564456553,,"W"
 :split addturb.py
@@ -110,118 +120,108 @@ $max
 |2,0,1563500169,,"n"
 :vsplit main.py
 |2,0,1563429759,,"vsplit main.py"
-:%s/routines.//
-|2,0,1563415460,,"%s/routines.//"
-:wN
-|2,0,1563413436,,"wN"
-:wn
-|2,0,1563413386,,"wn"
-:/png
-|2,0,1563350113,,"/png"
-:N
-|2,0,1563331654,,"N"
 
 # Search String History (newest to oldest):
+?/\.U
+|2,1,1565084814,47,"\\.U"
+?/<.U
+|2,1,1565084728,47,"<.U"
+?/.U
+|2,1,1565084719,47,".U"
+?/calc_field_dict
+|2,1,1565083974,47,"calc_field_dict"
+?/calc_field_list
+|2,1,1565083965,47,"calc_field_list"
+?/switch
+|2,1,1565083947,47,"switch"
+?/U
+|2,1,1565083298,47,"U"
+?/str_id=='ua'
+|2,1,1565082525,47,"str_id=='ua'"
+?/speed
+|2,1,1565082459,47,"speed"
+?/returb
+|2,1,1565082440,47,"returb"
+?/if self.str_id
+|2,1,1565081621,47,"if self.str_id"
+?/ratio
+|2,1,1565081305,47,"ratio"
+?/random
+|2,1,1565080568,47,"random"
+?/xvals
+|2,1,1565079926,47,"xvals"
+? )
+|2,1,1565078692,,")"
+?/Xhy
+|2,1,1565075551,47,"Xhy"
+?/turb_ratio
+|2,1,1565075396,47,"turb_ratio"
+?/set_smoothness
+|2,1,1565073310,47,"set_smoothness"
+?/Shy
+|2,1,1565072799,47,"Shy"
+?/calc_spectra
+|2,1,1565072741,47,"calc_spectra"
+?/plot_spectra_turb
+|2,1,1565072617,47,"plot_spectra_turb"
+?/)elif
+|2,1,1565071815,47,")elif"
+?/print
+|2,1,1565071741,47,"print"
+?/np.mean
+|2,1,1565071549,47,"np.mean"
+?/np.nanmean
+|2,1,1565071541,47,"np.nanmean"
+?/def add_turb
+|2,1,1565065785,47,"def add_turb"
+?/str(addstring)
+|2,1,1565064398,47,"str(addstring)"
+?/plot_field
+|2,1,1565064092,47,"plot_field"
+?/rtio
+|2,1,1565064025,47,"rtio"
+?/subtitle = 
+|2,1,1564995600,47,"subtitle = "
+?/RATIO
+|2,1,1564994314,47,"RATIO"
+?/ratiointerp
+|2,1,1564993590,47,"ratiointerp"
+?/results
+|2,1,1564993330,47,"results"
+?/dX
+|2,1,1564992474,47,"dX"
+?/set_height
+|2,1,1564992449,47,"set_height"
+?/smooth_files
+|2,1,1564991923,47,"smooth_files"
+?/change_optio
+|2,1,1564991719,47,"change_optio"
+?/not defined on/
+|2,1,1564986825,47,"not defined on/"
+?/plot_Filed
+|2,1,1564986765,47,"plot_Filed"
+?/plot_filed
+|2,1,1564986757,47,"plot_filed"
+? clinent
+|2,1,1564727713,,"clinent"
+?/spectrum
+|2,1,1564630866,47,"spectrum"
+?/savefig
+|2,1,1564627253,47,"savefig"
+?/plot_sp
+|2,1,1564627192,47,"plot_sp"
+?/plot_fie
+|2,1,1564627132,47,"plot_fie"
+?/change_options
+|2,1,1564625616,47,"change_options"
+?/getdata
+|2,1,1564625354,47,"getdata"
+?/def upd
+|2,1,1564625201,47,"def upd"
 ?/smooth
 |2,1,1564540216,47,"smooth"
 ?/Field must first
 |2,1,1564539948,47,"Field must first"
-?/getvar
-|2,1,1564539718,47,"getvar"
-?/print_info
-|2,1,1564539634,47,"print_info"
-?/whichdata
-|2,1,1564539584,47,"whichdata"
-?/Xinterp
-|2,1,1564539359,47,"Xinterp"
-?/plotname = da
-|2,1,1564539170,47,"plotname = da"
-?/plotname  = da
-|2,1,1564539160,47,"plotname  = da"
-?/if np.any(self.Xsmooth==None):
-|2,1,1564539120,47,"if np.any(self.Xsmooth==None):"
-?/whichdata='o
-|2,1,1564539085,47,"whichdata='o"
-?/nt
-|2,1,1564538786,47,"nt"
-?/plot_field
-|2,1,1564538376,47,"plot_field"
-?/plot_filed
-|2,1,1564538367,47,"plot_filed"
-?/data
-|2,1,1564538296,47,"data"
-?/datapath
-|2,1,1564538280,47,"datapath"
-?/getdata
-|2,1,1564538088,47,"getdata"
-?/np.save
-|2,1,1564536504,47,"np.save"
-?/except
-|2,1,1564458207,47,"except"
-?/data.times
-|2,1,1564479877,47,"data.times"
-?/plot_field	
-|2,1,1564479671,47,"plot_field	"
-?/axs[i,j].set_x
-|2,1,1564479661,47,"axs[i,j].set_x"
-?/axs[i,j].set
-|2,1,1564479650,47,"axs[i,j].set"
-?/initialise
-|2,1,1564479584,47,"initialise"
-?/Assuming
-|2,1,1564479357,47,"Assuming"
-?/plot_fie
-|2,1,1564479233,47,"plot_fie"
-?/######/
-|2,1,1564478409,47,"######/"
-?/getdata/
-|2,1,1564478268,47,"getdata/"
-?/alt
-|2,1,1564457639,47,"alt"
-?/set_smooth
-|2,1,1564456314,47,"set_smooth"
-?/wrf.getvar
-|2,1,1564452255,47,"wrf.getvar"
-?/try
-|2,1,1564452142,47,"try"
-?/def spectrum
-|2,1,1564451556,47,"def spectrum"
-?/spectrum
-|2,1,1564451542,47,"spectrum"
-?/calc_spectra
-|2,1,1564451531,47,"calc_spectra"
-?/add_turb
-|2,1,1564451489,47,"add_turb"
-?/intitialise
-|2,1,1564380455,47,"intitialise"
-?/constant
-|2,1,1564380416,47,"constant"
-?/plot_
-|2,1,1564380389,47,"plot_"
-?/plot
-|2,1,1564380382,47,"plot"
-?/switch
-|2,1,1564380215,47,"switch"
-?/Xhy
-|2,1,1564380089,47,"Xhy"
-? min
-|2,1,1564365768,,"min"
-?/plot_fi
-|2,1,1564362689,47,"plot_fi"
-?/plot_sp
-|2,1,1564133030,47,"plot_sp"
-?/plot_sp	
-|2,1,1564133023,47,"plot_sp	"
-?/plot_spec
-|2,1,1564133008,47,"plot_spec"
-?/times
-|2,1,1564132559,47,"times"
-?/gett
-|2,1,1564132524,47,"gett"
-?/get_ti
-|2,1,1564132520,47,"get_ti"
-?/plot_spectra(
-|2,1,1564131457,47,"plot_spectra("
 
 # Expression History (newest to oldest):
 
@@ -230,412 +230,420 @@ $max
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	LINE	0
-	noremap <PageDown> ""
-|3,0,0,1,1,0,1564543248,"noremap <PageDown> \"\""
-"1	LINE	0
-	    lims = []
-|3,0,1,1,1,0,1564538676,"    lims = []"
+"0	CHAR	0
+	['ke', 'speed', 'ua', 'va', 'ke10', 'speed10', 'U10', 'V10']
+|3,0,0,0,1,0,1565085187,"['ke', 'speed', 'ua', 'va', 'ke10', 'speed10', 'U10', 'V10']"
+""1	LINE	0
+	            if not self.str_id=='ua': 
+|3,1,1,1,1,0,1565085412,"            if not self.str_id=='ua': "
 "2	LINE	0
-	    fig = plt.figure()
-	    ax1 = plt.subplot(111)
-|3,0,2,1,2,0,1564538673,"    fig = plt.figure()","    ax1 = plt.subplot(111)"
+	"""
+|3,0,2,1,1,0,1565085294,"\"\"\""
 "3	LINE	0
-	    Xplots = [ data.S[-1], data.S[0], data.Ssmooth[-1], data.dS[-1], data.Shy ] 
-	    labels = [r"%s  at $t = %g$." % (data.str_id, data.times[-1]) , \
-	              r"%s at $t = %g$." % (data.str_id, data.times[0])  ,\
-	              (r"$\overline{\mathrm{%s}}$ at $t = %g$") % (data.str_id, data.times[-1]), \
-	              (r"%s' = %s - $\overline{\mathrm{%s}}$")  % (data.str_id,data.str_id,data.str_id), \
-	              r" %s(%g) + %s' " % (data.str_id, data.times[0], data.str_id)]
-|3,0,3,1,6,0,1564538523,"    Xplots = [ data.S[-1], data.S[0], data.Ssmooth[-1], data.dS[-1], data.Shy ] ","    labels = [r\"%s  at $t = %g$.\" % (data.str_id, data.times[-1]) , \\","              r\"%s at $t = %g$.\" % (data.str_id, data.times[0])  ,\\","              (r\"$\\overline{\\mathrm{%s}}$ at $t = %g$\") % (data.str_id, data.times[-1]), \\","              (r\"%s' = %s - $\\overline{\\mathrm{%s}}$\")  % (data.str_id,data.str_id,data.str_id), \\",>80
-|<"              r\" %s(%g) + %s' \" % (data.str_id, data.times[0], data.str_id)]"
+	""" 
+|3,0,3,1,1,0,1565085290,"\"\"\" "
 "4	LINE	0
-	                print("Field has not been smoothed. Smoothed field will not be interpolated") 
-|3,0,4,1,1,0,1564537680,"                print(\"Field has not been smoothed. Smoothed field will not be interpolated\") "
+	    calc_field_dict = {    'ke'       : getke,
+	                           'speed'    : getspeed,
+	                           'ua'       : getua,
+	                           'va'       : getva,
+	                           'ke10'     : getke10,
+	                           'speed10'  : getspeed10,
+	                           'U10'      : getU10,
+	                           'V10'      : getV10,
+	                     }
+	
+	    def getke(self):
+	                self.U = DATA_simple('ua', h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False, hasUV=)
+	        return
+	
+	    def getspeed(self):
+	
+	        return
+	
+	    def getua(self):
+	
+	        return
+	
+	    def getva(self):
+	
+	        return
+	
+	    def getke10(self):
+	
+	        return
+	
+	    def getspeed10(self):
+	
+	        return
+	
+	    def getU10(self):
+	
+	        return
+	
+	    def getV10(self):
+	
+	        return
+	
+	
+	  ###############################################################################
+	
+	    def calc_field(self)
+	        
+	        if self.str_id in ['ke', 'speed', 'ua', 'va', 'ke10', 'speed10', 'U10', 'V10']:
+	            
+	        else:
+|3,0,4,1,50,0,1565085283,"    calc_field_dict = {    'ke'       : getke,","                           'speed'    : getspeed,","                           'ua'       : getua,","                           'va'       : getva,","                           'ke10'     : getke10,","                           'speed10'  : getspeed10,","                           'U10'      : getU10,","                           'V10'      : getV10,","                     }","",>22
+|<"    def getke(self):","                self.U = DATA_simple('ua', h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False, hasUV=)","        return","","    def getspeed(self):","","        return","","    def getua(self):","","        return","","    def getva(self):","","        return","","    def getke10(self):","","        return","","    def getspeed10(self):","","        return","","    def getU10(self):",>2
+|<"","        return","","    def getV10(self):","","        return","","","  ###############################################################################","","    def calc_field(self)","        ","        if self.str_id in ['ke', 'speed', 'ua', 'va', 'ke10', 'speed10', 'U10', 'V10']:","            ","        else:"
 "5	LINE	0
-	                print("Field must first be smoothed. Run set_smoothness().") 
-|3,0,5,1,1,0,1564537560,"                print(\"Field must first be smoothed. Run set_smoothness().\") "
+	        calc_field_dict = {    'ke'       : 
+	                               'speed'    :
+	                               'ua'       :
+	                               'va'       :
+	                               'ke10'     :
+	                               'speed10'  :
+	                               'U10'      :
+	                               'V10'      :
+	                            }
+|3,0,5,1,9,0,1565084334,"        calc_field_dict = {    'ke'       : ","                               'speed'    :","                               'ua'       :","                               'va'       :","                               'ke10'     :","                               'speed10'  :","                               'U10'      :","                               'V10'      :","                            }"
 "6	LINE	0
-	        if np.any(self.Xsmooth==None):
-	            return
-|3,0,6,1,2,0,1564537533,"        if np.any(self.Xsmooth==None):","            return"
+	class field_calc:
+	
+	    def __init__(self):
+|3,0,6,1,3,0,1565084331,"class field_calc:","","    def __init__(self):"
 "7	LINE	0
-	            print("Field must first be smoothed. Run set_smoothness().") 
-|3,0,7,1,1,0,1564537522,"            print(\"Field must first be smoothed. Run set_smoothness().\") "
+	class DATA_simple( self, str_id, h=None, passes=None, pars=None, initialise='Partial', \
+	            autoplot = True, scaling_type='const', load_coords=True, ncl=True, \
+	            whichdata='original')
+|3,0,7,1,3,0,1565084094,"class DATA_simple( self, str_id, h=None, passes=None, pars=None, initialise='Partial', \\","            autoplot = True, scaling_type='const', load_coords=True, ncl=True, \\","            whichdata='original')"
 "8	LINE	0
-	    
-	    plotname=plotname + data.scaling_type + str(data.pars.a) + "_" \
-	                + str(data.pars.b) + "_" + str(data.pars.c) + "_" \
-	                + str(data.pars.d) + "_" + str(data.pars.e) \
-	                + "_" + str(data.pars.mu) 
-|3,0,8,1,5,0,1564478872,"    ","    plotname=plotname + data.scaling_type + str(data.pars.a) + \"_\" \\","                + str(data.pars.b) + \"_\" + str(data.pars.c) + \"_\" \\","                + str(data.pars.d) + \"_\" + str(data.pars.e) \\","                + \"_\" + str(data.pars.mu) "
+	    calc_field_dict = {    'ke'       :
+	                           'speed'    :
+	                           'ua'  
+	                           'va'
+	                           'ke10'
+	                           'speed10'
+	                           'U10'
+	                           'V10'
+	                        }
+|3,0,8,1,9,0,1565084085,"    calc_field_dict = {    'ke'       :","                           'speed'    :","                           'ua'  ","                           'va'","                           'ke10'","                           'speed10'","                           'U10'","                           'V10'","                        }"
 "9	LINE	0
-	    if data.isvertical:
-	        plottitle = data.str_id +  " at height " + str(data.h) + " with " \
-	                + str(data.passes) + " smoothings."
-	        plotname = data.str_id + "_height" + str(data.h) + "_smooth" \
-	                + str(data.passes) + "_turb_added_field_method" + str(data.pars.alt) 
-	    else:
-	        plottitle = data.str_id +  " with " + str(data.passes) + " smoothings."
-	        plotname = data.str_id + "_smooth" + str(data.passes)  \
-	                + "_turb_added_field_method" + str(data.pars.alt)
-|3,0,9,1,9,0,1564478869,"    if data.isvertical:","        plottitle = data.str_id +  \" at height \" + str(data.h) + \" with \" \\","                + str(data.passes) + \" smoothings.\"","        plotname = data.str_id + \"_height\" + str(data.h) + \"_smooth\" \\","                + str(data.passes) + \"_turb_added_field_method\" + str(data.pars.alt) ","    else:","        plottitle = data.str_id +  \" with \" + str(data.passes) + \" smoothings.\"",>69
-|<"        plotname = data.str_id + \"_smooth\" + str(data.passes)  \\","                + \"_turb_added_field_method\" + str(data.pars.alt)"
-""-	CHAR	0
-	*
-|3,1,36,0,1,0,1564623152,"*"
+	            U = np.array(wrf.to_np(self.U.X))
+|3,0,9,1,1,0,1565082290,"            U = np.array(wrf.to_np(self.U.X))"
+"-	CHAR	0
+	[
+|3,0,36,0,1,0,1565085206,"["
 
 # File marks:
-'0  7  4  ~/.gitignore
-|4,48,7,4,1564623160,"~/.gitignore"
-'1  6  6  ~/.gitignore
-|4,49,6,6,1564623051,"~/.gitignore"
-'2  6  6  ~/.gitignore
-|4,50,6,6,1564623051,"~/.gitignore"
-'3  5  0  ~/.gitignore
-|4,51,5,0,1564543585,"~/.gitignore"
-'4  5  0  ~/.gitignore
-|4,52,5,0,1564543585,"~/.gitignore"
-'5  5  0  ~/.gitignore
-|4,53,5,0,1564543585,"~/.gitignore"
-'6  5  0  ~/.gitignore
-|4,54,5,0,1564543585,"~/.gitignore"
-'7  4  3  ~/.gitignore
-|4,55,4,3,1564543542,"~/.gitignore"
-'8  4  3  ~/.gitignore
-|4,56,4,3,1564543542,"~/.gitignore"
-'9  4  3  ~/.gitignore
-|4,57,4,3,1564543542,"~/.gitignore"
+'0  146  14  ~/code/addturb.py
+|4,48,146,14,1565085519,"~/code/addturb.py"
+'1  15  0  ~/.vimrc
+|4,49,15,0,1565083716,"~/.vimrc"
+'2  1  0  ~/code/vimrc
+|4,50,1,0,1565083589,"~/code/vimrc"
+'3  723  71  ~/code/addturb.py
+|4,51,723,71,1564995960,"~/code/addturb.py"
+'4  721  5  ~/code/addturb.py
+|4,52,721,5,1564995960,"~/code/addturb.py"
+'5  712  71  ~/code/addturb.py
+|4,53,712,71,1564995960,"~/code/addturb.py"
+'6  710  5  ~/code/addturb.py
+|4,54,710,5,1564995960,"~/code/addturb.py"
+'7  722  71  ~/code/addturb.py
+|4,55,722,71,1564995960,"~/code/addturb.py"
+'8  720  5  ~/code/addturb.py
+|4,56,720,5,1564995960,"~/code/addturb.py"
+'9  711  71  ~/code/addturb.py
+|4,57,711,71,1564995960,"~/code/addturb.py"
 
 # Jumplist (newest first):
--'  7  4  ~/.gitignore
-|4,39,7,4,1564623160,"~/.gitignore"
--'  1  0  ~/.gitignore
-|4,39,1,0,1564623076,"~/.gitignore"
--'  6  6  ~/.gitignore
-|4,39,6,6,1564623051,"~/.gitignore"
--'  6  6  ~/.gitignore
-|4,39,6,6,1564623051,"~/.gitignore"
--'  1  0  ~/.gitignore
-|4,39,1,0,1564623033,"~/.gitignore"
--'  5  0  ~/.gitignore
-|4,39,5,0,1564543585,"~/.gitignore"
--'  5  0  ~/.gitignore
-|4,39,5,0,1564543585,"~/.gitignore"
--'  5  0  ~/.gitignore
-|4,39,5,0,1564543585,"~/.gitignore"
--'  1  0  ~/.gitignore
-|4,39,1,0,1564543568,"~/.gitignore"
--'  4  3  ~/.gitignore
-|4,39,4,3,1564543542,"~/.gitignore"
--'  4  3  ~/.gitignore
-|4,39,4,3,1564543542,"~/.gitignore"
--'  4  3  ~/.gitignore
-|4,39,4,3,1564543542,"~/.gitignore"
--'  4  3  ~/.gitignore
-|4,39,4,3,1564543542,"~/.gitignore"
--'  1  0  ~/.gitignore
-|4,39,1,0,1564543473,"~/.gitignore"
--'  4  0  ~/.gitignore
-|4,39,4,0,1564543445,"~/.gitignore"
--'  1  0  ~/.gitignore
-|4,39,1,0,1564543427,"~/.gitignore"
--'  4  0  ~/code/addturb.py
-|4,39,4,0,1564543411,"~/code/addturb.py"
--'  4  0  ~/code/addturb.py
-|4,39,4,0,1564543411,"~/code/addturb.py"
--'  4  0  ~/code/addturb.py
-|4,39,4,0,1564543411,"~/code/addturb.py"
--'  4  0  ~/code/addturb.py
-|4,39,4,0,1564543411,"~/code/addturb.py"
+-'  146  14  ~/code/addturb.py
+|4,39,146,14,1565085519,"~/code/addturb.py"
+-'  144  161  ~/code/addturb.py
+|4,39,144,161,1565085509,"~/code/addturb.py"
+-'  147  16  ~/code/addturb.py
+|4,39,147,16,1565085509,"~/code/addturb.py"
+-'  163  12  ~/code/addturb.py
+|4,39,163,12,1565085509,"~/code/addturb.py"
+-'  162  48  ~/code/addturb.py
+|4,39,162,48,1565085508,"~/code/addturb.py"
+-'  53  12  ~/code/addturb.py
+|4,39,53,12,1565084906,"~/code/addturb.py"
+-'  421  42  ~/code/addturb.py
+|4,39,421,42,1565084903,"~/code/addturb.py"
+-'  419  16  ~/code/addturb.py
+|4,39,419,16,1565084900,"~/code/addturb.py"
+-'  404  16  ~/code/addturb.py
+|4,39,404,16,1565084891,"~/code/addturb.py"
+-'  369  16  ~/code/addturb.py
+|4,39,369,16,1565084889,"~/code/addturb.py"
+-'  332  16  ~/code/addturb.py
+|4,39,332,16,1565084886,"~/code/addturb.py"
+-'  281  16  ~/code/addturb.py
+|4,39,281,16,1565084873,"~/code/addturb.py"
+-'  220  16  ~/code/addturb.py
+|4,39,220,16,1565084866,"~/code/addturb.py"
+-'  156  43  ~/code/addturb.py
+|4,39,156,43,1565084821,"~/code/addturb.py"
+-'  153  20  ~/code/addturb.py
+|4,39,153,20,1565084817,"~/code/addturb.py"
+-'  145  43  ~/code/addturb.py
+|4,39,145,43,1565084817,"~/code/addturb.py"
+-'  134  23  ~/code/addturb.py
+|4,39,134,23,1565084816,"~/code/addturb.py"
+-'  110  0  ~/code/addturb.py
+|4,39,110,0,1565084719,"~/code/addturb.py"
+-'  1219  0  ~/code/addturb.py
+|4,39,1219,0,1565083974,"~/code/addturb.py"
+-'  164  21  ~/code/addturb.py
+|4,39,164,21,1565083949,"~/code/addturb.py"
+-'  150  21  ~/code/addturb.py
+|4,39,150,21,1565083949,"~/code/addturb.py"
 -'  1  0  ~/code/addturb.py
-|4,39,1,0,1564543323,"~/code/addturb.py"
+|4,39,1,0,1565083742,"~/code/addturb.py"
+-'  15  0  ~/.vimrc
+|4,39,15,0,1565083716,"~/.vimrc"
+-'  15  0  ~/.vimrc
+|4,39,15,0,1565083716,"~/.vimrc"
+-'  1  0  ~/.vimrc
+|4,39,1,0,1565083601,"~/.vimrc"
+-'  1  0  ~/.vimrc
+|4,39,1,0,1565083601,"~/.vimrc"
+-'  1  0  ~/code/vimrc
+|4,39,1,0,1565083589,"~/code/vimrc"
+-'  1  0  ~/code/vimrc
+|4,39,1,0,1565083589,"~/code/vimrc"
+-'  1  0  ~/code/vimrc
+|4,39,1,0,1565083589,"~/code/vimrc"
+-'  1  0  ~/code/vimrc
+|4,39,1,0,1565083589,"~/code/vimrc"
 -'  1  0  ~/code/addturb.py
-|4,39,1,0,1564543323,"~/code/addturb.py"
+|4,39,1,0,1565081177,"~/code/addturb.py"
 -'  1  0  ~/code/addturb.py
-|4,39,1,0,1564543323,"~/code/addturb.py"
+|4,39,1,0,1565063962,"~/code/addturb.py"
 -'  1  0  ~/code/addturb.py
-|4,39,1,0,1564543323,"~/code/addturb.py"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  4  7  ~/.vimrc
-|4,39,4,7,1564543317,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1564543218,"~/.vimrc"
--'  3  18  ~/.vimrc
-|4,39,3,18,1564543216,"~/.vimrc"
--'  3  18  ~/.vimrc
-|4,39,3,18,1564543216,"~/.vimrc"
--'  3  18  ~/.vimrc
-|4,39,3,18,1564543216,"~/.vimrc"
--'  3  18  ~/.vimrc
-|4,39,3,18,1564543216,"~/.vimrc"
+|4,39,1,0,1565063962,"~/code/addturb.py"
+-'  1  0  ~/code/addturb.py
+|4,39,1,0,1565063962,"~/code/addturb.py"
+-'  1  0  ~/code/addturb.py
+|4,39,1,0,1565063962,"~/code/addturb.py"
+-'  723  71  ~/code/addturb.py
+|4,39,723,71,1564995960,"~/code/addturb.py"
+-'  721  5  ~/code/addturb.py
+|4,39,721,5,1564995960,"~/code/addturb.py"
+-'  712  71  ~/code/addturb.py
+|4,39,712,71,1564995960,"~/code/addturb.py"
+-'  710  5  ~/code/addturb.py
+|4,39,710,5,1564995960,"~/code/addturb.py"
+-'  722  71  ~/code/addturb.py
+|4,39,722,71,1564995960,"~/code/addturb.py"
+-'  720  5  ~/code/addturb.py
+|4,39,720,5,1564995960,"~/code/addturb.py"
+-'  711  71  ~/code/addturb.py
+|4,39,711,71,1564995960,"~/code/addturb.py"
+-'  709  5  ~/code/addturb.py
+|4,39,709,5,1564995960,"~/code/addturb.py"
+-'  711  71  ~/code/addturb.py
+|4,39,711,71,1564995960,"~/code/addturb.py"
+-'  709  5  ~/code/addturb.py
+|4,39,709,5,1564995960,"~/code/addturb.py"
+-'  711  71  ~/code/addturb.py
+|4,39,711,71,1564995960,"~/code/addturb.py"
+-'  709  5  ~/code/addturb.py
+|4,39,709,5,1564995960,"~/code/addturb.py"
+-'  711  71  ~/code/addturb.py
+|4,39,711,71,1564995960,"~/code/addturb.py"
+-'  709  5  ~/code/addturb.py
+|4,39,709,5,1564995960,"~/code/addturb.py"
+-'  718  9  ~/code/addturb.py
+|4,39,718,9,1564995602,"~/code/addturb.py"
+-'  707  9  ~/code/addturb.py
+|4,39,707,9,1564995602,"~/code/addturb.py"
+-'  717  9  ~/code/addturb.py
+|4,39,717,9,1564995602,"~/code/addturb.py"
+-'  709  9  ~/code/addturb.py
+|4,39,709,9,1564995602,"~/code/addturb.py"
+-'  706  9  ~/code/addturb.py
+|4,39,706,9,1564995602,"~/code/addturb.py"
+-'  709  9  ~/code/addturb.py
+|4,39,709,9,1564995602,"~/code/addturb.py"
+-'  706  9  ~/code/addturb.py
+|4,39,706,9,1564995602,"~/code/addturb.py"
+-'  709  9  ~/code/addturb.py
+|4,39,709,9,1564995602,"~/code/addturb.py"
+-'  706  9  ~/code/addturb.py
+|4,39,706,9,1564995602,"~/code/addturb.py"
+-'  709  9  ~/code/addturb.py
+|4,39,709,9,1564995602,"~/code/addturb.py"
+-'  706  9  ~/code/addturb.py
+|4,39,706,9,1564995602,"~/code/addturb.py"
+-'  734  34  ~/code/addturb.py
+|4,39,734,34,1564995429,"~/code/addturb.py"
+-'  735  34  ~/code/addturb.py
+|4,39,735,34,1564995429,"~/code/addturb.py"
+-'  724  34  ~/code/addturb.py
+|4,39,724,34,1564995429,"~/code/addturb.py"
+-'  733  34  ~/code/addturb.py
+|4,39,733,34,1564995429,"~/code/addturb.py"
+-'  734  34  ~/code/addturb.py
+|4,39,734,34,1564995429,"~/code/addturb.py"
+-'  722  34  ~/code/addturb.py
+|4,39,722,34,1564995429,"~/code/addturb.py"
+-'  723  34  ~/code/addturb.py
+|4,39,723,34,1564995429,"~/code/addturb.py"
+-'  722  34  ~/code/addturb.py
+|4,39,722,34,1564995429,"~/code/addturb.py"
+-'  723  34  ~/code/addturb.py
+|4,39,723,34,1564995429,"~/code/addturb.py"
+-'  722  34  ~/code/addturb.py
+|4,39,722,34,1564995429,"~/code/addturb.py"
+-'  723  34  ~/code/addturb.py
+|4,39,723,34,1564995429,"~/code/addturb.py"
+-'  722  34  ~/code/addturb.py
+|4,39,722,34,1564995429,"~/code/addturb.py"
+-'  723  34  ~/code/addturb.py
+|4,39,723,34,1564995429,"~/code/addturb.py"
+-'  736  12  ~/code/addturb.py
+|4,39,736,12,1564995147,"~/code/addturb.py"
+-'  725  12  ~/code/addturb.py
+|4,39,725,12,1564995147,"~/code/addturb.py"
+-'  735  12  ~/code/addturb.py
+|4,39,735,12,1564995147,"~/code/addturb.py"
+-'  723  12  ~/code/addturb.py
+|4,39,723,12,1564995147,"~/code/addturb.py"
+-'  724  12  ~/code/addturb.py
+|4,39,724,12,1564995147,"~/code/addturb.py"
+-'  723  12  ~/code/addturb.py
+|4,39,723,12,1564995147,"~/code/addturb.py"
+-'  724  12  ~/code/addturb.py
+|4,39,724,12,1564995147,"~/code/addturb.py"
+-'  723  12  ~/code/addturb.py
+|4,39,723,12,1564995147,"~/code/addturb.py"
+-'  724  12  ~/code/addturb.py
+|4,39,724,12,1564995147,"~/code/addturb.py"
+-'  723  12  ~/code/addturb.py
+|4,39,723,12,1564995147,"~/code/addturb.py"
+-'  724  12  ~/code/addturb.py
+|4,39,724,12,1564995147,"~/code/addturb.py"
+-'  128  0  ~/code/addturb.py
+|4,39,128,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  121  0  ~/code/addturb.py
+|4,39,121,0,1564994314,"~/code/addturb.py"
+-'  278  22  ~/code/addturb.py
+|4,39,278,22,1564993723,"~/code/addturb.py"
+-'  279  22  ~/code/addturb.py
+|4,39,279,22,1564993723,"~/code/addturb.py"
+-'  267  22  ~/code/addturb.py
+|4,39,267,22,1564993723,"~/code/addturb.py"
+-'  268  22  ~/code/addturb.py
+|4,39,268,22,1564993723,"~/code/addturb.py"
+-'  277  22  ~/code/addturb.py
+|4,39,277,22,1564993723,"~/code/addturb.py"
+-'  278  22  ~/code/addturb.py
+|4,39,278,22,1564993723,"~/code/addturb.py"
 
 # History of marks within files (newest to oldest):
 
-> ~/.gitignore
-	*	1564623158	0
-	"	7	4
-	^	7	5
-	.	7	4
-	+	2	5
-	+	3	10
-	+	4	2
-	+	4	0
-	+	4	4
-	+	1	0
-	+	4	4
-	+	5	0
-	+	6	6
-	+	7	4
-
 > ~/code/addturb.py
-	*	1564544858	0
-	"	4	0
-	^	4	0
-	.	4	0
-	+	246	15
-	+	227	0
-	+	228	0
-	+	246	0
-	+	246	94
-	+	247	90
-	+	247	0
-	+	259	0
-	+	230	31
-	+	232	0
-	+	232	15
-	+	232	0
-	+	247	12
-	+	247	11
-	+	247	0
-	+	261	0
-	+	261	8
-	+	261	0
-	+	221	0
-	+	222	0
-	+	223	78
-	+	108	26
-	+	107	34
-	+	108	10
-	+	106	23
-	+	22	31
-	+	887	23
-	+	889	49
-	+	61	39
-	+	56	0
-	+	57	45
-	+	61	39
-	+	62	48
-	+	65	51
-	+	100	46
-	+	102	42
-	+	153	50
-	+	1015	27
-	+	1026	28
-	+	1032	26
-	+	109	0
-	+	109	8
-	+	707	0
-	+	788	0
-	+	790	0
-	+	791	16
-	+	695	53
-	+	692	56
-	+	792	4
-	+	704	0
-	+	792	8
-	+	802	15
-	+	804	43
-	+	804	9
-	+	804	8
-	+	805	4
-	+	792	8
-	+	802	0
-	+	806	20
-	+	808	12
-	+	804	19
-	+	808	20
-	+	792	8
-	+	794	0
-	+	793	0
-	+	794	4
-	+	795	3
-	+	806	20
-	+	808	20
-	+	809	0
-	+	840	80
-	+	813	57
-	+	840	166
-	+	843	48
-	+	844	72
-	+	846	0
-	+	860	0
-	+	21	77
-	+	109	8
-	+	841	7
-	+	223	0
-	+	58	33
-	+	890	11
-	+	279	48
-	+	283	0
-	+	279	121
-	+	285	67
-	+	280	28
-	+	282	26
-	+	287	21
-	+	288	0
-	+	292	0
-	+	819	44
-	+	844	42
-	+	114	0
-	+	4	0
-	n	466	12
-	p	375	22
+	*	1565085518	0
+	"	146	14
+	.	146	0
+	+	1232	38
+	+	1232	23
+	+	1232	0
+	+	1232	43
+	+	1232	0
+	+	134	0
+	+	134	3
+	+	123	0
+	+	124	13
+	+	134	47
+	+	134	50
+	+	134	47
+	+	134	49
+	+	134	52
+	+	134	48
+	+	134	3
+	+	134	6
+	+	129	0
+	+	134	3
+	+	134	6
+	+	134	24
+	+	134	6
+	+	134	48
+	+	134	51
+	+	134	48
+	+	134	50
+	+	134	53
+	+	134	49
+	+	134	16
+	+	134	21
+	+	134	3
+	+	134	10
+	+	134	18
+	+	134	15
+	+	134	17
+	+	134	20
+	+	134	16
+	+	134	11
+	+	134	19
+	+	134	17
+	+	134	38
+	+	1232	16
+	+	1232	83
+	+	1232	104
+	+	1232	21
+	+	1233	0
+	+	1232	0
+	+	22	44
+	+	134	183
+	+	146	12
+	+	59	25
+	+	22	43
+	+	60	92
+	+	62	12
+	+	61	16
+	+	63	29
+	+	134	3
+	+	138	0
+	+	171	0
+	+	86	1
+	+	142	0
+	+	140	28
+	+	166	29
+	+	140	22
+	+	141	11
+	+	144	11
+	+	145	12
+	+	146	12
+	+	148	0
+	+	144	173
+	+	147	12
+	+	146	0
+	p	395	22
 
 > ~/.vimrc
-	*	1564543316	0
-	"	4	7
-	^	4	8
-	.	4	7
+	*	1565083715	0
+	"	15	0
+	^	15	1
+	.	15	0
 	+	3	24
 	+	6	0
 	+	6	36
@@ -649,102 +657,54 @@ $max
 	+	7	0
 	+	2	8
 	+	4	7
-
-> ~/code_old/fieldplot.py
-	*	1564479996	0
-	"	101	5
-
-> ~/code/plot_outputs.py
-	*	1564479017	0
-	"	1	0
-	^	11	0
-	.	11	0
 	+	1	0
-	+	2	0
-	+	9	19
+	+	8	1
 	+	9	0
-	+	19	9
-	+	12	0
-	+	18	4
-	+	13	0
-	+	19	0
 	+	10	0
 	+	11	0
+	+	12	0
+	+	13	0
+	+	14	0
+	+	15	0
 
-> ~/code_old/plot_spectrum.ncl
-	*	1564477134	0
-	"	60	0
-
-> ~/code/spectrum.ncl
-	*	1564476123	0
+> ~/code/vimrc
+	*	1565083589	0
 	"	1	0
-	.	9	0
-	+	1	49
-	+	3	56
-	+	1	0
-	+	3	57
-	+	3	49
-	+	1	0
-	+	3	46
-	+	3	67
-	+	3	51
-	+	3	33
-	+	3	55
-	+	3	33
-	+	1	0
-	+	3	0
-	+	1	29
-	+	3	41
-	+	3	62
-	+	3	63
-	+	3	33
-	+	3	82
-	+	3	44
-	+	3	33
-	+	3	83
-	+	3	33
-	+	3	97
-	+	3	33
-	+	3	43
-	+	3	37
-	+	1	0
-	+	3	0
-	+	5	0
-	+	1	0
-	+	5	7
-	+	6	0
-	+	6	17
-	+	8	0
-	+	3	25
-	+	5	0
-	+	6	16
-	+	4	0
-	+	7	24
-	+	4	0
-	+	4	7
-	+	1	0
-	+	1	5
-	+	2	0
-	+	13	2
-	+	3	15
-	+	8	0
-	+	8	26
-	+	9	34
-	+	11	21
-	+	9	30
-	+	8	0
-	+	6	0
-	+	1	0
-	+	4	0
-	+	9	0
 
-> ~/code_old/spectrum_alt.ncl
-	*	1564468899	0
+> /usr/share/vim/vim80/doc/help.txt
+	*	1564995473	0
 	"	1	0
+
+> ~/addturb.py
+	*	1564986253	0
+	"	1	0
+
+> ~/connect.py
+	*	1564729013	0
+	"	15	7
+	^	15	8
+	.	15	7
+	+	5	0
+	+	3	11
+	+	5	15
+	+	4	12
+	+	9	15
+	+	9	22
+	+	3	11
+	+	9	71
+	+	11	49
+	+	18	0
+	+	1	0
+	+	8	3
+	+	9	25
+	+	11	50
+	+	13	55
+	+	15	7
 
 > ~/code/modify.py
-	*	1564460948	0
-	"	70	8
+	*	1564726541	0
+	"	6	18
+	^	6	19
 	.	66	0
 	+	19	33
 	+	23	4
@@ -843,6 +803,114 @@ $max
 	+	63	0
 	+	64	0
 	+	66	0
+
+> ~/code/spectrum.ncl
+	*	1564630954	0
+	"	1	0
+	.	9	0
+	+	1	49
+	+	3	56
+	+	1	0
+	+	3	57
+	+	3	49
+	+	1	0
+	+	3	46
+	+	3	67
+	+	3	51
+	+	3	33
+	+	3	55
+	+	3	33
+	+	1	0
+	+	3	0
+	+	1	29
+	+	3	41
+	+	3	62
+	+	3	63
+	+	3	33
+	+	3	82
+	+	3	44
+	+	3	33
+	+	3	83
+	+	3	33
+	+	3	97
+	+	3	33
+	+	3	43
+	+	3	37
+	+	1	0
+	+	3	0
+	+	5	0
+	+	1	0
+	+	5	7
+	+	6	0
+	+	6	17
+	+	8	0
+	+	3	25
+	+	5	0
+	+	6	16
+	+	4	0
+	+	7	24
+	+	4	0
+	+	4	7
+	+	1	0
+	+	1	5
+	+	2	0
+	+	13	2
+	+	3	15
+	+	8	0
+	+	8	26
+	+	9	34
+	+	11	21
+	+	9	30
+	+	8	0
+	+	6	0
+	+	1	0
+	+	4	0
+	+	9	0
+
+> ~/.gitignore
+	*	1564623158	0
+	"	7	4
+	^	7	5
+	.	7	4
+	+	2	5
+	+	3	10
+	+	4	2
+	+	4	0
+	+	4	4
+	+	1	0
+	+	4	4
+	+	5	0
+	+	6	6
+	+	7	4
+
+> ~/code_old/fieldplot.py
+	*	1564479996	0
+	"	101	5
+
+> ~/code/plot_outputs.py
+	*	1564479017	0
+	"	1	0
+	^	11	0
+	.	11	0
+	+	1	0
+	+	2	0
+	+	9	19
+	+	9	0
+	+	19	9
+	+	12	0
+	+	18	4
+	+	13	0
+	+	19	0
+	+	10	0
+	+	11	0
+
+> ~/code_old/plot_spectrum.ncl
+	*	1564477134	0
+	"	60	0
+
+> ~/code_old/spectrum_alt.ncl
+	*	1564468899	0
+	"	1	0
 
 > ~/code/routines.py
 	*	1564133012	0
@@ -973,16 +1041,8 @@ $max
 	*	1564114711	0
 	"	1	0
 
-> ~/addturb.py
-	*	1564103545	0
-	"	1	0
-
 > ~/code/.vimrc
 	*	1564041752	0
-	"	1	0
-
-> /usr/share/vim/vim80/doc/help.txt
-	*	1564019920	0
 	"	1	0
 
 > /usr/share/vim/vim80/doc/uganda.txt

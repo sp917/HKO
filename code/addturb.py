@@ -18,8 +18,8 @@ datapath = '/home/sp917/data/'
 class DATA:
    
     def __init__(self, str_id, h=None, passes=None, pars=None, initialise='Partial', \
-            autoplot = True, scaling_type='tanh', load_coords=True, ncl=False, \
-            whichdata='original'):
+            autoplot = True, scaling_type='const', load_coords=True, ncl=True, \
+            whichdata='original', hasUV=True):
     
         """Class for handling wrf data. It has the following capabilities:
            --Read in data from wrf output.
@@ -56,6 +56,11 @@ class DATA:
 
         self.path = datapath + whichdata + '/'
         self.whichdata = whichdata
+        
+        if not self.str_id in ['ke', 'speed', 'ua', 'va', 'ke10', 'speed10', 'U10', 'V10' ]:
+            self.hasUV = False
+        else:
+            self.hasUV = hasUV
 
         if load_coords:
             self.yvals = getdata('lat', self.path)
@@ -105,6 +110,7 @@ class DATA:
 
         if initialise=="Basic":
             self.set_height(self.h)
+            self.calc_spectra()
         elif initialise in [ "Partial", "Full"]:
             self.set_smoothness(self.passes)
             self.set_height(self.h)
@@ -114,7 +120,9 @@ class DATA:
             if initialise == 'Full':
                 self.calc_spectra()
                 self.spectrum_turb_added()
-  
+
+        return 
+ 
   ###############################################################################
     
     def __str__(self):
@@ -123,36 +131,42 @@ class DATA:
 
         return DATA_string
 
+          
   ###############################################################################
-  
+ 
+
     def calc_field(self):
 
-        if self.str_id in ['ke', 'speed']:
-            self.U = DATA('ua', h=self.h, passes=self.passes, pars=self.pars,\
-                    autoplot=False, initialise=False, \
-                    scaling_type=self.scaling_type, load_coords=False)
-            self.V = DATA('va', h=self.h, passes=self.passes, pars=self.pars,\
-                    autoplot=False, initialise=False, \
-                    scaling_type=self.scaling_type, load_coords=False)
+        if self.hasUV:
+            
+
+        if self.str_id in ['ke', 'speed', 'ua', 'va']:
+            self.U = DATA('ua', h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False)
             U = np.array(wrf.to_np(self.U.X))
-            V = np.array(wrf.to_np(self.V.X)) 
-            self.derived=True
+            ''self.V = DATA('va', h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False)
+                V = np.array(wrf.to_np(self.V.X)) 
+            if not self.str_id in ['ua','va']: 
+                self.derived=True
             self.X = switch[self.str_id](U,V)
-        elif self.str_id in ['ke10', 'speed10']:
-            self.U = DATA('U10', h=self.h, passes=self.passes, pars=self.pars,\
+        elif self.str_id in ['ke10', 'speed10', 'U10', 'V10']:
+            if not self.str_id=='U10':
+                self.U = DATA('U10', h=self.h, passes=self.passes, pars=self.pars,\
                     autoplot=False, initialise=False, \
                     scaling_type=self.scaling_type, load_coords=False)
-            self.V = DATA('V10', h=self.h, passes=self.passes, pars=self.pars,\
+                U = np.array(wrf.to_np(self.U.X))
+            if not self.str_id=='V10':
+                self.V = DATA('V10', h=self.h, passes=self.passes, pars=self.pars,\
                     autoplot=False, initialise=False, \
                     scaling_type=self.scaling_type, load_coords=False)
-            U = np.array(wrf.to_np(self.U.X))
-            V = np.array(wrf.to_np(self.V.X)) 
-            self.derived=True
+                V = np.array(wrf.to_np(self.V.X)) 
+            if not self.str_id in ['U10', 'V10']:
+                self.derived=True
             self.X = switch[self.str_id](U,V)
         else:
             self.X = getdata(self.str_id, self.path)
             self.derived = False
-    
+
+   
         return
 
   ###############################################################################
@@ -184,7 +198,7 @@ class DATA:
         if passes==None:
             passes=100
 
-        filename = datapath + 'smooth_files/' + self.str_id + "_" + str(passes)
+        filename = datapath + 'smooth_files_' + self.whichdata + '/' + self.str_id + "_" + str(passes)
         
         try:
             f = open(filename + '.npy')
@@ -259,6 +273,9 @@ class DATA:
 
         if not np.any(self.Xsmooth==None):            
             self.dX = self.Xinterp - self.Xsmoothinterp
+            self.dXall = self.X - self.Xsmooth
+            self.turb_ratio = self.dXall/self.Xsmooth
+            self.turb_ratiointerp = self.dX/self.Xsmoothinterp
         
         if self.derived:
             self.U.set_height(h, update=False)
@@ -268,6 +285,9 @@ class DATA:
             self.update(2)
             self.update(3)
 
+        if self.autoplot:
+            plot_field(self)        
+        
         return
 
 
@@ -292,6 +312,9 @@ class DATA:
 
         print("Done.")
 
+        if self.autoplot:
+            plot_spectra(self) 
+        
         return
 
     ###############################################################################
@@ -428,6 +451,12 @@ class DATA:
                 Xhy = X0 + scaling*dXfin
             elif alt==4:
                 Xhy = X0*(1 + scaling*dXfin/np.max(np.abs(Xsmoothfin)))
+            elif alt==5:
+                randvals  = np.random.random_sample((X0.shape))
+                minrat = np.min(wrf.to_np(self.turb_ratio))
+                maxrat = np.max(wrf.to_np(self.turb_ratio))
+                print(minrat,maxrat)
+                Xhy = X0*( (maxrat - minrat)*randvals + minrat )
             else:
                 alt = 0
                 Xhy = X0 + scaling*dXfin
@@ -460,7 +489,6 @@ class DATA:
 
         print("Done.")
 
-        print(np.max(self.Shy-self.S[-1]))
 
         if self.autoplot:
             plot_spectra_turb(self)
@@ -480,11 +508,10 @@ class DATA:
             if not (self.passes==None or np.all(self.Xsmooth==None)):
                 self.set_smoothness(self.passes)
         if where==1:
-            if not (self.h==None or np.all(self.Xsmooth==None) or\
-                    np.any(self.Xinterp==None)):
+            if not (self.h==None or np.any(self.Xinterp==None)):
                 self.set_height(self.h)
         if where==2:
-            if not (np.all(self.Xsmoothinterp==None) or self.S==None):
+            if not (self.S==None):
                 self.calc_spectra()
         if where==3:
             if not (np.all(self.Xsmoothinterp==None) or self.pars==None \
@@ -498,13 +525,16 @@ class DATA:
 
     ###############################################################################
 
-    def change_options(self, autoplot=None, scaling_type=None):
+    def change_options(self, autoplot=None, scaling_type=None, whichdata=None):
 
         if not autoplot==None:
             self.autoplot = autoplot
         if not scaling_type==None:
             self.scaling_type = scaling_type
             self.update(3)
+        if not whichdata==None:
+            self.whichdata = whichdata
+            self.update()
 
         return
 
@@ -651,7 +681,7 @@ def plot_field_turb(data):
 
 ######################################################################################
 
-def plot_field(data):
+def plot_field(data, ratioplot=False):
 
     nt = len(data.times) 
 
@@ -662,12 +692,15 @@ def plot_field(data):
 
     for i in range(nt):
 
-        Y = data.Xinterp[i,]
+        if ratioplot:
+            Y = data.turb_ratiointerp[i,]
+        else:
+            Y = data.Xinterp[i,]
 
         Y = np.array(wrf.to_np(Y))
 
         wherenans = np.isnan(Y)
-
+        notnans = (1-wherenans)==1
         Ymin = np.nanmin(Y)
         Ymax = np.nanmax(Y)
 
@@ -684,8 +717,11 @@ def plot_field(data):
         cbar = fig.colorbar(im,ax=axs[i])
         cbar.set_ticks([i for i in np.linspace(Ymin,Ymax,9)])
 
-        axs[i].set_title("t = %g" % data.times[i])
-        
+        subtitle = "t = " + str(wrf.to_np(data.times[i])[0])
+      
+        if ratioplot: 
+            subtitle = subtitle + "\nmean = " + str(np.mean(np.abs(Y[notnans]))) 
+        axs[i].set_title(subtitle, y=1.05)  
 
     if data.isvertical:
         plottitle = data.str_id +  " at height " + str(data.h) 
@@ -693,11 +729,15 @@ def plot_field(data):
     else:
         plottitle = data.str_id
         plotname = data.str_id + "_" + data.whichdata
+
+    if ratioplot:
+        plottitle = plottitle + ' RATIO'
+        plotname = plotname + '_RATIO'
     
-    print("Saving plot as " + plotpath + plotname)
+    print("Saving plot as " + plotpath + 'Results/' + plotname)
     
-    fig.suptitle( plottitle )
-    fig.savefig(plotpath+plotname+'.png', bbox_inches="tight",format='png')
+    fig.suptitle( plottitle, y=1.2 )
+    fig.savefig(plotpath+'Results/'+plotname+'.png', bbox_inches="tight",format='png')
     plt.close()
 
     return
@@ -774,7 +814,9 @@ def plot_spectra_turb(data):
                 + str(data.pars.b) + "_" + str(data.pars.c) + "_" \
                 + str(data.pars.d) + "_" + str(data.pars.e) \
                 + "_" + str(data.pars.mu) 
-    
+
+    plottitle = plottitle + (r" $\mu=%g$" % data.pars.mu )  
+ 
     if data.ncl:
         plotname = plotname + "_ncl"
     
@@ -848,8 +890,8 @@ def plot_spectra(data):
     
     plt.title(plottitle, y = 1.2)
 
-    print("Saving plot as " + plotpath + plotname)
-    fig.savefig(plotpath+plotname+'.png', bbox_inches="tight",format='png')
+    print("Saving plot as " + plotpath + 'Results/' + plotname)
+    fig.savefig(plotpath + 'Results/' + plotname+'.png', bbox_inches="tight",format='png')
     plt.close()
 
     return
@@ -893,6 +935,7 @@ def getdata(str_id, path):
    
     if str_id.startswith('wspd_wdir'):
         X = X[0,] #in this case we choose wind speed
+    
 
     return X
 
@@ -1168,11 +1211,22 @@ def KE(U,V):
 def speed(U,V):
     return np.sqrt(U*U +V*V)
 
+def PU(U,V):
+    return U
+
+def PV(U,V):
+    return V
+
 switch = { 'ke' : KE,
            'speed' : speed,
            'ke10' : KE,
-           'speed10' : speed
+           'speed10' : speed,
+           'ua' : PU,
+           'va' : PV,
+           'U10' : PU,
+           'V10' : PV,
         }
 
 #####################################################################################
 #####################################################################################
+
