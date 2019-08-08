@@ -50,8 +50,6 @@ class DATA:
         self.str_id = str_id
         
         self.X = None
-        self.U = None    
-        self.V = None
         self.derived = None
 
         self.path = datapath + whichdata + '/'
@@ -59,6 +57,8 @@ class DATA:
         
         if not self.str_id in ['ke', 'speed', 'ua', 'va', 'ke10', 'speed10', 'U10', 'V10' ]:
             self.hasUV = False
+            self.U = None    
+            self.V = None
         else:
             self.hasUV = hasUV
 
@@ -133,39 +133,47 @@ class DATA:
 
           
   ###############################################################################
- 
 
-    def calc_field(self):
+    def setUV(self, opts):
+    
+        if opts.at10:
+            Ustring = 'U10'
+            Vstring = 'V10'
+        else:
+            Ustring = 'ua'
+            Vstring = 'va'       
+    
+        self.derived=True
+        if opts.getU:
+            self.U = DATA(Ustring, h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False, hasUV=False)
+        else:
+            self.X = getdata(self.str_id, self.path)
+            self.U=self       
+            self.derived=False
+
+        if opts.getV:
+            self.V = DATA(Vstring, h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False, hasUV=False)
+        else:
+            self.X = getdata(self.str_id, self.path)
+            self.V = self
+            self.derived=False
+        
+        U = np.array(wrf.to_np(self.U.X))
+        V = np.array(wrf.to_np(self.V.X)) 
+        self.X = switch[self.str_id](U,V)
+        
+        return    
+
+    
+
+    def calc_field(self):        
 
         if self.hasUV:
-            
-
-        if self.str_id in ['ke', 'speed', 'ua', 'va']:
-            self.U = DATA('ua', h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False)
-            U = np.array(wrf.to_np(self.U.X))
-            ''self.V = DATA('va', h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False)
-                V = np.array(wrf.to_np(self.V.X)) 
-            if not self.str_id in ['ua','va']: 
-                self.derived=True
-            self.X = switch[self.str_id](U,V)
-        elif self.str_id in ['ke10', 'speed10', 'U10', 'V10']:
-            if not self.str_id=='U10':
-                self.U = DATA('U10', h=self.h, passes=self.passes, pars=self.pars,\
-                    autoplot=False, initialise=False, \
-                    scaling_type=self.scaling_type, load_coords=False)
-                U = np.array(wrf.to_np(self.U.X))
-            if not self.str_id=='V10':
-                self.V = DATA('V10', h=self.h, passes=self.passes, pars=self.pars,\
-                    autoplot=False, initialise=False, \
-                    scaling_type=self.scaling_type, load_coords=False)
-                V = np.array(wrf.to_np(self.V.X)) 
-            if not self.str_id in ['U10', 'V10']:
-                self.derived=True
-            self.X = switch[self.str_id](U,V)
+            opts = calc_field_dict[self.str_id]
+            self.setUV(opts)
         else:
             self.X = getdata(self.str_id, self.path)
             self.derived = False
-
    
         return
 
@@ -200,25 +208,30 @@ class DATA:
 
         filename = datapath + 'smooth_files_' + self.whichdata + '/' + self.str_id + "_" + str(passes)
         
-        try:
-            f = open(filename + '.npy')
-            f.close()
-        except:    
-            print("Smoothing " + self.str_id + " " + str(passes) + " times...")
-            self.Xsmooth = wrf.smooth2d(self.X, passes)
-            print("Done.")
-            np.save(filename, self.Xsmooth)
-        else:
-            print("Reading data from " + filename)
-            Xsmooth = np.load(filename + '.npy')
-            self.Xsmooth=wrf.smooth2d(self.X,1)
-            self.Xsmooth[:,] = Xsmooth
-
-        self.passes = passes
-
         if self.derived:
             self.U.set_smoothness(passes, update=False)
             self.V.set_smoothness(passes, update=False)
+            self.Xsmooth = switch[self.str_id](self.U.Xsmooth, self.V.Xsmooth)
+        else:
+            try:
+                f = open(filename + '.npy')
+                f.close()
+            except:    
+                print("Smoothing " + self.str_id + " " + str(passes) + " times...")
+                self.Xsmooth = wrf.smooth2d(self.X, passes)
+                print("Done.")
+                np.save(filename, self.Xsmooth)
+            else:
+                print("Reading data from " + filename)
+                Xsmooth = np.load(filename + '.npy')
+                print(self.X.shape)
+                self.Xsmooth=wrf.smooth2d(self.X,1)
+                self.Xsmooth[:,] = Xsmooth
+
+        self.passes = passes
+
+        self.dXall = self.X - self.Xsmooth
+        self.turb_ratio = self.dXall/self.Xsmooth
         
         if update:
             self.update(1)
@@ -271,10 +284,8 @@ class DATA:
             self.h = h
 
 
-        if not np.any(self.Xsmooth==None):            
+        if not np.any(self.Xsmoothinterp==None):            
             self.dX = self.Xinterp - self.Xsmoothinterp
-            self.dXall = self.X - self.Xsmooth
-            self.turb_ratio = self.dXall/self.Xsmooth
             self.turb_ratiointerp = self.dX/self.Xsmoothinterp
         
         if self.derived:
@@ -457,6 +468,13 @@ class DATA:
                 maxrat = np.max(wrf.to_np(self.turb_ratio))
                 print(minrat,maxrat)
                 Xhy = X0*( (maxrat - minrat)*randvals + minrat )
+            elif alt==6:
+                if (self.str_id in ['speed10', 'speed', 'ke10', 'ke']):
+                    speed_ratio = np.sqrt( (np.power(self.U.Xinterp[-1,],2) + np.power(self.V.Xinterp[-1,],2 ) )  / ( np.power(self.U.Xsmoothinterp[-1,],2) + np.power(self.V.Xsmoothinterp, 2) ) ) 
+                    self.U.Xhy = self.U.Xinterp[0,]*speed_ratio
+                    self.V.Xhy = self.V.Xinterp[0,]*speed_ratio
+                else:
+                    Xhy = self.Xinterp[0,]*self.Xinterp[-1,]/self.Xsmoothinterp[-1,]
             else:
                 alt = 0
                 Xhy = X0 + scaling*dXfin
@@ -720,7 +738,7 @@ def plot_field(data, ratioplot=False):
         subtitle = "t = " + str(wrf.to_np(data.times[i])[0])
       
         if ratioplot: 
-            subtitle = subtitle + "\nmean = " + str(np.mean(np.abs(Y[notnans]))) 
+            subtitle = subtitle + "\nmean = " + str(np.mean(Y[notnans])) 
         axs[i].set_title(subtitle, y=1.05)  
 
     if data.isvertical:
@@ -1229,4 +1247,23 @@ switch = { 'ke' : KE,
 
 #####################################################################################
 #####################################################################################
+
+class setUVopts:
+    def __init__(self, at10=False, getU=True, getV=True):
+        self.at10 = at10
+        self.getU = getU
+        self.getV = getV
+
+
+calc_field_dict = { 'ke' : setUVopts(),
+                    'speed' : setUVopts(),
+                    'ua' : setUVopts(getU=False),
+                    'va' : setUVopts(getV=False),
+                    'ke10' : setUVopts(at10=True),
+                    'speed10' : setUVopts(at10=True),
+                    'U10' : setUVopts(at10=True, getU=False),
+                    'V10' : setUVopts(at10=True, getV=False)
+                  }
+        
+
 

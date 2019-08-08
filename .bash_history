@@ -1774,3 +1774,23 @@ vim .vimrc
 conda activate pynio_env
 python
 q
+conda activate pynio_env
+cd code
+ls
+vim addturb.py 
+cd ..
+ls
+git add --all .
+git commit -m 'made a mess of things'
+git push
+ssh dev@10.53.139.90
+conda activate pyni_env
+conda activate pynio_env
+python
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+conda activate pynio_env
+python
+cd code
+ls
+vim addturb.py 
