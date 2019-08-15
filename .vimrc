@@ -3,6 +3,8 @@ noremap! <PageUp> <Esc>
 noremap <PageDown> ""
 noremap! <PageDown> <Esc>
 
+imap <C-w> <esc>
+
 set tabstop=4 shiftwidth=4 expandtab
 
 "noremap  <Up> ""

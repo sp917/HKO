@@ -111,6 +111,8 @@ class DATA:
         if initialise=="Basic":
             self.set_height(self.h)
             self.calc_spectra()
+        elif initialise=="SmoothOnly":
+            self.set_smoothness(self.passes)
         elif initialise in [ "Partial", "Full"]:
             self.set_smoothness(self.passes)
             self.set_height(self.h)
@@ -204,7 +206,7 @@ class DATA:
 
         """
         if passes==None:
-            passes=100
+            passes=1000
 
         filename = datapath + 'smooth_files_' + self.whichdata + '/' + self.str_id + "_" + str(passes)
         
@@ -224,7 +226,6 @@ class DATA:
             else:
                 print("Reading data from " + filename)
                 Xsmooth = np.load(filename + '.npy')
-                print(self.X.shape)
                 self.Xsmooth=wrf.smooth2d(self.X,1)
                 self.Xsmooth[:,] = Xsmooth
 
@@ -284,8 +285,8 @@ class DATA:
             self.h = h
 
 
-        if not np.any(self.Xsmoothinterp==None):            
-            self.dX = self.Xinterp - self.Xsmoothinterp
+        if not (np.any(self.Xsmoothinterp==None) or np.any(self.Xinterp==None)):        
+            self.dX = np.array(wrf.to_np(self.Xinterp)) - np.array(wrf.to_np(self.Xsmoothinterp))
             self.turb_ratiointerp = self.dX/self.Xsmoothinterp
         
         if self.derived:
@@ -430,16 +431,15 @@ class DATA:
             self.U.add_turbulence(update=False)
             self.V.add_turbulence(update=False) 
             Xhy = switch[self.str_id](self.U.Xhy, self.V.Xhy)
-
         else:
 
             alt=self.pars.alt
 
             print("Adding turbulence field to intial field of " + self.str_id + "...")
 
-            X0 = self.Xinterp[0,]
-            dXfin = self.dX[-1,]
-            Xsmoothfin = self.Xsmoothinterp[-1,]
+            X0 = np.array(wrf.to_np(self.Xinterp[0,]))
+            dXfin = np.array(wrf.to_np(self.dX[-1,]))
+            Xsmoothfin = np.array(wrf.to_np(self.Xsmoothinterp[-1,]))
 
             if self.str_id.endswith('10'): 
                 scaling = self.calc_scaling(10)
@@ -448,7 +448,6 @@ class DATA:
             else:
                 scaling = self.calc_scaling(self.h)
 
-            print(scaling)
 
             if alt==0:
                 Xhy = X0 + scaling*dXfin
@@ -461,20 +460,46 @@ class DATA:
                 dXfin = dXfin - np.mean(dXfin)
                 Xhy = X0 + scaling*dXfin
             elif alt==4:
-                Xhy = X0*(1 + scaling*dXfin/np.max(np.abs(Xsmoothfin)))
+                Xhy = X0*(1 + scaling*dXfin/np.nanmax(np.abs(Xsmoothfin)))
             elif alt==5:
                 randvals  = np.random.random_sample((X0.shape))
-                minrat = np.min(wrf.to_np(self.turb_ratio))
-                maxrat = np.max(wrf.to_np(self.turb_ratio))
-                print(minrat,maxrat)
-                Xhy = X0*( (maxrat - minrat)*randvals + minrat )
-            elif alt==6:
-                if (self.str_id in ['speed10', 'speed', 'ke10', 'ke']):
-                    speed_ratio = np.sqrt( (np.power(self.U.Xinterp[-1,],2) + np.power(self.V.Xinterp[-1,],2 ) )  / ( np.power(self.U.Xsmoothinterp[-1,],2) + np.power(self.V.Xsmoothinterp, 2) ) ) 
-                    self.U.Xhy = self.U.Xinterp[0,]*speed_ratio
-                    self.V.Xhy = self.V.Xinterp[0,]*speed_ratio
+                if self.str_id in ["ua", "va", "U10", "V10"]:
+                    minrat = -0.996705
+                    maxrat = 3.374975
                 else:
-                    Xhy = self.Xinterp[0,]*self.Xinterp[-1,]/self.Xsmoothinterp[-1,]
+                    minrat = np.nanmin(wrf.to_np(self.turb_ratiointerp))
+                    maxrat = np.nanmax(wrf.to_np(self.turb_ratiointerp))
+                Xfinmin = np.nanmin(wrf.to_np(self.Xinterp[-1,]))
+                Xfinmax = np.nanmax(wrf.to_np(self.Xinterp[-1,]))
+                Xhy = X0*(1 +  (maxrat - minrat)*randvals + minrat )
+                Xhy = np.array(wrf.to_np(Xhy))
+                Xhy[Xhy < Xfinmin] = np.min(self.Xinterp[-1])
+                Xhy[Xhy > Xfinmax] = np.max(self.Xinterp[-1])
+            elif alt==6:
+                if (self.str_id in ['U10', 'ua', 'V10', 'va']):
+                    U = self.U.X[-1,]
+                    V = self.V.X[-1,]
+                    Usmooth = self.U.Xsmooth[-1,]
+                    Vsmooth = self.V.Xsmooth[-1,]
+                    Uinterp = self.U.Xinterp[-1,]
+                    Vinterp = self.V.Xinterp[-1,]
+                    Usmoothinterp = self.U.Xsmoothinterp[-1,]
+                    Vsmoothinterp = self.V.Xsmoothinterp[-1,]
+
+                    speed_ratio_interp = switch[self.str_id](Uinterp,Vinterp)/switch[self.str_id](Usmoothinterp,Vsmoothinterp) 
+                    speed_ratio_full = switch[self.str_id](U,V)/switch[self.str_id](Usmooth, Vsmooth)
+                    self.U.Xhy = self.U.Xinterp[0,]*speed_ratio_interp
+                    self.V.Xhy = self.V.Xinterp[0,]*speed_ratio_interp
+                    self.U.Xhy_full = self.U.X[0,]*speed_ratio_full
+                    self.V.Xhy_full = self.V.X[0,]*speed_ratio_full 
+                else:
+                    Xhy = np.zeros((self.Xinterp[0,].size))
+                    Xhy[self.Xsmoothfin != 0.0] = self.Xinterp[0,]*self.Xinterp[-1,]/self.Xsmoothfin
+                    Xhy[self.Xsmoothfin == 0.0] = self.Xinterp[0,]
+                    Xhy[Xhy < np.min(self.Xinterp[-1,])] = np.min(self.Xinterp[-1])
+                    Xhy[Xhy > np.max(self.Xinterp[-1,])] = np.max(self.Xinterp[-1])
+            elif alt==7:
+                Xhy = X0*self.Xinterp[-1]/self.Xsmoothinterp[-1]
             else:
                 alt = 0
                 Xhy = X0 + scaling*dXfin
@@ -653,7 +678,7 @@ def plot_field_turb(data):
 
             v_min = minima[i][j]
             v_max = maxima[i][j]
-
+    
             Ymin = np.nanmin(Y)
             Ymax = np.nanmax(Y)
 
@@ -764,12 +789,12 @@ def plot_field(data, ratioplot=False):
 
 def plot_spectra_turb(data):
     
-    Xplots = [ data.S[-1], data.S[0], data.Ssmooth[-1], data.dS[-1], data.Shy ] 
-    labels = [r"%s  at $t = %g$." % (data.str_id, data.times[-1]) , \
-              r"%s at $t = %g$." % (data.str_id, data.times[0])  ,\
+    Xplots = [  data.S[0], data.Ssmooth[-1], data.dS[-1], data.S[-1], data.Shy ] 
+    labels = [ r"%s at $t = %g$." % (data.str_id, data.times[0])  ,\
               (r"$\overline{\mathrm{%s}}$ at $t = %g$") % (data.str_id, data.times[-1]), \
               (r"%s' = %s - $\overline{\mathrm{%s}}$")  % (data.str_id,data.str_id,data.str_id), \
-              r" %s(%g) + %s' " % (data.str_id, data.times[0], data.str_id)]
+               r"%s  at $t = %g$." % (data.str_id, data.times[-1]) , \
+               r" %s(%g) + %s' " % (data.str_id, data.times[0], data.str_id)]
     
 
     fig = plt.figure()
@@ -914,6 +939,69 @@ def plot_spectra(data):
 
     return
 
+######################################################################################
+
+def plot_field_smooth(data):
+
+    nt = len(data.times)
+
+    nt = 1 
+
+    fig, axs = plt.subplots(nt, 3, figsize = (21,5), sharey='row', sharex="col")
+ 
+    xvals = data.xvals[0,]
+    yvals = data.yvals[0,]
+
+    for j in range(3):
+        for i in range(2,3):
+
+            if j==0:
+                Y = data.Xinterp[i,]
+            elif j==1:
+                Y = data.Xsmoothinterp[i,]
+            else:
+                Y = data.dX[i,]
+
+            Y = np.array(wrf.to_np(Y))
+
+            wherenans = np.isnan(Y)
+            notnans = (1-wherenans)==1
+            Ymin = np.nanmin(Y)
+            Ymax = np.nanmax(Y)
+
+            Y[wherenans] = -10e20
+
+            im = axs[j].pcolormesh(xvals,yvals, Y, cmap='seismic', vmin=Ymin, vmax=Ymax)
+            axs[j].set_xlim([np.min(xvals),np.max(xvals)])
+            axs[i].set_ylim([np.min(yvals),np.max(yvals)])
+            axs[i].set_xticks([k for k in np.linspace(np.min(xvals),np.max(xvals),5)])
+            axs[j].set_yticks([k for k in np.linspace(np.min(yvals),np.max(yvals),10)])
+            axs[j].xaxis.set_major_formatter(mtick.FormatStrFormatter('%.1f'))
+            axs[j].yaxis.set_major_formatter(mtick.FormatStrFormatter('%.2f'))
+            
+            cbar = fig.colorbar(im,ax=axs[j])
+            cbar.set_ticks([i for i in np.linspace(Ymin,Ymax,9)])
+
+            subtitle = "t = " + str(wrf.to_np(data.times[i])[0])
+          
+            axs[j].set_title(subtitle)  
+
+    if data.isvertical:
+        plottitle = "Smoothing of " + data.str_id +  " at height " + str(data.h) + "m" 
+        plotname = data.str_id + "_smoothed" + "_height" + str(data.h) + "_" + data.whichdata
+    else:
+        plottitle = "Smoothing of " + data.str_id
+        plotname = data.str_id + "_smoothed_" + data.whichdata
+ 
+    print("Saving plot as " + plotpath + 'Results/' + plotname)
+    
+    fig.suptitle( plottitle)
+    fig.savefig(plotpath+'Results/'+plotname+'.png', bbox_inches="tight",format='png')
+    plt.close()
+
+    return
+
+######################################################################################
 ######################################################################################
 ######################################################################################
 

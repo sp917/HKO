@@ -11,27 +11,65 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/savefig
+~MSle0~/print
 
 # Last Substitute Search Pattern:
-~MSle0&self
+~MSle0&axs[i]
 
 # Last Substitute String:
-$
+$axs[j,i]
 
 # Command Line History (newest to oldest):
+:q!
+|2,0,1565858388,,"q!"
 :q
-|2,0,1565227206,,"q"
-:w
-|2,0,1565172492,,"w"
-:split
-|2,0,1565169843,,"split"
+|2,0,1565858384,,"q"
 :term
-|2,0,1565159946,,"term"
+|2,0,1565836987,,"term"
+:wq
+|2,0,1565842774,,"wq"
+:Wq
+|2,0,1565842773,,"Wq"
+:w
+|2,0,1565836001,,"w"
+:split rename.sh
+|2,0,1565833958,,"split rename.sh"
+:W
+|2,0,1565833897,,"W"
+:'<,'>s/axs[i]/axs[j,i]/
+|2,0,1565669739,,"'<,'>s/axs[i]/axs[j,i]/"
+:'<,'>/axs[i]./axs[j,i]/
+|2,0,1565669691,,"'<,'>/axs[i]./axs[j,i]/"
+:'<,'>s/axs[i]/axs[j,i]/g
+|2,0,1565669661,,"'<,'>s/axs[i]/axs[j,i]/g"
+:984,992s/axs[i]/axs[j,i]/g
+|2,0,1565669589,,"984,992s/axs[i]/axs[j,i]/g"
+:split
+|2,0,1565580482,,"split"
+:tabnew outdata.py
+|2,0,1565256939,,"tabnew outdata.py"
+:tabnew
+|2,0,1565246244,,"tabnew"
+:tabnew term
+|2,0,1565246235,,"tabnew term"
+:tabnew addturb.py
+|2,0,1565246228,,"tabnew addturb.py"
+:tabnew spectrum.ncl
+|2,0,1565245061,,"tabnew spectrum.ncl"
+:Texplore
+|2,0,1565245050,,"Texplore"
+:tab
+|2,0,1565244985,,"tab"
+:Vexplore
+|2,0,1565233923,,"Vexplore"
+:marks
+|2,0,1565233759,,"marks"
+::Explore
+|2,0,1565233367,,":Explore"
+:tabedit modify.py
+|2,0,1565232816,,"tabedit modify.py"
 :vsplit addturb.py
 |2,0,1565159926,,"vsplit addturb.py"
-:wq
-|2,0,1565159890,,"wq"
 :vsplit
 |2,0,1565148457,,"vsplit"
 :168,175s/self//2
@@ -40,8 +78,6 @@ $
 |2,0,1565071483,,"V"
 :turb
 |2,0,1564986993,,"turb"
-:q!
-|2,0,1564986990,,"q!"
 :set ma
 |2,0,1564986961,,"set ma"
 :Q
@@ -56,8 +92,6 @@ $
 |2,0,1564468841,,"split ../code_old/*.ncl"
 :split spectrum.ncl
 |2,0,1564468811,,"split spectrum.ncl"
-:W
-|2,0,1564456553,,"W"
 :split addturb.py
 |2,0,1564456303,,"split addturb.py"
 :579,583s/min/max/g
@@ -86,142 +120,108 @@ $
 |2,0,1564040302,,"scriptnames"
 :scriptname
 |2,0,1564040293,,"scriptname"
-:Wq
-|2,0,1563937246,,"Wq"
-:help iccf
-|2,0,1563950102,,"help iccf"
-:echo($MYVIMRC)
-|2,0,1563950059,,"echo($MYVIMRC)"
-:346,463s/self/data/g
-|2,0,1563863237,,"346,463s/self/data/g"
-:346,463s/self/data/%g
-|2,0,1563863189,,"346,463s/self/data/%g"
-:346,463s/self/data
-|2,0,1563863162,,"346,463s/self/data"
-:346:463s/self/data/g
-|2,0,1563863134,,"346:463s/self/data/g"
-:346,463s/self/data/
-|2,0,1563863110,,"346,463s/self/data/"
-:346,
-|2,0,1563863084,,"346,"
-:vsplit classtest.py
-|2,0,1563781080,,"vsplit classtest.py"
-::w
-|2,0,1563764059,,":w"
-:vsplit main2.py
-|2,0,1563757806,,"vsplit main2.py"
-:%s/routines.getdata/getdata/
-|2,0,1563527873,,"%s/routines.getdata/getdata/"
-:vsplit routines.py
-|2,0,1563527742,,"vsplit routines.py"
-:%s/self/data/
-|2,0,1563526714,,"%s/self/data/"
-:%s/str(height) + "km"/str(height) + "km \n"/
-|2,0,1563502705,,"%s/str(height) + \"km\"/str(height) + \"km \\n\"/"
-:n
-|2,0,1563500169,,"n"
 
 # Search String History (newest to oldest):
+?/print
+|2,1,1565688265,47,"print"
+?/def plot_spe
+|2,1,1565685081,47,"def plot_spe"
+?/switch
+|2,1,1565684116,47,"switch"
+?/add_tu
+|2,1,1565683871,47,"add_tu"
+?/self.Xhy
+|2,1,1565683844,47,"self.Xhy"
+?/def add
+|2,1,1565683625,47,"def add"
+?/remove_nans
+|2,1,1565683245,47,"remove_nans"
+?/remove_nana
+|2,1,1565683242,47,"remove_nana"
+?/ncl_spectrum
+|2,1,1565683224,47,"ncl_spectrum"
+?/spect1d
+|2,1,1565683206,47,"spect1d"
+?/spectrum_turb
+|2,1,1565683181,47,"spectrum_turb"
+?/spectrum_rurb
+|2,1,1565683178,47,"spectrum_rurb"
+?/Warning: field still
+|2,1,1565683138,47,"Warning: field still"
+?/---------
+|2,1,1565682609,47,"---------"
+??plot_field_smooth
+|2,1,1565676325,63,"plot_field_smooth"
+?/plot_field_smoo	
+|2,1,1565676319,47,"plot_field_smoo	"
+?/Xsmoothinterp
+|2,1,1565676198,47,"Xsmoothinterp"
+?/sharex
+|2,1,1565670321,47,"sharex"
+?/def plot_field
+|2,1,1565669860,47,"def plot_field"
+?/ratioplot
+|2,1,1565669835,47,"ratioplot"
+? axs[i]
+|2,1,1565669739,,"axs[i]"
+? axs[i].
+|2,1,1565669691,,"axs[i]."
+?/plot_f
+|2,1,1565669323,47,"plot_f"
+?/plot
+|2,1,1565669315,47,"plot"
+?/plot_fields
+|2,1,1565669311,47,"plot_fields"
+?/self.turb_ratio
+|2,1,1565581964,47,"self.turb_ratio"
+?/split
+|2,1,1565580479,47,"split"
+?/Variable not def
+|2,1,1565580409,47,"Variable not def"
+?/Ymax = np.nanmax(Y)
+|2,1,1565579819,47,"Ymax = np.nanmax(Y)"
+?/potential
+|2,1,1565578025,47,"potential"
+?/temp
+|2,1,1565578006,47,"temp"
+?/THETA
+|2,1,1565577997,47,"THETA"
+?/TEMPERATURE
+|2,1,1565577972,47,"TEMPERATURE"
+?/POTENTIAL
+|2,1,1565577963,47,"POTENTIAL"
+?/def add	
+|2,1,1565572958,47,"def add	"
+?/print(1, str
+|2,1,1565339503,47,"print(1, str"
+? @$
+|2,1,1565259355,,"@$"
+?/calc_field_dict
+|2,1,1565249071,47,"calc_field_dict"
+?/Xhy
+|2,1,1565247312,47,"Xhy"
+?/add_turbulence
+|2,1,1565245401,47,"add_turbulence"
+?/initialise
+|2,1,1565235556,47,"initialise"
+?/def update(
+|2,1,1565235515,47,"def update("
+?/update
+|2,1,1565235504,47,"update"
+?/self.dX = self.
+|2,1,1565235428,47,"self.dX = self."
+?/self.dX=
+|2,1,1565235418,47,"self.dX="
+??2
+|2,1,1565229302,63,"2"
+???
+|2,1,1565229300,63,"?"
 ?/savefig
 |2,1,1565171419,47,"savefig"
 ?/save
 |2,1,1565171276,47,"save"
 ?/def update
 |2,1,1565170544,47,"def update"
-?/update
-|2,1,1565170538,47,"update"
-?/self.Xinterp
-|2,1,1565170468,47,"self.Xinterp"
-?/derived
-|2,1,1565169895,47,"derived"
-?/switch
-|2,1,1565169845,47,"switch"
-?/set_smoothness
-|2,1,1565169784,47,"set_smoothness"
-?/Xhy
-|2,1,1565162337,47,"Xhy"
-?/self.U
-|2,1,1565160757,47,"self.U"
-?/add_t
-|2,1,1565160145,47,"add_t"
-?/turb_ratio
-|2,1,1565159854,47,"turb_ratio"
-?/np.mean
-|2,1,1565159844,47,"np.mean"
-?/add_turb
-|2,1,1565151666,47,"add_turb"
-?/Xinterp
-|2,1,1565149764,47,"Xinterp"
-?/calc_field
-|2,1,1565149064,47,"calc_field"
-?/class par
-|2,1,1565148536,47,"class par"
-?/U10 = at.
-|2,1,1565147796,47,"U10 = at."
-?/U10 = at
-|2,1,1565147483,47,"U10 = at"
-?/getdata
-|2,1,1565147396,47,"getdata"
-?/speed = at.DATA(
-|2,1,1565147025,47,"speed = at.DATA("
-?/speed=at.DATA
-|2,1,1565146851,47,"speed=at.DATA"
-?/168,174s/self.setUV(self/self.setUV(/
-|2,1,1565146463,47,"168,174s/self.setUV(self/self.setUV(/"
-? self
-|2,1,1565146379,,"self"
-?/elif self.str_id
-|2,1,1565146111,47,"elif self.str_id"
-?/class
-|2,1,1565145941,47,"class"
-?/ class
-|2,1,1565145934,47," class"
-?/setUV
-|2,1,1565145737,47,"setUV"
-?/getUV
-|2,1,1565145733,47,"getUV"
-?/ca
-|2,1,1565143583,47,"ca"
-?/hasUV
-|2,1,1565143105,47,"hasUV"
-?/\.U
-|2,1,1565084814,47,"\\.U"
-?/<.U
-|2,1,1565084728,47,"<.U"
-?/.U
-|2,1,1565084719,47,".U"
-?/calc_field_dict
-|2,1,1565083974,47,"calc_field_dict"
-?/calc_field_list
-|2,1,1565083965,47,"calc_field_list"
-?/U
-|2,1,1565083298,47,"U"
-?/str_id=='ua'
-|2,1,1565082525,47,"str_id=='ua'"
-?/speed
-|2,1,1565082459,47,"speed"
-?/returb
-|2,1,1565082440,47,"returb"
-?/if self.str_id
-|2,1,1565081621,47,"if self.str_id"
-?/ratio
-|2,1,1565081305,47,"ratio"
-?/random
-|2,1,1565080568,47,"random"
-?/xvals
-|2,1,1565079926,47,"xvals"
-? )
-|2,1,1565078692,,")"
-?/Shy
-|2,1,1565072799,47,"Shy"
-?/calc_spectra
-|2,1,1565072741,47,"calc_spectra"
-?/plot_spectra_turb
-|2,1,1565072617,47,"plot_spectra_turb"
-?/)elif
-|2,1,1565071815,47,")elif"
-?/print
-|2,1,1565071741,47,"print"
 
 # Expression History (newest to oldest):
 
@@ -230,454 +230,524 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	LINE	0
-	            self.V = DATA(Vstring, h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False, hasUV=False)
-|3,0,0,1,1,0,1565161142,"            self.V = DATA(Vstring, h=self.h, passes=self.passes, pars=self.pars, autoplot=False, initialise=False, scaling_type=self.scaling_type, load_coords=False, hasUV=False)"
-"1	LINE	0
-	            self.dXall = self.X - self.Xsmooth
-	            self.turb_ratio = self.dXall/self.Xsmooth
-|3,0,1,1,2,0,1565170050,"            self.dXall = self.X - self.Xsmooth","            self.turb_ratio = self.dXall/self.Xsmooth"
+"0	CHAR	0
+	r
+|3,0,0,0,1,0,1565685142,"r"
+""1	LINE	0
+	            print(i,j)
+|3,1,1,1,1,0,1565688341,"            print(i,j)"
 "2	LINE	0
-	        if self.derived:
-	            self.U.set_height(h, update=False)
-	            self.V.set_height(h, update=False)
-|3,0,2,1,3,0,1565169938,"        if self.derived:","            self.U.set_height(h, update=False)","            self.V.set_height(h, update=False)"
+	                    print("Hello!")
+|3,0,2,1,1,0,1565688324,"                    print(\"Hello!\")"
 "3	LINE	0
-	        if self.derived:
-	            self.U.set_smoothness(passes, update=False)
-	            self.V.set_smoothness(passes, update=False)
-|3,0,3,1,3,0,1565169802,"        if self.derived:","            self.U.set_smoothness(passes, update=False)","            self.V.set_smoothness(passes, update=False)"
+	                print(Xfinmin, Xfinmax)
+|3,0,3,1,1,0,1565688321,"                print(Xfinmin, Xfinmax)"
 "4	LINE	0
-	                Xhy = X0*np.sqrt(  ( np.power(self.U.Xinterp[-1,],2) + np.power(self.V.Xinterp[-1,], 2)   ) /  ( np.power(self.U.Xsmoothinterp[-1,],2) + np.power(self.V.Xsmoothinterp[-1,], 2)   )  )
-|3,0,4,1,1,0,1565161286,"                Xhy = X0*np.sqrt(  ( np.power(self.U.Xinterp[-1,],2) + np.power(self.V.Xinterp[-1,], 2)   ) /  ( np.power(self.U.Xsmoothinterp[-1,],2) + np.power(self.V.Xsmoothinterp[-1,], 2)   )  )"
+	                print(minrat,maxrat)
+|3,0,4,1,1,0,1565688319,"                print(minrat,maxrat)"
 "5	LINE	0
-	        self.U = None    
-	        self.V = None
-|3,0,5,1,2,0,1565160782,"        self.U = None    ","        self.V = None"
+	                print("Xhy =", Xhy)
+|3,0,5,1,1,0,1565688316,"                print(\"Xhy =\", Xhy)"
 "6	LINE	0
-	            U = np.array(wrf.to_np(self.U.X))
-|3,0,6,1,1,0,1565148910,"            U = np.array(wrf.to_np(self.U.X))"
+	                print("max = ", np.nanmax(np.abs(Xsmoothfin)))
+|3,0,6,1,1,0,1565688315,"                print(\"max = \", np.nanmax(np.abs(Xsmoothfin)))"
 "7	LINE	0
-	            V = np.array(wrf.to_np(self.V.X)) 
-|3,0,7,1,1,0,1565148903,"            V = np.array(wrf.to_np(self.V.X)) "
+	                print("Xsmoothfin =", Xsmoothfin)
+|3,0,7,1,1,0,1565688314,"                print(\"Xsmoothfin =\", Xsmoothfin)"
 "8	LINE	0
-	    calc_field_dict = { 'ke' : setUVopts(),
-	                        'speed' : setUVopts(),
-	                        'ua' : setUVopts(getU=False),
-	                        'va' : setUVopts(getV=False),
-	                        'ke10' : setUVopts(at10=True),
-	                        'speed10' : setUVopts(at10=True),
-	                        'U10' : setUVopts(at10=True, getU=False),
-	                        'V10' : setUVopts(at10=True, getV=False)
-	                      }
-|3,0,8,1,9,0,1565148792,"    calc_field_dict = { 'ke' : setUVopts(),","                        'speed' : setUVopts(),","                        'ua' : setUVopts(getU=False),","                        'va' : setUVopts(getV=False),","                        'ke10' : setUVopts(at10=True),","                        'speed10' : setUVopts(at10=True),","                        'U10' : setUVopts(at10=True, getU=False),",>66
-|<"                        'V10' : setUVopts(at10=True, getV=False)","                      }"
+	                print("dXfin =", dXfin)
+|3,0,8,1,1,0,1565688313,"                print(\"dXfin =\", dXfin)"
 "9	LINE	0
-	    class setUVopts:
-	        def __init__(self)
-|3,0,9,1,2,0,1565148420,"    class setUVopts:","        def __init__(self)"
-"w@	CHAR	0
+	                print("X0 =",X0)
+|3,0,9,1,1,0,1565688313,"                print(\"X0 =\",X0)"
+"a@	CHAR	0
+	€krinn€kbo.€kb€kbp.array(wrf.to_np($a))q€kb
+|3,2,10,0,1,0,1565682849,"€krinn€kbo.€kb€kbp.array(wrf.to_np($a))q€kb"
+"w	CHAR	0
 	299
 <€kb:wq:wq€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku/Xinterpnnnnnnnnnn:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku@w
-|3,2,32,0,1,0,1565149857,"€kb:wq:wq€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku/Xinterpnnnnnnnnnn:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku@w"
-""-	CHAR	0
-	p
-|3,1,36,0,1,0,1565171263,"p"
+|3,0,32,0,1,0,1565149857,"€kb:wq:wq€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku/Xinterpnnnnnnnnnn:w€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku€ku@w"
+"-	CHAR	0
+	r"%s  at $t = %g$." % (data.str_id, data.times[-1]) ,
+|3,0,36,0,1,0,1565685138,"r\"%s  at $t = %g$.\" % (data.str_id, data.times[-1]) ,"
 
 # File marks:
-'0  1  0  ~/addturb.py
-|4,48,1,0,1565227206,"~/addturb.py"
-'1  695  16  ~/code/addturb.py
-|4,49,695,16,1565172601,"~/code/addturb.py"
-'2  176  58  ~/code/addturb.py
-|4,50,176,58,1565085519,"~/code/addturb.py"
-'3  146  14  ~/code/addturb.py
-|4,51,146,14,1565085519,"~/code/addturb.py"
-'4  15  0  ~/.vimrc
-|4,52,15,0,1565083716,"~/.vimrc"
-'5  1  0  ~/code/vimrc
-|4,53,1,0,1565083589,"~/code/vimrc"
-'6  741  71  ~/code/addturb.py
-|4,54,741,71,1564995960,"~/code/addturb.py"
-'7  739  5  ~/code/addturb.py
-|4,55,739,5,1564995960,"~/code/addturb.py"
-'8  730  71  ~/code/addturb.py
-|4,56,730,71,1564995960,"~/code/addturb.py"
-'9  728  5  ~/code/addturb.py
-|4,57,728,5,1564995960,"~/code/addturb.py"
+'0  8  14  ~/rename.sh
+|4,48,8,14,1565855354,"~/rename.sh"
+'1  9  74  ~/rename.sh
+|4,49,9,74,1565842816,"~/rename.sh"
+'2  9  74  ~/rename.sh
+|4,50,9,74,1565842816,"~/rename.sh"
+'3  18  1  ~/rename.sh
+|4,51,18,1,1565842774,"~/rename.sh"
+'4  18  1  ~/rename.sh
+|4,52,18,1,1565842774,"~/rename.sh"
+'5  18  1  ~/rename.sh
+|4,53,18,1,1565842774,"~/rename.sh"
+'6  18  1  ~/rename.sh
+|4,54,18,1,1565842774,"~/rename.sh"
+'7  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,55,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+'8  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,56,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+'9  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,57,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
 
 # Jumplist (newest first):
--'  1  0  ~/addturb.py
-|4,39,1,0,1565227206,"~/addturb.py"
--'  695  16  ~/code/addturb.py
-|4,39,695,16,1565172601,"~/code/addturb.py"
--'  695  16  ~/code/addturb.py
-|4,39,695,16,1565172601,"~/code/addturb.py"
--'  234  8  ~/code/addturb.py
-|4,39,234,8,1565171419,"~/code/addturb.py"
--'  234  8  ~/code/addturb.py
-|4,39,234,8,1565171419,"~/code/addturb.py"
--'  248  0  ~/code/addturb.py
-|4,39,248,0,1565169960,"~/code/addturb.py"
--'  248  0  ~/code/addturb.py
-|4,39,248,0,1565169960,"~/code/addturb.py"
--'  215  12  ~/code/addturb.py
-|4,39,215,12,1565169895,"~/code/addturb.py"
--'  215  12  ~/code/addturb.py
-|4,39,215,12,1565169895,"~/code/addturb.py"
--'  235  19  ~/code/addturb.py
-|4,39,235,19,1565169788,"~/code/addturb.py"
--'  235  19  ~/code/addturb.py
-|4,39,235,19,1565169788,"~/code/addturb.py"
--'  527  21  ~/code/addturb.py
-|4,39,527,21,1565169786,"~/code/addturb.py"
--'  527  21  ~/code/addturb.py
-|4,39,527,21,1565169786,"~/code/addturb.py"
--'  334  0  ~/code/addturb.py
-|4,39,334,0,1565169784,"~/code/addturb.py"
--'  334  0  ~/code/addturb.py
-|4,39,334,0,1565169784,"~/code/addturb.py"
--'  335  0  ~/code/addturb.py
-|4,39,335,0,1565169778,"~/code/addturb.py"
--'  335  0  ~/code/addturb.py
-|4,39,335,0,1565169778,"~/code/addturb.py"
--'  477  25  ~/code/addturb.py
-|4,39,477,25,1565169776,"~/code/addturb.py"
--'  477  25  ~/code/addturb.py
-|4,39,477,25,1565169776,"~/code/addturb.py"
--'  333  0  ~/code/addturb.py
-|4,39,333,0,1565169774,"~/code/addturb.py"
--'  333  0  ~/code/addturb.py
-|4,39,333,0,1565169774,"~/code/addturb.py"
--'  480  16  ~/code/addturb.py
-|4,39,480,16,1565162338,"~/code/addturb.py"
--'  480  16  ~/code/addturb.py
-|4,39,480,16,1565162338,"~/code/addturb.py"
--'  478  16  ~/code/addturb.py
-|4,39,478,16,1565162337,"~/code/addturb.py"
--'  478  16  ~/code/addturb.py
-|4,39,478,16,1565162337,"~/code/addturb.py"
--'  145  0  ~/code/addturb.py
-|4,39,145,0,1565161162,"~/code/addturb.py"
--'  145  0  ~/code/addturb.py
-|4,39,145,0,1565161162,"~/code/addturb.py"
--'  294  12  ~/code/addturb.py
-|4,39,294,12,1565160922,"~/code/addturb.py"
--'  294  12  ~/code/addturb.py
-|4,39,294,12,1565160922,"~/code/addturb.py"
--'  343  12  ~/code/addturb.py
-|4,39,343,12,1565160921,"~/code/addturb.py"
--'  343  12  ~/code/addturb.py
-|4,39,343,12,1565160921,"~/code/addturb.py"
--'  380  12  ~/code/addturb.py
-|4,39,380,12,1565160920,"~/code/addturb.py"
--'  380  12  ~/code/addturb.py
-|4,39,380,12,1565160920,"~/code/addturb.py"
--'  415  12  ~/code/addturb.py
-|4,39,415,12,1565160916,"~/code/addturb.py"
--'  415  12  ~/code/addturb.py
-|4,39,415,12,1565160916,"~/code/addturb.py"
--'  430  12  ~/code/addturb.py
-|4,39,430,12,1565160915,"~/code/addturb.py"
--'  430  12  ~/code/addturb.py
-|4,39,430,12,1565160915,"~/code/addturb.py"
--'  432  38  ~/code/addturb.py
-|4,39,432,38,1565160914,"~/code/addturb.py"
--'  432  38  ~/code/addturb.py
-|4,39,432,38,1565160914,"~/code/addturb.py"
--'  422  12  ~/code/addturb.py
-|4,39,422,12,1565160913,"~/code/addturb.py"
--'  422  12  ~/code/addturb.py
-|4,39,422,12,1565160913,"~/code/addturb.py"
--'  473  46  ~/code/addturb.py
-|4,39,473,46,1565160902,"~/code/addturb.py"
--'  473  46  ~/code/addturb.py
-|4,39,473,46,1565160902,"~/code/addturb.py"
--'  60  12  ~/code/addturb.py
-|4,39,60,12,1565160897,"~/code/addturb.py"
--'  60  12  ~/code/addturb.py
-|4,39,60,12,1565160897,"~/code/addturb.py"
--'  479  16  ~/code/addturb.py
-|4,39,479,16,1565160757,"~/code/addturb.py"
--'  479  16  ~/code/addturb.py
-|4,39,479,16,1565160757,"~/code/addturb.py"
--'  119  17  ~/code/addturb.py
-|4,39,119,17,1565160147,"~/code/addturb.py"
--'  119  17  ~/code/addturb.py
-|4,39,119,17,1565160147,"~/code/addturb.py"
--'  93  0  ~/code/addturb.py
-|4,39,93,0,1565160145,"~/code/addturb.py"
--'  93  0  ~/code/addturb.py
-|4,39,93,0,1565160145,"~/code/addturb.py"
--'  1  1  ~/code/addturb.py
-|4,39,1,1,1565142418,"~/code/addturb.py"
--'  1  1  ~/code/addturb.py
-|4,39,1,1,1565142418,"~/code/addturb.py"
--'  176  58  ~/code/addturb.py
-|4,39,176,58,1565085519,"~/code/addturb.py"
--'  146  14  ~/code/addturb.py
-|4,39,146,14,1565085519,"~/code/addturb.py"
--'  176  58  ~/code/addturb.py
-|4,39,176,58,1565085519,"~/code/addturb.py"
--'  146  14  ~/code/addturb.py
-|4,39,146,14,1565085519,"~/code/addturb.py"
--'  144  161  ~/code/addturb.py
-|4,39,144,161,1565085509,"~/code/addturb.py"
--'  147  16  ~/code/addturb.py
-|4,39,147,16,1565085509,"~/code/addturb.py"
--'  163  12  ~/code/addturb.py
-|4,39,163,12,1565085509,"~/code/addturb.py"
--'  144  161  ~/code/addturb.py
-|4,39,144,161,1565085509,"~/code/addturb.py"
--'  147  16  ~/code/addturb.py
-|4,39,147,16,1565085509,"~/code/addturb.py"
--'  163  12  ~/code/addturb.py
-|4,39,163,12,1565085509,"~/code/addturb.py"
--'  162  48  ~/code/addturb.py
-|4,39,162,48,1565085508,"~/code/addturb.py"
--'  162  48  ~/code/addturb.py
-|4,39,162,48,1565085508,"~/code/addturb.py"
--'  53  12  ~/code/addturb.py
-|4,39,53,12,1565084906,"~/code/addturb.py"
--'  53  12  ~/code/addturb.py
-|4,39,53,12,1565084906,"~/code/addturb.py"
--'  53  12  ~/code/addturb.py
-|4,39,53,12,1565084906,"~/code/addturb.py"
--'  53  12  ~/code/addturb.py
-|4,39,53,12,1565084906,"~/code/addturb.py"
--'  421  42  ~/code/addturb.py
-|4,39,421,42,1565084903,"~/code/addturb.py"
--'  421  42  ~/code/addturb.py
-|4,39,421,42,1565084903,"~/code/addturb.py"
--'  419  16  ~/code/addturb.py
-|4,39,419,16,1565084900,"~/code/addturb.py"
--'  419  16  ~/code/addturb.py
-|4,39,419,16,1565084900,"~/code/addturb.py"
--'  404  16  ~/code/addturb.py
-|4,39,404,16,1565084891,"~/code/addturb.py"
--'  404  16  ~/code/addturb.py
-|4,39,404,16,1565084891,"~/code/addturb.py"
--'  369  16  ~/code/addturb.py
-|4,39,369,16,1565084889,"~/code/addturb.py"
--'  369  16  ~/code/addturb.py
-|4,39,369,16,1565084889,"~/code/addturb.py"
--'  332  16  ~/code/addturb.py
-|4,39,332,16,1565084886,"~/code/addturb.py"
--'  332  16  ~/code/addturb.py
-|4,39,332,16,1565084886,"~/code/addturb.py"
--'  281  16  ~/code/addturb.py
-|4,39,281,16,1565084873,"~/code/addturb.py"
--'  281  16  ~/code/addturb.py
-|4,39,281,16,1565084873,"~/code/addturb.py"
--'  220  16  ~/code/addturb.py
-|4,39,220,16,1565084866,"~/code/addturb.py"
--'  220  16  ~/code/addturb.py
-|4,39,220,16,1565084866,"~/code/addturb.py"
--'  156  43  ~/code/addturb.py
-|4,39,156,43,1565084821,"~/code/addturb.py"
--'  156  43  ~/code/addturb.py
-|4,39,156,43,1565084821,"~/code/addturb.py"
--'  153  20  ~/code/addturb.py
-|4,39,153,20,1565084817,"~/code/addturb.py"
--'  145  43  ~/code/addturb.py
-|4,39,145,43,1565084817,"~/code/addturb.py"
--'  153  20  ~/code/addturb.py
-|4,39,153,20,1565084817,"~/code/addturb.py"
--'  145  43  ~/code/addturb.py
-|4,39,145,43,1565084817,"~/code/addturb.py"
--'  134  23  ~/code/addturb.py
-|4,39,134,23,1565084816,"~/code/addturb.py"
--'  134  23  ~/code/addturb.py
-|4,39,134,23,1565084816,"~/code/addturb.py"
--'  110  0  ~/code/addturb.py
-|4,39,110,0,1565084719,"~/code/addturb.py"
--'  110  0  ~/code/addturb.py
-|4,39,110,0,1565084719,"~/code/addturb.py"
--'  1219  0  ~/code/addturb.py
-|4,39,1219,0,1565083974,"~/code/addturb.py"
--'  1219  0  ~/code/addturb.py
-|4,39,1219,0,1565083974,"~/code/addturb.py"
--'  164  21  ~/code/addturb.py
-|4,39,164,21,1565083949,"~/code/addturb.py"
--'  150  21  ~/code/addturb.py
-|4,39,150,21,1565083949,"~/code/addturb.py"
--'  164  21  ~/code/addturb.py
-|4,39,164,21,1565083949,"~/code/addturb.py"
--'  150  21  ~/code/addturb.py
-|4,39,150,21,1565083949,"~/code/addturb.py"
+-'  8  14  ~/rename.sh
+|4,39,8,14,1565855354,"~/rename.sh"
+-'  1  0  ~/rename.sh
+|4,39,1,0,1565855339,"~/rename.sh"
+-'  9  74  ~/rename.sh
+|4,39,9,74,1565842816,"~/rename.sh"
+-'  9  74  ~/rename.sh
+|4,39,9,74,1565842816,"~/rename.sh"
+-'  1  0  ~/rename.sh
+|4,39,1,0,1565842794,"~/rename.sh"
+-'  18  1  ~/rename.sh
+|4,39,18,1,1565842774,"~/rename.sh"
+-'  18  1  ~/rename.sh
+|4,39,18,1,1565842774,"~/rename.sh"
+-'  18  1  ~/rename.sh
+|4,39,18,1,1565842774,"~/rename.sh"
+-'  1  0  ~/rename.sh
+|4,39,1,0,1565842710,"~/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
 -'  1  0  ~/code/addturb.py
-|4,39,1,0,1565083742,"~/code/addturb.py"
+|4,39,1,0,1565836987,"~/code/addturb.py"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833475,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833475,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+|4,39,1,0,1565833475,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
 
 # History of marks within files (newest to oldest):
 
+> ~/code/addturb.py
+	*	1565858379	0
+	"	113	0
+	^	802	0
+	.	682	0
+	+	976	17
+	+	977	16
+	+	978	16
+	+	979	16
+	+	980	16
+	+	982	42
+	+	987	12
+	+	995	0
+	+	996	0
+	+	990	33
+	+	991	43
+	+	993	35
+	+	990	36
+	+	994	43
+	+	987	29
+	+	988	0
+	+	987	29
+	+	961	37
+	+	950	73
+	+	987	51
+	+	987	19
+	+	987	27
+	+	998	27
+	+	990	33
+	+	993	33
+	+	990	85
+	+	955	19
+	+	957	0
+	+	960	14
+	+	962	17
+	+	963	30
+	+	950	54
+	+	948	9
+	+	956	26
+	+	974	22
+	+	975	17
+	+	976	16
+	+	977	15
+	+	978	10
+	+	977	15
+	+	978	17
+	+	979	17
+	+	980	17
+	+	981	12
+	+	983	38
+	+	988	0
+	+	950	52
+	+	987	12
+	+	950	47
+	+	463	61
+	+	165	0
+	+	166	0
+	+	204	0
+	+	235	0
+	+	236	0
+	+	290	0
+	+	291	0
+	+	441	0
+	+	440	53
+	+	441	53
+	+	442	69
+	+	1219	19
+	+	463	43
+	+	434	0
+	+	433	61
+	+	434	26
+	+	434	24
+	+	434	25
+	+	434	27
+	+	464	25
+	+	463	33
+	+	463	32
+	+	463	39
+	+	463	35
+	+	464	30
+	+	464	58
+	+	463	49
+	+	464	37
+	+	434	31
+	+	792	0
+	+	793	0
+	+	792	69
+	+	793	14
+	+	794	0
+	+	795	98
+	+	797	0
+	+	796	14
+	+	793	15
+	+	796	14
+	+	797	14
+	+	1219	0
+	+	229	0
+	+	434	0
+	+	451	0
+	+	463	0
+	+	464	0
+	+	472	0
+	+	474	0
+	+	495	0
+	+	682	0
+	b	24	1
+	k	24	5
+	n	489	12
+	p	407	22
+
+> ~/rename.sh
+	*	1565855353	0
+	"	8	14
+	^	18	2
+	.	18	1
+	+	2	0
+	+	3	55
+	+	18	1
+
+> /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
+	*	1565842650	0
+	"	1	0
+	^	8	18
+	.	8	17
+	+	14	3
+	+	7	99
+	+	9	120
+	+	13	8
+	+	7	7
+	+	5	13
+	+	11	7
+	+	10	17
+	+	6	26
+	+	7	105
+	+	11	70
+	+	7	0
+	+	8	17
+
 > ~/addturb.py
-	*	1565227206	0
+	*	1565314363	0
 	"	1	0
 
-> ~/code/addturb.py
-	*	1565172492	0
-	"	695	16
-	^	529	25
-	.	529	0
-	+	171	60
-	+	137	68
-	+	139	24
-	+	137	67
-	+	165	18
-	+	166	0
-	+	171	46
-	+	137	52
-	+	139	8
-	+	145	0
-	+	171	0
-	+	172	19
-	+	167	3
-	+	168	0
-	+	167	0
-	+	1251	0
-	+	1268	0
-	+	1267	7
-	+	1253	7
-	+	1252	21
-	+	1253	24
-	+	1252	54
-	+	1255	23
-	+	169	25
-	+	170	0
-	+	168	41
-	+	168	42
-	+	168	39
-	+	168	41
-	+	168	44
-	+	168	40
-	+	168	32
-	+	172	18
-	+	174	0
-	+	173	27
-	+	137	23
-	+	139	15
-	+	147	15
-	+	154	15
-	+	172	23
-	+	168	0
-	+	1257	0
-	+	1258	0
-	+	172	19
-	+	158	25
-	+	159	0
-	+	156	0
-	+	162	0
-	+	149	0
-	+	161	0
-	+	228	11
-	+	227	30
-	+	150	0
-	+	157	0
-	+	473	15
-	+	471	67
-	+	473	21
-	+	741	70
-	+	473	194
-	+	53	0
-	+	60	0
-	+	145	8
-	+	145	19
-	+	145	31
-	+	145	0
-	+	145	42
-	+	145	0
-	+	471	75
-	+	473	12
-	+	478	11
-	+	473	16
-	+	474	15
-	+	473	191
-	+	474	58
-	+	475	12
-	+	474	58
-	+	475	58
-	+	471	24
-	+	471	46
-	+	473	0
-	+	472	15
-	+	476	21
-	+	477	88
-	+	478	16
-	+	477	20
-	+	334	0
-	+	235	0
-	+	211	0
-	+	216	0
-	+	214	77
-	+	291	0
-	+	289	0
-	+	233	0
-	+	287	39
-	+	529	0
-	n	473	12
-	p	406	22
-
-> ~/.vimrc
-	*	1565083715	0
-	"	15	0
-	^	15	1
-	.	15	0
-	+	3	24
-	+	6	0
-	+	6	36
-	+	15	0
-	+	1	18
-	+	2	22
-	+	3	20
-	+	4	24
+> ~/code/spectrum.ncl
+	*	1565259377	0
+	"	5	0
+	.	9	0
+	+	1	49
+	+	3	56
+	+	1	0
+	+	3	57
+	+	3	49
+	+	1	0
+	+	3	46
+	+	3	67
+	+	3	51
+	+	3	33
+	+	3	55
+	+	3	33
+	+	1	0
+	+	3	0
+	+	1	29
+	+	3	41
+	+	3	62
+	+	3	63
+	+	3	33
+	+	3	82
+	+	3	44
+	+	3	33
+	+	3	83
+	+	3	33
+	+	3	97
+	+	3	33
+	+	3	43
+	+	3	37
+	+	1	0
+	+	3	0
 	+	5	0
+	+	1	0
+	+	5	7
 	+	6	0
-	+	7	0
-	+	2	8
+	+	6	17
+	+	8	0
+	+	3	25
+	+	5	0
+	+	6	16
+	+	4	0
+	+	7	24
+	+	4	0
 	+	4	7
 	+	1	0
-	+	8	1
-	+	9	0
-	+	10	0
-	+	11	0
-	+	12	0
-	+	13	0
-	+	14	0
-	+	15	0
-
-> ~/code/vimrc
-	*	1565083589	0
-	"	1	0
-
-> /usr/share/vim/vim80/doc/help.txt
-	*	1564995473	0
-	"	1	0
-
-> ~/connect.py
-	*	1564729013	0
-	"	15	7
-	^	15	8
-	.	15	7
-	+	5	0
-	+	3	11
-	+	5	15
-	+	4	12
-	+	9	15
-	+	9	22
-	+	3	11
-	+	9	71
-	+	11	49
-	+	18	0
+	+	1	5
+	+	2	0
+	+	13	2
+	+	3	15
+	+	8	0
+	+	8	26
+	+	9	34
+	+	11	21
+	+	9	30
+	+	8	0
+	+	6	0
 	+	1	0
-	+	8	3
-	+	9	25
-	+	11	50
-	+	13	55
-	+	15	7
+	+	4	0
+	+	9	0
+
+> ~/code/outdata.py
+	*	1565257492	0
+	"	27	6
+	^	27	7
+	.	27	7
+	+	1	1
+	+	1	0
+	+	4	0
+	+	36	9
+	+	38	31
+	+	43	31
+	+	48	3
+	+	47	7
+	+	40	25
+	+	42	0
+	+	16	0
+	+	22	0
+	+	16	0
+	+	19	22
+	+	21	7
+	+	25	27
+	+	24	46
+	+	25	29
+	+	29	6
+	+	23	39
+	+	24	42
+	+	31	3
+	+	32	0
+	+	32	15
+	+	33	22
+	+	41	24
+	+	45	46
+	+	46	11
+	+	26	0
+	+	27	7
+	+	23	60
+	+	24	52
+	+	23	61
+	+	24	67
+	+	27	7
+
+> ~/code/term
+	*	1565246237	0
+	"	1	0
 
 > ~/code/modify.py
-	*	1564726541	0
-	"	6	18
+	*	1565234824	0
+	"	6	0
 	^	6	19
 	.	66	0
 	+	19	33
@@ -778,68 +848,67 @@ $
 	+	64	0
 	+	66	0
 
-> ~/code/spectrum.ncl
-	*	1564630954	0
-	"	1	0
-	.	9	0
-	+	1	49
-	+	3	56
-	+	1	0
-	+	3	57
-	+	3	49
-	+	1	0
-	+	3	46
-	+	3	67
-	+	3	51
-	+	3	33
-	+	3	55
-	+	3	33
-	+	1	0
-	+	3	0
-	+	1	29
-	+	3	41
-	+	3	62
-	+	3	63
-	+	3	33
-	+	3	82
-	+	3	44
-	+	3	33
-	+	3	83
-	+	3	33
-	+	3	97
-	+	3	33
-	+	3	43
-	+	3	37
-	+	1	0
-	+	3	0
-	+	5	0
-	+	1	0
-	+	5	7
-	+	6	0
-	+	6	17
+> ~/.vimrc
+	*	1565229413	0
+	"	4	24
+	^	1	1
+	.	1	0
+	+	3	24
 	+	8	0
-	+	3	25
+	+	8	36
+	+	17	0
+	+	1	18
+	+	2	22
+	+	3	20
+	+	4	24
 	+	5	0
-	+	6	16
-	+	4	0
-	+	7	24
-	+	4	0
+	+	8	0
+	+	9	0
+	+	2	8
 	+	4	7
 	+	1	0
-	+	1	5
-	+	2	0
-	+	13	2
-	+	3	15
-	+	8	0
-	+	8	26
-	+	9	34
-	+	11	21
-	+	9	30
-	+	8	0
-	+	6	0
+	+	10	1
+	+	11	0
+	+	12	0
+	+	13	0
+	+	14	0
+	+	15	0
+	+	16	0
+	+	17	23
+	+	18	0
+	+	5	0
+	+	6	15
 	+	1	0
-	+	4	0
-	+	9	0
+
+> ~/code/vimrc
+	*	1565083589	0
+	"	1	0
+
+> /usr/share/vim/vim80/doc/help.txt
+	*	1564995473	0
+	"	1	0
+
+> ~/connect.py
+	*	1564729013	0
+	"	15	7
+	^	15	8
+	.	15	7
+	+	5	0
+	+	3	11
+	+	5	15
+	+	4	12
+	+	9	15
+	+	9	22
+	+	3	11
+	+	9	71
+	+	11	49
+	+	18	0
+	+	1	0
+	+	8	3
+	+	9	25
+	+	11	50
+	+	13	55
+	+	15	7
 
 > ~/.gitignore
 	*	1564623158	0

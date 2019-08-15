@@ -1794,3 +1794,149 @@ python
 cd code
 ls
 vim addturb.py 
+ssh dev@10.53.139.90
+cd co
+cd code
+conda activate pynio_env
+ls
+python
+q
+cd co
+conda activate pynio_env
+python
+ssh dev@10.53.139.90
+conda activate pynio_env
+python
+q
+ls
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*random_2.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*random_2*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*random_2_*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*random_*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_*difference*control*random_*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_*control_run*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+git add --all .
+git commit -m 'mess tidied up'
+git push
+vim .vimrc 
+cd code
+vim addturb.py 
+vi
+vim addturb.py 
+ls
+vim addturb.py 
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/U10_*by_ratio*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_*by_ratio*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/u_mod*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/speed_mod*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/t_mod*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*CT2*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*BR1*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*speed*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*psfc*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*speed10*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*speed10*original_data*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+conda activate pynio_env
+ls
+python
+ls
+cd code
+vim addturb.py 
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+conda activate pynio_env
+python
+cd code
+l
+ls
+vim addturb.py 
+ssh dev@10.53.139.90
+cd co
+conda activate pynio_env
+python
+cd ../../mnt/c/Users/hko/Desktop/plots/Results/
+ls
+mkdir CT3
+mv *CT3* CT3
+mv *CT3d01* CT3
+mkdir CT2
+mv *CT2d01* CT2
+ls
+mv CT2 CT3 nclplots/
+cd nclplots/
+ls
+mv *CT2d01* CT2
+mv *CT3d01* CT3
+mv *CT4d01* CT4
+mkdir CPH
+mv *CPHd01* CPH
+mkdir CP1
+mv *CP1d01* CP1
+mkdir CCB
+mv *CCBd01* CCB
+mkdir BHD
+mv *BHDd01* BHD
+mkdir BR1
+mv *BR1d01* BR1
+mkdir CCH
+mv *CCHd01* CCH
+cd
+cd code
+vim addturb.py 
+conda activate pynio_env
+python
+vim addturb.py 
+python
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/psfc*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_BR1/ ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_BR1/modified_UV1.0* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_BR1/modified_UV1.0* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots/TS_BR1/
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_BR1/modified_UVmu1.0* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots/TS_BR1/
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_BR1/psfc_modified_UVmu1.0*.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots/TS_BR1/
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/speed10 ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/speed10* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ssh dev@10.53.139.90
+python
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/psfc*mu0.4* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/speed10* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/speed10*difference*0.5*0.4* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/speed10*difference* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_difference* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/T2_modified_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd data/
+ls
+cd original/
+ls
+ncdump -h wrfout_xhka_2019-07-09_08\:00\:00.t00.nc 
+cd ../..
+l
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd plots/
+ls
+rm -r *tendency_sort
+ls TS*
+cd ..
+ls
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ssh dev@10.53.139.90
+ls
+cd TS_BHD
+cd ..
+. rename.sh 
+cd TS_BHD
+ls
+cd ..
+vim rename.sh 
+. rename.sh 
+conda activate pynio_Env
+conda activate pynio_env
+python
+:q

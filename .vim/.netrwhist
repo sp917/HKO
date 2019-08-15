@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/usr/share/vim/vimfiles'
+let g:netrw_dirhist_2='/home/sp917/code'
+let g:netrw_dirhist_3='/home/sp917'
+let g:netrw_dirhist_4='/home/sp917/code'
