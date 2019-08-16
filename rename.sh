@@ -10,7 +10,13 @@ do
     for mu in 0.1 0.2 0.3 0.4 0.5 0.6
     do 
         echo ${mu}
-        mv psfc_modified_UVmu${mu}_Tmu0.5_QVmu0.5_${sn}d01_tendency.png psfc_modified_UVmu${mu}0_Tmu0.5_QVmu0.5_${sn}d01_tendency.png
+        for muT in 0 0.25 0.3 0.4 0.5 0.75
+        do
+            for muQV in -0.2 -0.1 0 0.1 0.25 -0.25 0.5
+            do
+                mv psfc_modified_UVmu${mu}_Tmu${muT}_QVmu${muQV}_${sn}d01_tendency.png psfc_modified_UVmu${mu}0_Tmu${muT}_QVmu${muQV}_${sn}d01_tendency.png
+            done
+        done
     done
     cd ..
 done

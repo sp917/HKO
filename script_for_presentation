@@ -1,0 +1,31 @@
+Turbulence Generation in the WRF-ARW Model
+
+Slide 1 & Slide 2
+
+We are considering a numerical weather prediction model, the WRF-ARW, applied to a region around the Pearl River Delta, which contains Hong Kong. The simulation consists of a low-resolution global model, and nested within this is a high-resolution model (~200km resolution). The low-resolution simulation provides the initial and boundary conditions from the high-resolution simulation.
+
+Slide 3
+
+The problem here is that the interior region will initially have no small-scale features; the model takes time to "spin up". However, in practical weather forecasting this is a problem, as forecasts need to be produced quickly; therefore we want, as far as possible, to reduce this "spin-up" time. 
+
+Slide 4
+
+So, what we would like to do is to take some field that has already been spun up, somehow extract the turbulence from it, then add this turbulence into the initial condition of the high-resolution model, thus reducing the need for the model to spend time generating the turbulence itself.
+
+Slide 5 & Slide 6
+
+The main prognostic variables we are interested in are horizontal velocity, temperature and water vapour mixing ratio, the latter of which is a measure of humidity. We take the field at 12 hours to be our "spun-up" field and extract the turbulence by smoothing. We carry out smoothing by taking an average over the nine neighbours of each point in the domain. We apply this smoothing filter 1000 times (the reason for this shall be explained later). Define turbulence as the difference between the total field and the smoothed field.
+
+Slide 7
+
+We use this formula to add the turbulence to the initial field. This is chosen so that the ratio of turbulence to smooth field at the initial time does not exceed that at the final time by too much. This depends on the parameter $\mu$, which can be different for different fields, and which we determine as explained in what follows.
+
+Slide 8
+
+To choose $\mu$ we look at the spectra. We want to choose $\mu$ such that the spectra of the new initial field resemble closely those of the spun-up field. In fact it turns out that different values of $\mu$ work better at different heights. However, for simplicity we choose $\mu$ independent of height, and bases on considerations of various spectra we take $0.5$ for $T$ and $QV$, and $0.75$ for $U$ and $V$.
+
+Slide 9 & 10
+
+We run the model with these parameter values and see that after 10 minutes there is better small-scale motion in the run with modified initial conditions. However, it is not clear just from these pictures that this motion will have a desirable impact on the results of the forecast. We therefore need a more quantitative way to evaluate the effect of modifying the initial condition in this way.   
+
+ 

@@ -20,18 +20,18 @@
 $axs[j,i]
 
 # Command Line History (newest to oldest):
+:wq
+|2,0,1565949373,,"wq"
+:w
+|2,0,1565940606,,"w"
+:term
+|2,0,1565941489,,"term"
+:q
+|2,0,1565939144,,"q"
+:Wq
+|2,0,1565935697,,"Wq"
 :q!
 |2,0,1565858388,,"q!"
-:q
-|2,0,1565858384,,"q"
-:term
-|2,0,1565836987,,"term"
-:wq
-|2,0,1565842774,,"wq"
-:Wq
-|2,0,1565842773,,"Wq"
-:w
-|2,0,1565836001,,"w"
 :split rename.sh
 |2,0,1565833958,,"split rename.sh"
 :W
@@ -272,235 +272,259 @@ $axs[j,i]
 |3,0,36,0,1,0,1565685138,"r\"%s  at $t = %g$.\" % (data.str_id, data.times[-1]) ,"
 
 # File marks:
-'0  8  14  ~/rename.sh
-|4,48,8,14,1565855354,"~/rename.sh"
-'1  9  74  ~/rename.sh
-|4,49,9,74,1565842816,"~/rename.sh"
-'2  9  74  ~/rename.sh
-|4,50,9,74,1565842816,"~/rename.sh"
-'3  18  1  ~/rename.sh
-|4,51,18,1,1565842774,"~/rename.sh"
-'4  18  1  ~/rename.sh
-|4,52,18,1,1565842774,"~/rename.sh"
-'5  18  1  ~/rename.sh
-|4,53,18,1,1565842774,"~/rename.sh"
-'6  18  1  ~/rename.sh
-|4,54,18,1,1565842774,"~/rename.sh"
-'7  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,55,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
-'8  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,56,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
-'9  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,57,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+'0  29  395  ~/script_for_presentation
+|4,48,29,395,1565949373,"~/script_for_presentation"
+'1  1  9  ~/code/addturb.py
+|4,49,1,9,1565949367,"~/code/addturb.py"
+'2  1  0  ~/.gitignore
+|4,50,1,0,1565939144,"~/.gitignore"
+'3  15  28  ~/rename.sh
+|4,51,15,28,1565938853,"~/rename.sh"
+'4  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,52,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+'5  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,53,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+'6  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,54,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+'7  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,55,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+'8  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,56,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+'9  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,57,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
 
 # Jumplist (newest first):
--'  8  14  ~/rename.sh
-|4,39,8,14,1565855354,"~/rename.sh"
+-'  29  395  ~/script_for_presentation
+|4,39,29,395,1565949373,"~/script_for_presentation"
+-'  1  9  ~/code/addturb.py
+|4,39,1,9,1565949367,"~/code/addturb.py"
+-'  1187  0  ~/code/addturb.py
+|4,39,1187,0,1565941924,"~/code/addturb.py"
+-'  1357  0  ~/code/addturb.py
+|4,39,1357,0,1565941248,"~/code/addturb.py"
+-'  1  0  ~/.gitignore
+|4,39,1,0,1565939144,"~/.gitignore"
+-'  1  0  ~/.gitignore
+|4,39,1,0,1565939144,"~/.gitignore"
+-'  1  0  ~/script_for_presentation
+|4,39,1,0,1565939016,"~/script_for_presentation"
+-'  15  28  ~/rename.sh
+|4,39,15,28,1565938853,"~/rename.sh"
+-'  15  28  ~/rename.sh
+|4,39,15,28,1565938853,"~/rename.sh"
+-'  15  28  ~/rename.sh
+|4,39,15,28,1565938853,"~/rename.sh"
 -'  1  0  ~/rename.sh
-|4,39,1,0,1565855339,"~/rename.sh"
--'  9  74  ~/rename.sh
-|4,39,9,74,1565842816,"~/rename.sh"
--'  9  74  ~/rename.sh
-|4,39,9,74,1565842816,"~/rename.sh"
+|4,39,1,0,1565938794,"~/rename.sh"
 -'  1  0  ~/rename.sh
-|4,39,1,0,1565842794,"~/rename.sh"
--'  18  1  ~/rename.sh
-|4,39,18,1,1565842774,"~/rename.sh"
--'  18  1  ~/rename.sh
-|4,39,18,1,1565842774,"~/rename.sh"
--'  18  1  ~/rename.sh
-|4,39,18,1,1565842774,"~/rename.sh"
+|4,39,1,0,1565938794,"~/rename.sh"
 -'  1  0  ~/rename.sh
-|4,39,1,0,1565842710,"~/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565842653,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  ~/code/addturb.py
-|4,39,1,0,1565836987,"~/code/addturb.py"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  17  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,17,1565836946,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  7  93  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,7,93,1565835913,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833695,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  9  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,9,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  8  111  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,8,111,1565833626,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833586,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833475,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833475,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
--'  1  0  /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
-|4,39,1,0,1565833475,"/mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh"
+|4,39,1,0,1565938794,"~/rename.sh"
+-'  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  18  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,18,1,1565935698,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935655,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935655,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935655,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935655,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935655,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935655,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  3  1  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,3,1,1565935593,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935587,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935587,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935587,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935587,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935587,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935587,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  2  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,2,10,1565935541,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935534,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935534,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935534,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935534,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935534,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  0  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,0,1565935534,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  4  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,4,1565935527,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  4  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,4,1565935527,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  4  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,4,1565935527,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  4  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,4,1565935527,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  4  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,4,1565935527,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  4  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,4,1565935527,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,10,1565935521,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,10,1565935521,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,10,1565935521,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,10,1565935521,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,10,1565935521,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  1  10  /mnt/c/Users/hko/Desktop/plots/gitignore
+|4,39,1,10,1565935521,"/mnt/c/Users/hko/Desktop/plots/gitignore"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
+-'  17  141  ~/rename.sh
+|4,39,17,141,1565866035,"~/rename.sh"
 
 # History of marks within files (newest to oldest):
 
+> ~/script_for_presentation
+	*	1565949371	0
+	"	29	395
+	^	29	396
+	.	29	395
+	+	5	274
+	+	3	16
+	+	11	0
+	+	7	7
+	+	17	163
+	+	30	0
+	+	15	16
+	+	21	183
+	+	17	260
+	+	21	331
+	+	23	7
+	+	21	331
+	+	25	411
+	+	26	0
+	+	29	154
+	+	27	11
+	+	29	395
+
 > ~/code/addturb.py
-	*	1565858379	0
-	"	113	0
-	^	802	0
-	.	682	0
-	+	976	17
+	*	1565942062	0
+	"	1	9
+	^	30	64
+	.	30	64
 	+	977	16
 	+	978	16
 	+	979	16
@@ -600,18 +624,53 @@ $axs[j,i]
 	+	474	0
 	+	495	0
 	+	682	0
+	+	30	64
 	b	24	1
 	k	24	5
 	n	489	12
 	p	407	22
 
+> ~/.gitignore
+	*	1565939143	0
+	"	1	0
+	^	7	5
+	.	7	4
+	+	2	5
+	+	3	10
+	+	4	2
+	+	4	0
+	+	4	4
+	+	1	0
+	+	4	4
+	+	5	0
+	+	6	6
+	+	7	4
+
 > ~/rename.sh
-	*	1565855353	0
-	"	8	14
-	^	18	2
-	.	18	1
+	*	1565938851	0
+	"	15	28
+	^	15	29
+	.	15	28
 	+	2	0
 	+	3	55
+	+	24	1
+	+	16	13
+	+	17	11
+	+	18	8
+	+	19	7
+	+	18	15
+	+	17	132
+	+	13	32
+	+	15	28
+
+> /mnt/c/Users/hko/Desktop/plots/gitignore
+	*	1565935698	0
+	"	18	1
+	^	18	2
+	.	18	1
+	+	1	4
+	+	2	10
+	+	3	1
 	+	18	1
 
 > /mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh
@@ -909,22 +968,6 @@ $axs[j,i]
 	+	11	50
 	+	13	55
 	+	15	7
-
-> ~/.gitignore
-	*	1564623158	0
-	"	7	4
-	^	7	5
-	.	7	4
-	+	2	5
-	+	3	10
-	+	4	2
-	+	4	0
-	+	4	4
-	+	1	0
-	+	4	4
-	+	5	0
-	+	6	6
-	+	7	4
 
 > ~/code_old/fieldplot.py
 	*	1564479996	0

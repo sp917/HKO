@@ -1,39 +1,3 @@
-ls
-cd
-ls
-pwd
-cd ..
-ls
-ls -altr
-cd ..
-ls
-cd home/
-ls
-cd sp917/
-ls
-anaconda
-python
-python3
-scp dev@10.53.139.90/:/model/home/dev/stuart/wrfout_d01_2018-06-08_00:00:00.nc
-scp dev@10.53.139.90/:/model/home/dev/stuart/wrfout_d01_2018-06-08_00:00:00.nc .
-scp dev@10.53.139.90:/model/home/dev/stuart/wrfout_d01_2018-06-08_00:00:00.nc .
-ls
-vi readdata.py
-python3 readdata.py 
-hostnamectl
-uname -r
-cd /tmp
-curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
-cd ..
-ls
-cd home/
-ls
-cd /tmp/
-ls
-rm Anaconda3-2019.03-Linux-x86_64.sh 
-ls
-cd
-ls
 bash ~/Downloads/Anaconda3-2019.03-Linux-x86_64.sh
 anaconda
 ls
@@ -1940,3 +1904,97 @@ conda activate pynio_Env
 conda activate pynio_env
 python
 :q
+cd ../../mnt/c/Users/hko/Desktop/
+ls
+cd plots/Results/nclplots/
+ls
+vim rename.sh 
+cd
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+mv ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots/rename.sh .
+vim rename.sh 
+. rename.sh 
+vim rename.sh 
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+. rename.sh 
+conda activate pynio_env
+python
+ncl
+ls
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*_shocks ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*_shocks.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+. rename.sh 
+vim rename.sh 
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+. rename.sh 
+scp dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/*_shocks.png ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots/
+find -name "*_tendency_sort*" -type f -delete
+find -name "t_*" -type f -delete
+find -name "u_*" -type f -delete
+find -name "speed_*" -type f -delete
+find -name "psfc_control_run_*" -type f -delete
+find -name "psfc_modified_by*" -type f -delete
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+cd
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+ls
+cd ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots/
+vim rename.sh
+. rename.sh 
+vim rename.sh
+ls
+vim rename.sh 
+cd 
+ls
+cd sshfs-dir/
+ls
+cd ..
+rm -r sshfs-dir/
+cd code
+ls
+vim addturb.py 
+cd ..
+git add --all .
+git commit -m 'Haven't done a commit for a while.'
+git commit -m 'Haven't done a commit for a while'
+git commit -m "Haven't done a commit for a while"
+git push
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+. rename.sh 
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+. rename.sh 
+vim rename.sh 
+. rename.sh 
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+ssh dev@10.53.139.90
+scp  dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/psfc_shocks* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+scp -r dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/TS_* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+. rename.sh 
+scp  dev@10.53.139.90:/model/home/dev/wrf/v3.7.1.kc/plots/psfc_shocks* ../../mnt/c/Users/hko/Desktop/plots/Results/nclplots
+vim .gitignore 
+ssh dev@10.53.139.90
+ls
+cd ..
+ls
+cd code
+ls
+cp addturb.py spectrum.ncl ../../../mnt/c/Users/hko/Desktop/
+conda activate pynio_env
+ls
+python
+ls
+cd ..
+ls
+cd data/
+ls
+cd original/
+ls
+ls
+cd code
+ls
+vim addturb.py 

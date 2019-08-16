@@ -27,7 +27,7 @@ class DATA:
              function.
            --If necessary interpolate the data and smoothed data onto a specified
              height level.
-           --Extract turbulence as the difference between orignial field and
+           --Extract turbulence as the difference between original field and
              smoothed field.
            --Use various methods for adding the turbulence to the field at initial
              time.
